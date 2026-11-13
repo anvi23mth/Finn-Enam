@@ -1,0 +1,30 @@
+# dependencies & build
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# secrets & keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+secrets.*
+credentials*.json
+service-account*.json
+
+# local tooling / OS
+.claude/
+.DS_Store
+*.log
+.idea/
+.vscode/
+coverage/

@@ -1,0 +1,21 @@
+import type { Company } from './types'
+export const portfolio: Company[] = [
+  { t:'RELIANCE', name:'Reliance Industries', sector:'Conglomerate' },
+  { t:'HDFCBANK', name:'HDFC Bank', sector:'Banks' },
+  { t:'ICICIBANK', name:'ICICI Bank', sector:'Banks' },
+  { t:'SBIN', name:'State Bank of India', sector:'Banks' },
+  { t:'INFY', name:'Infosys', sector:'IT Services' },
+  { t:'TCS', name:'Tata Consultancy', sector:'IT Services' },
+  { t:'TATAMOTORS', name:'Tata Motors', sector:'Auto' },
+  { t:'SUNPHARMA', name:'Sun Pharma', sector:'Pharma' },
+  { t:'ITC', name:'ITC', sector:'FMCG' },
+  { t:'LT', name:'Larsen & Toubro', sector:'Capital Goods' },
+  { t:'BHARTIARTL', name:'Bharti Airtel', sector:'Telecom' },
+  { t:'ASIANPAINT', name:'Asian Paints', sector:'Paints' },
+  { t:'PIDILITIND', name:'Pidilite', sector:'Specialty Chem' },
+  { t:'DEEPAKNTR', name:'Deepak Nitrite', sector:'Specialty Chem' },
+  { t:'POLYCAB', name:'Polycab', sector:'Electricals' },
+  { t:'DIXON', name:'Dixon Technologies', sector:'Electronics Mfg' },
+  { t:'CHOLAFIN', name:'Cholamandalam Fin', sector:'NBFC' },
+  { t:'TITAN', name:'Titan', sector:'Consumer' },
+]
