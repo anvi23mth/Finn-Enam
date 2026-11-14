@@ -1,6 +1,8 @@
 """Single-worker background job queue (one analysis at a time keeps Gemini free-tier pacing safe). In-memory by design."""
 from __future__ import annotations
+import json
 import queue
+import re
 import threading
 import time
 import uuid
@@ -13,6 +15,40 @@ _jobs: dict[str, dict] = {}
 _q: queue.Queue = queue.Queue()
 _lock = threading.Lock()
 _worker: threading.Thread | None = None
+
+
+INTERRUPTED_MSG = "The analysis was interrupted — retry."
+_ID = re.compile(r"[0-9a-f]{12}")
+
+
+def _file(job_id: str):
+    return config.JOBS_DIR / f"{job_id}.json"
+
+
+def _persist(job: dict) -> None:
+    """Write the job's state to data/jobs/<id>.json (atomic), so status survives a restart."""
+    try:
+        config.JOBS_DIR.mkdir(parents=True, exist_ok=True)
+        tmp = _file(job["id"]).with_suffix(".tmp")
+        tmp.write_text(json.dumps(job))
+        tmp.replace(_file(job["id"]))
+    except OSError:
+        pass   # a read-only disk must not break analysis
+
+
+def recover() -> int:
+    """At startup: any job still marked queued/running died with the previous process -> mark it interrupted."""
+    n = 0
+    for p in config.JOBS_DIR.glob("*.json") if config.JOBS_DIR.exists() else []:
+        try:
+            j = json.loads(p.read_text())
+        except (OSError, json.JSONDecodeError):
+            continue
+        if j.get("status") in ("queued", "running"):
+            j.update(status="interrupted", message=INTERRUPTED_MSG, error=INTERRUPTED_MSG, error_code="interrupted", finished_at=_now())
+            _persist(j)
+            n += 1
+    return n
 
 
 def _now() -> str:
@@ -31,6 +67,7 @@ def submit(ticker: str) -> dict:
         job = {"id": uuid.uuid4().hex[:12], "ticker": ticker, "status": "queued", "message": "waiting for the worker",
                "error": None, "error_code": None, "created_at": _now(), "started_at": None, "finished_at": None, "refunded": False}
         _jobs[job["id"]] = job
+        _persist(job)
         while len(_jobs) > 60:                       # keep memory bounded
             _jobs.pop(next(iter(_jobs)))
         _q.put(job["id"])
@@ -43,12 +80,23 @@ def submit(ticker: str) -> dict:
 def get(job_id: str) -> dict | None:
     with _lock:
         j = _jobs.get(job_id)
-        return dict(j) if j else None
+        if j:
+            return dict(j)
+    if _ID.fullmatch(job_id) and _file(job_id).exists():     # finished/interrupted in an earlier process
+        try:
+            j = json.loads(_file(job_id).read_text())
+        except (OSError, json.JSONDecodeError):
+            return None
+        if j.get("status") in ("queued", "running"):          # on disk but not in memory: its process is gone
+            j.update(status="interrupted", message=INTERRUPTED_MSG, error=INTERRUPTED_MSG, error_code="interrupted")
+        return j
+    return None
 
 
 def _set(job: dict, **kw) -> None:
     with _lock:
         job.update(kw)
+        _persist(job)
 
 
 def _loop() -> None:

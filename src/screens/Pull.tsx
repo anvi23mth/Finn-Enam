@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
-import { research } from '../data/research'
 import { portfolio } from '../data/portfolio'
 import { callList, affiliation, type NetView } from '../lib/network'
 import Badge from '../components/Badge'
-const sym = { up: '▲', down: '▼', flat: '▬' }
 const API = (import.meta.env.VITE_API_BASE as string | undefined) ?? ''
 const KEY = (t: string) => `finn.research.${t}`
 const CODE_KEY = 'finn.accessCode'
+const JOB_KEY = 'finn.job'   // {id, ticker} — only ever used to RESUME POLLING a job; never to start or replay one
 const SEEDS = ['INFY', 'DEEPAKNTR']   // static fallback list when the backend is unreachable (files in /seed/research)
 
 /* ---- real research served by the FINN backend (GET /research/{ticker}); seeds also ship as static files ---- */
@@ -33,10 +32,13 @@ async function fetchResult(t: string): Promise<RealResult | null> {
   }
   return loadLocal(t)
 }
+const loadJob = (): { id: string; ticker: string } | null => { try { const j = JSON.parse(localStorage.getItem(JOB_KEY) ?? 'null'); return j?.id && j?.ticker ? j : null } catch { return null } }
+const saveJob = (id: string, ticker: string) => { try { localStorage.setItem(JOB_KEY, JSON.stringify({ id, ticker })) } catch { /* storage unavailable */ } }
+const clearJob = () => { try { localStorage.removeItem(JOB_KEY) } catch { /* storage unavailable */ } }
 const getCode = () => { try { return sessionStorage.getItem(CODE_KEY) ?? '' } catch { return '' } }
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
 /** Remove wrapping quote marks so the renderer's own “ ” never doubles up. */
-export const unquote = (s: string) => s.trim().replace(/^["'“”‘’]+|["'“”‘’]+$/g, '')
+const unquote = (s: string) => s.trim().replace(/^["'“”‘’]+|["'“”‘’]+$/g, '')
 const verdictClass = (v: string | null) => v === 'delivered' ? 'met' : v === 'partly' ? 'partly' : v === 'missed' ? 'missed' : 'untested'
 const verdictLabel = (v: string | null) => v ? v.replace(/_/g, ' ') : 'unscored'
 const docName = (d: string) => d.replace(/__/g, ' ')
@@ -73,109 +75,115 @@ function RealResearch({ r }: { r: RealResult }) {
   </>
 }
 
-function DemoResearch({ t }: { t: string }) {
-  const r = research[t]
-  return <>
-    <section><h2>Business <Badge kind="demo" /></h2><p>{r.snapshot}</p>
-      <div className="bar">{r.segments.map(s => <i key={s.n} style={{ flex: s.pct }} title={s.n} />)}</div>
-      <p className="dim small">{r.segments.map(s => `${s.n} ${s.pct}%`).join(' · ')}</p></section>
-    <section><h2>Financials <Badge kind="demo" /></h2><div className="grid">{r.fin.map(f => <div key={f.k} className="kpi"><small>{f.k}</small><b>{f.v}</b></div>)}</div></section>
-    <section><h2>Promised vs delivered <Badge kind="demo" /></h2>{r.promises.map((p, i) => <div key={i} className={`prom ${p.verdict}`}><small>{p.q}</small><div>“{unquote(p.said)}”</div><div>→ {p.got}</div><span>{p.verdict}</span></div>)}</section>
-    <section><h2>Trajectory <Badge kind="demo" /></h2>{r.trajectory.map(x => <p key={x.k}><span className={`dir ${x.dir}`}>{sym[x.dir]}</span> <b>{x.k}</b> — {x.note}</p>)}</section>
-    <section><h2>Cash quality <Badge kind="demo" /></h2>{r.quality.map(q => <p key={q.k} className={q.flag ? 'neg' : ''}><b>{q.k}</b> {q.v}</p>)}</section>
-    <section className="cols"><div><h2>Bull <Badge kind="demo" /></h2>{r.bull.map(b => <p key={b}>+ {b}</p>)}</div><div><h2>Bear <Badge kind="demo" /></h2>{r.bear.map(b => <p key={b}>− {b}</p>)}</div></section>
-    <p className="dim small">Sample extraction shown for illustration; figures are placeholders.</p>
-  </>
-}
-
-type Run = { t: string; status: 'loading' | 'error'; msg?: string }
+type Run = { t: string; status: 'loading' | 'error' | 'interrupted'; msg?: string }
+const INTERRUPTED = 'The analysis was interrupted — retry.'
 
 export default function Pull({ ticker, setTicker, openNet }: { ticker: string; setTicker: (t: string) => void; openNet: (v: NetView, arg?: string) => void }) {
   const [q, setQ] = useState('')
-  const [ready, setReady] = useState<ReadyItem[]>([])
+  const [ready, setReady] = useState<ReadyItem[] | null>(null)   // null until the list has loaded
   const [real, setReal] = useState<RealResult | null>(null)
   const [run, setRun] = useState<Run | null>(null)
   const [code, setCode] = useState(getCode)
-  const [needCode, setNeedCode] = useState(false)
-  const alive = useRef(true)
-  useEffect(() => () => { alive.current = false }, [])
+  const [codeRequired, setCodeRequired] = useState(false)   // server says new analyses need a code
+  const [showCode, setShowCode] = useState(false)
+  const tok = useRef(0)                                      // invalidates older polling loops
   const qu = q.trim().toUpperCase()
   const sugg = qu ? portfolio.filter(c => c.t.includes(qu) || c.name.toUpperCase().includes(qu)).slice(0, 5) : []
   const validSymbol = /^[A-Z0-9&-]{1,20}$/.test(qu)
-  const demo = research[ticker], co = portfolio.find(c => c.t === ticker)
+  const co = portfolio.find(c => c.t === ticker)
   const calls = callList(ticker)
-  const readyMap = Object.fromEntries(ready.map(i => [i.ticker, i]))
+  const readyMap = Object.fromEntries((ready ?? []).map(i => [i.ticker, i]))
   const pick = (t: string) => { setTicker(t); setQ(''); setRun(null) }
 
   const refreshList = async () => {
     const j = await getJson(`${API}/research`)
-    if (j?.items) { setReady(j.items); if (j.access_code_required) setNeedCode(n => n || !getCode()) }
+    if (j?.items) { setReady(j.items); setCodeRequired(!!j.access_code_required) }
     else setReady(SEEDS.map(t => ({ ticker: t, source: 'seed' })))   // backend unreachable: static seeds still work
   }
   useEffect(() => { refreshList() }, [])
-  useEffect(() => { let on = true; setReal(null); fetchResult(ticker).then(r => { if (on) setReal(r) }); return () => { on = false } }, [ticker])
+  // Only ask for a result the server says exists (no 404 probes for tickers that were never analysed).
+  useEffect(() => {
+    let on = true; setReal(null)
+    if (ready?.some(i => i.ticker === ticker)) fetchResult(ticker).then(r => { if (on) setReal(r) })
+    return () => { on = false }
+  }, [ticker, ready])
 
+  /** GET-only: follow a job to its end. Starts nothing. A missing/lost job is reported as interrupted, never as a raw 404. */
+  async function poll(id: string, t: string) {
+    const my = ++tok.current
+    for (let i = 0; i < 450 && tok.current === my; i++) {          // every 2s, up to 15 minutes
+      let jr: Response, j: any = null
+      try { jr = await fetch(`${API}/research/jobs/${id}`); j = await jr.json().catch(() => null) }
+      catch { if (tok.current === my) setRun({ t, status: 'loading', msg: 'reconnecting to the backend…' }); await sleep(3000); continue }
+      if (tok.current !== my) return
+      if (jr.status === 404 || j?.status === 'interrupted') { clearJob(); setRun({ t, status: 'interrupted', msg: INTERRUPTED }); return }
+      if (!jr.ok) { clearJob(); setRun({ t, status: 'error', msg: j?.message ?? `Job status failed (HTTP ${jr.status})` }); return }
+      if (j.status === 'failed') { clearJob(); setRun({ t, status: 'error', msg: j.error ?? 'Analysis failed' }); return }
+      if (j.status === 'done') {
+        clearJob()
+        const res = await fetchResult(t)
+        if (tok.current !== my) return
+        if (res) { if (t === ticker) setReal(res); setRun(null); refreshList() }
+        else setRun({ t, status: 'error', msg: 'Analysis finished but the result could not be loaded' })
+        return
+      }
+      setRun({ t, status: 'loading', msg: j.message })
+      await sleep(2000)
+    }
+  }
+  // Resume polling a job that was in flight when the page was closed. GET requests only.
+  useEffect(() => { const j = loadJob(); if (j) { setTicker(j.ticker); setRun({ t: j.ticker, status: 'loading', msg: 'resuming…' }); poll(j.id, j.ticker) } return () => { tok.current++ } }, [])
+
+  /** The ONLY place a job is started, and only from a deliberate click (see `onClick` guards below). */
   async function analyse(t: string, refresh = false) {
     setRun({ t, status: 'loading', msg: 'starting…' })
     try {
       try { sessionStorage.setItem(CODE_KEY, code) } catch { /* storage unavailable */ }
       const r = await fetch(`${API}/research/${encodeURIComponent(t)}${refresh ? '?refresh=true' : ''}`, { method: 'POST', headers: code ? { 'X-Access-Code': code } : {} })
       const body = await r.json().catch(() => null)
-      if (r.status === 401) setNeedCode(true)
+      if (r.status === 401) { setCodeRequired(true); setShowCode(true) }
       if (!r.ok) throw new Error(body?.message ?? body?.detail ?? `Backend returned HTTP ${r.status}`)
-      if (r.status === 202) {
-        const id = body.job_id as string
-        for (let i = 0; i < 450 && alive.current; i++) {          // poll every 2s, up to 15 minutes
-          await sleep(2000)
-          const jr = await fetch(`${API}/research/jobs/${id}`)
-          const j = await jr.json().catch(() => null)
-          if (!jr.ok) throw new Error(j?.message ?? `Job status failed (HTTP ${jr.status})`)
-          if (j.status === 'failed') throw new Error(j.error ?? 'Analysis failed')
-          if (j.status === 'done') break
-          setRun({ t, status: 'loading', msg: j.message })
-        }
-      }
-      const res = await fetchResult(t)
-      if (!res) throw new Error('Analysis finished but the result could not be loaded')
-      if (alive.current) { if (t === ticker) setReal(res); setRun(null); refreshList() }
+      if (r.status === 202) { saveJob(body.job_id, t); await poll(body.job_id, t); return }
+      const res = await fetchResult(t)     // 200 "ready": an existing result; nothing was started
+      if (res) { if (t === ticker) setReal(res); setRun(null); refreshList() } else throw new Error('Result could not be loaded')
     } catch (e) {
       const m = e instanceof TypeError ? 'Could not reach the backend. Is it running (uvicorn on :8000)?' : (e as Error).message
-      if (alive.current) setRun({ t, status: 'error', msg: m })
+      setRun({ t, status: 'error', msg: m })
     }
   }
+  /** Programmatic/synthetic clicks (e.isTrusted === false) never start an analysis. */
+  const onClick = (fn: () => void) => (e: React.MouseEvent) => { if (e.isTrusted) fn() }
+
   const loading = run?.t === ticker && run.status === 'loading'
-  const err = run?.t === ticker && run.status === 'error' ? run.msg : null
-  const AnalyseBtn = ({ label }: { label: string }) => <button className="cta" disabled={loading} onClick={() => analyse(ticker)}>{loading ? <><span className="spin" />{run?.msg ?? 'Analysing'} · {ticker} · a few minutes</> : label}</button>
-  const CodeBox = () => needCode ? <input className="ask" type="password" placeholder="Access code (needed to analyse a new ticker)" value={code} autoComplete="off" onChange={e => setCode(e.target.value)} style={{ marginTop: 10 }} /> : null
+  const msg = run?.t === ticker && run.status !== 'loading' ? run.msg : null
+  const interrupted = run?.t === ticker && run.status === 'interrupted'
+  const canRerun = !!real && !!code.trim()                  // re-runs need the access code; hidden otherwise
+  const AnalyseBtn = ({ label }: { label: string }) => <button className="cta" disabled={loading} onClick={onClick(() => analyse(ticker))}>{loading ? <><span className="spin" />{run?.msg ?? 'Analysing'} · {ticker} · a few minutes</> : label}</button>
+  const CodeBox = () => (showCode || (codeRequired && !real)) ? <input className="ask" type="password" placeholder="Access code" value={code} autoComplete="off" onChange={e => setCode(e.target.value)} style={{ marginTop: 10 }} /> : null
+  const Status = () => msg ? <div className="errbox">{msg}{interrupted && <><br /><button className="ghost" style={{ marginTop: 8 }} onClick={onClick(() => analyse(ticker, !!real))}>Retry</button></>}</div> : null
   const meta = real?.models ? `${real.models.strong_used ?? ''}${real.models.used_fallback ? ' (fallback model)' : ''}` : ''
 
   return (<>
     <div className="search"><input className="ask" placeholder="Analyse any NSE ticker — “INFY”, “Titan”…" value={q} autoCapitalize="characters" onChange={e => setQ(e.target.value)}
         onKeyDown={e => { if (e.key === 'Enter' && validSymbol) pick(sugg.find(c => c.t === qu)?.t ?? sugg[0]?.t ?? qu) }} />
       {qu && <div className="sugg">
-        {sugg.map(c => <button key={c.t} onClick={() => pick(c.t)}><span>{c.name}</span><small>{c.t}{readyMap[c.t] ? ' · real research' : research[c.t] ? ' · sample' : ''}</small></button>)}
+        {sugg.map(c => <button key={c.t} onClick={() => pick(c.t)}><span>{c.name}</span><small>{c.t}{readyMap[c.t] ? ' · real research' : ''}</small></button>)}
         {validSymbol && !sugg.some(c => c.t === qu) && <button onClick={() => pick(qu)}><span>Use NSE ticker “{qu}”</span><small>{readyMap[qu] ? 'real research' : 'not in portfolio'}</small></button>}
         {!sugg.length && !validSymbol && <button disabled><span>Enter an NSE symbol (letters, digits, &amp; or -)</span></button>}</div>}
     </div>
     <section><h2>Research ready <Badge kind="real" /></h2>
-      {ready.length ? <div className="chips">{ready.map(i => <button key={i.ticker} className="chip" onClick={() => pick(i.ticker)} title={i.company ?? ''}>{i.ticker}</button>)}</div>
-        : <p className="dim small">None yet — search a ticker above and press Analyse.</p>}
-      <h2 style={{ marginTop: 14 }}>Samples <Badge kind="demo" /></h2>
-      <div className="chips">{Object.keys(research).map(t => <button key={t} className="chip" onClick={() => pick(t)}>{t}</button>)}</div></section>
+      {ready?.length ? <div className="chips">{ready.map(i => <button key={i.ticker} className={`chip${i.ticker === ticker ? ' on' : ''}`} onClick={() => pick(i.ticker)} title={i.company ?? ''}>{i.ticker}</button>)}</div>
+        : <p className="dim small">{ready ? 'None yet — search a ticker above and press Analyse.' : 'Loading…'}</p>}</section>
 
     <h2 style={{ marginTop: 22 }}>{co?.name ?? real?.company ?? ticker} <small>{ticker}</small></h2>
     {real ? <>
         <div className="meta"><span className="dim small">Analysed {real.generated_at ? new Date(real.generated_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : ''}{meta && ` · ${meta}`}</span>
-          <button className="ghost" style={{ marginLeft: 'auto', whiteSpace: 'nowrap' }} disabled={loading} onClick={() => analyse(ticker, true)}>{loading ? (run?.msg ?? 'Re-analysing…') : 'Re-run'}</button></div>
-        <CodeBox />{err && <div className="errbox">{err}</div>}
+          {canRerun ? <button className="ghost" style={{ marginLeft: 'auto', whiteSpace: 'nowrap' }} disabled={loading} onClick={onClick(() => analyse(ticker, true))}>{loading ? (run?.msg ?? 'Re-analysing…') : 'Re-run'}</button>
+            : <button className="ghost" style={{ marginLeft: 'auto', whiteSpace: 'nowrap' }} onClick={() => setShowCode(s => !s)}>Access code</button>}</div>
+        <CodeBox />{loading && <p className="dim small"><span className="spin" /> {run?.msg}</p>}<Status />
         <RealResearch r={real} /></>
-      : <>
-        {demo && <>
-          <section><p className="dim small">Showing a <b>demo sample</b> for {ticker} — not analysed from real documents.</p>
-            <AnalyseBtn label="Run real analysis" /><CodeBox />{err && <div className="errbox">{err}</div>}</section>
-          <DemoResearch t={ticker} /></>}
-        {!demo && <section><p><b>Not analysed yet.</b> <span className="dim">Analysing fetches the latest annual report and four concall transcripts from screener.in and extracts cited facts — primary sources only.</span></p>
-          <AnalyseBtn label="Not analysed yet — Analyse" /><CodeBox />{err && <div className="errbox">{err}</div>}</section>}</>}
+      : <section><p><b>Not analysed yet.</b> <span className="dim">Analysing fetches the latest annual report and four concall transcripts from screener.in and extracts cited facts — primary sources only.</span></p>
+          <AnalyseBtn label="Analyse" /><CodeBox /><Status /></section>}
     <section><h2>Who to call <Badge kind="demo" /> <small>synthetic network · links are illustrative</small></h2>
       {calls.length ? calls.slice(0, 3).map(h => <div key={h.p.id} className="net"><div className="hit">◉ <b>{h.p.name}</b><span className={`rel ${h.rel.startsWith('worked') ? 'worked' : h.rel.startsWith('competitor') ? '' : 'supplier'}`}>{h.rel}</span>
         <br /><span className="dim">{affiliation(h.p)} · last spoke {h.p.lastTalkDays}d ago</span><br />{h.why}. <i>{h.know}.</i></div></div>)

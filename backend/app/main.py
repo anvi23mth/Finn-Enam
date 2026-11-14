@@ -3,6 +3,7 @@ import hmac
 import queue
 from dataclasses import asdict
 from typing import Optional
+from datetime import datetime, timedelta, timezone
 from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -10,6 +11,7 @@ from . import config, jobs, store
 from .ingest import ingest
 
 app = FastAPI(title="FINN backend")
+jobs.recover()   # jobs that were queued/running when the previous process died are marked interrupted
 app.add_middleware(CORSMiddleware, allow_origins=config.ALLOWED_ORIGINS, allow_methods=["GET", "POST", "OPTIONS"],
                    allow_headers=["Content-Type", "X-Access-Code"])
 
@@ -38,10 +40,11 @@ def list_research():
 @app.get("/research/jobs/{job_id}")
 def job_status(job_id: str):
     j = jobs.get(job_id)
-    if not j:
-        return err(404, "job_not_found", "No such job (jobs are kept in memory and are lost when the server restarts).")
-    return {**{k: j[k] for k in ("id", "ticker", "status", "message", "error", "error_code", "created_at", "started_at", "finished_at")},
-            "result_ready": j["status"] == "done"}
+    if not j:   # unknown id (lost with a restart / expired): report it as interrupted, not as an error
+        return {"id": job_id, "ticker": None, "status": "interrupted", "message": jobs.INTERRUPTED_MSG, "error": jobs.INTERRUPTED_MSG,
+                "error_code": "interrupted", "created_at": None, "started_at": None, "finished_at": None, "result_ready": False}
+    return {**{k: j.get(k) for k in ("id", "ticker", "status", "message", "error", "error_code", "created_at", "started_at", "finished_at")},
+            "result_ready": j.get("status") == "done"}
 
 
 @app.get("/research/{ticker}")
@@ -63,11 +66,20 @@ def start_research(ticker: str, refresh: bool = False, x_access_code: Optional[s
     exists = store.load(t)
     if exists and not refresh:   # viewing an existing result (seed or live) is free and never starts a job
         return JSONResponse(status_code=200, content={"status": "ready", "ticker": t, "source": exists["source"]})
+    if refresh and not config.ACCESS_CODE:   # an unprotected server never re-runs anything (a replayed request cannot spend the key)
+        return err(403, "refresh_disabled", "Re-running an existing analysis is disabled on this server (no access code is configured).")
     if config.ACCESS_CODE:
         if not x_access_code:
             return err(401, "access_code_required", "An access code is required to analyse a new ticker. Enter the code you were given.")
         if not hmac.compare_digest(x_access_code.encode(), config.ACCESS_CODE.encode()):
             return err(403, "access_code_invalid", "That access code is not valid.")
+    if exists and refresh:       # cooldown: a recent result is returned as-is, so a replayed request costs nothing
+        try:
+            age = datetime.now(timezone.utc) - datetime.fromisoformat(exists["generated_at"])
+        except (KeyError, ValueError):
+            age = timedelta(days=999)
+        if age < timedelta(minutes=config.REFRESH_COOLDOWN_MINUTES):
+            return JSONResponse(status_code=200, content={"status": "ready", "ticker": t, "source": exists["source"], "note": "analysed recently; not re-run"})
     if not config.GEMINI_API_KEY:
         return err(503, "llm_not_configured", "This server has no language-model key configured, so it can only serve existing research.")
     if not store.reserve():

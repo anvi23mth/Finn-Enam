@@ -43,3 +43,5 @@ MAX_NEW_ANALYSES_PER_DAY = int(os.getenv("MAX_NEW_ANALYSES_PER_DAY", "3"))   # c
 MAX_QUEUED_JOBS = int(os.getenv("MAX_QUEUED_JOBS", "3"))
 SEED_DIR = BACKEND_DIR / "seed" / "research"
 USAGE_FILE = DOCS_DIR.parent / "usage.json"
+JOBS_DIR = DOCS_DIR.parent / "jobs"
+REFRESH_COOLDOWN_MINUTES = int(os.getenv("REFRESH_COOLDOWN_MINUTES", "30"))   # an existing result younger than this is never re-run
