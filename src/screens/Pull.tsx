@@ -21,8 +21,13 @@ interface RealResult { ticker: string; company?: string | null; generated_at?: s
 interface ReadyItem { ticker: string; company?: string | null; generated_at?: string; model_used?: string; used_fallback?: boolean; source?: string }
 
 const loadLocal = (t: string): RealResult | null => { try { const s = localStorage.getItem(KEY(t)); return s ? JSON.parse(s) : null } catch { return null } }
-async function getJson(url: string): Promise<any | null> {
-  try { const r = await fetch(url); return r.ok && (r.headers.get('content-type') ?? '').includes('json') ? await r.json() : null } catch { return null }
+/** fetch with a timeout: a sleeping free-tier backend can take ~50s to wake, and the UI must not wait on it. */
+const fetchT = (url: string, init: RequestInit = {}, ms = 6000) => {
+  const ac = new AbortController(), id = setTimeout(() => ac.abort(), ms)
+  return fetch(url, { ...init, signal: ac.signal }).finally(() => clearTimeout(id))
+}
+async function getJson(url: string, ms = 6000): Promise<any | null> {
+  try { const r = await fetchT(url, {}, ms); return r.ok && (r.headers.get('content-type') ?? '').includes('json') ? await r.json() : null } catch { return null }
 }
 /** Backend first, then the static seed shipped with the app, then the last copy cached in this browser. */
 async function fetchResult(t: string): Promise<RealResult | null> {
@@ -113,7 +118,7 @@ export default function Pull({ ticker, setTicker, openNet }: { ticker: string; s
     const my = ++tok.current
     for (let i = 0; i < 450 && tok.current === my; i++) {          // every 2s, up to 15 minutes
       let jr: Response, j: any = null
-      try { jr = await fetch(`${API}/research/jobs/${id}`); j = await jr.json().catch(() => null) }
+      try { jr = await fetchT(`${API}/research/jobs/${id}`, {}, 15000); j = await jr.json().catch(() => null) }
       catch { if (tok.current === my) setRun({ t, status: 'loading', msg: 'reconnecting to the backend…' }); await sleep(3000); continue }
       if (tok.current !== my) return
       if (jr.status === 404 || j?.status === 'interrupted') { clearJob(); setRun({ t, status: 'interrupted', msg: INTERRUPTED }); return }
@@ -139,7 +144,7 @@ export default function Pull({ ticker, setTicker, openNet }: { ticker: string; s
     setRun({ t, status: 'loading', msg: 'starting…' })
     try {
       try { sessionStorage.setItem(CODE_KEY, code) } catch { /* storage unavailable */ }
-      const r = await fetch(`${API}/research/${encodeURIComponent(t)}${refresh ? '?refresh=true' : ''}`, { method: 'POST', headers: code ? { 'X-Access-Code': code } : {} })
+      const r = await fetchT(`${API}/research/${encodeURIComponent(t)}${refresh ? '?refresh=true' : ''}`, { method: 'POST', headers: code ? { 'X-Access-Code': code } : {} }, 90000)   // allows a cold start
       const body = await r.json().catch(() => null)
       if (r.status === 401) { setCodeRequired(true); setShowCode(true) }
       if (!r.ok) throw new Error(body?.message ?? body?.detail ?? `Backend returned HTTP ${r.status}`)
@@ -147,7 +152,7 @@ export default function Pull({ ticker, setTicker, openNet }: { ticker: string; s
       const res = await fetchResult(t)     // 200 "ready": an existing result; nothing was started
       if (res) { if (t === ticker) setReal(res); setRun(null); refreshList() } else throw new Error('Result could not be loaded')
     } catch (e) {
-      const m = e instanceof TypeError ? 'Could not reach the backend. Is it running (uvicorn on :8000)?' : (e as Error).message
+      const m = e instanceof TypeError || (e as Error).name === 'AbortError' ? 'Could not reach the backend (it may be starting up — free hosting sleeps when idle). Try again in a minute.' : (e as Error).message
       setRun({ t, status: 'error', msg: m })
     }
   }

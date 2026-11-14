@@ -1,0 +1,33 @@
+# Render Blueprint for the FINN backend (FastAPI). Free web service; the frontend is deployed separately on Vercel.
+# Secrets marked `sync: false` are asked for once when the Blueprint is created (or set later in the dashboard -> Environment).
+services:
+  - type: web
+    name: finn-backend
+    runtime: python
+    plan: free
+    region: singapore            # closest free region to India; cannot be changed after creation
+    branch: main
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --app-dir backend
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION      # exact version the code and requirements.txt were tested on
+        value: 3.9.6
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ACCESS_CODE         # you choose it: 16+ random characters. Needed to analyse a new ticker or re-run
+        sync: false
+      - key: ALLOWED_ORIGINS     # set to your Vercel URL after the frontend is deployed (no trailing slash)
+        sync: false
+      # Model + failure-handling settings (see backend/.env.deploy.example for why)
+      - key: STRONG_MODEL
+        value: gemini-3.5-flash-lite
+      - key: CHEAP_MODEL
+        value: gemini-3.5-flash-lite
+      - key: STRONG_RETRIES
+        value: "1"
+      - key: LLM_TIMEOUT
+        value: "60"
+      - key: MAX_NEW_ANALYSES_PER_DAY
+        value: "3"

@@ -37,7 +37,7 @@ def strong_chain() -> list:
     return chain
 
 # --- API ---
-ALLOWED_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if o.strip()]
+ALLOWED_ORIGINS = [o.strip().rstrip("/") for o in os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if o.strip()]
 ACCESS_CODE = os.getenv("ACCESS_CODE", "").strip()                      # if set, new-ticker analysis requires header X-Access-Code
 MAX_NEW_ANALYSES_PER_DAY = int(os.getenv("MAX_NEW_ANALYSES_PER_DAY", "3"))   # counted per UTC day; seeds and cached results are free
 MAX_QUEUED_JOBS = int(os.getenv("MAX_QUEUED_JOBS", "3"))
