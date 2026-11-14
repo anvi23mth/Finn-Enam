@@ -88,6 +88,7 @@ export default function Pull({ ticker, setTicker, openNet }: { ticker: string; s
   const [ready, setReady] = useState<ReadyItem[] | null>(null)   // null until the list has loaded
   const [real, setReal] = useState<RealResult | null>(null)
   const [run, setRun] = useState<Run | null>(null)
+  const [loaded, setLoaded] = useState<string | null>(null)
   const [code, setCode] = useState(getCode)
   const [codeRequired, setCodeRequired] = useState(false)   // server says new analyses need a code
   const [showCode, setShowCode] = useState(false)
@@ -106,12 +107,17 @@ export default function Pull({ ticker, setTicker, openNet }: { ticker: string; s
     else setReady(SEEDS.map(t => ({ ticker: t, source: 'seed' })))   // backend unreachable: static seeds still work
   }
   useEffect(() => { refreshList() }, [])
-  // Only ask for a result the server says exists (no 404 probes for tickers that were never analysed).
+  // Static seed first (instant), then the API in the background; the API result replaces it only if newer.
+  // `loaded` is the ticker whose first load has finished — until then we show a loading state, never "Not analysed yet".
   useEffect(() => {
-    let on = true; setReal(null)
-    if (ready?.some(i => i.ticker === ticker)) fetchResult(ticker).then(r => { if (on) setReal(r) })
+    let on = true; setReal(null); setLoaded(null)
+    const keep = (j: RealResult) => { try { localStorage.setItem(KEY(ticker), JSON.stringify(j)) } catch { /* storage unavailable */ } }
+    const take = (j: any) => { if (!on || !j?.view) return; setReal(cur => (!cur || (j.generated_at ?? '') > (cur.generated_at ?? '')) ? (keep(j), j) : cur) }
+    const seed = getJson(`/seed/research/${encodeURIComponent(ticker)}.json`).then(take)
+    const api = getJson(`${API}/research/${encodeURIComponent(ticker)}`).then(take)
+    Promise.all([seed, api]).then(() => { if (on) { setReal(cur => cur ?? loadLocal(ticker)); setLoaded(ticker) } })   // "not analysed" only after seed, API and cache all came up empty
     return () => { on = false }
-  }, [ticker, ready])
+  }, [ticker])
 
   /** GET-only: follow a job to its end. Starts nothing. A missing/lost job is reported as interrupted, never as a raw 404. */
   async function poll(id: string, t: string) {
@@ -187,6 +193,7 @@ export default function Pull({ ticker, setTicker, openNet }: { ticker: string; s
             : <button className="ghost" style={{ marginLeft: 'auto', whiteSpace: 'nowrap' }} onClick={() => setShowCode(s => !s)}>Access code</button>}</div>
         <CodeBox />{loading && <p className="dim small"><span className="spin" /> {run?.msg}</p>}<Status />
         <RealResearch r={real} /></>
+      : loaded !== ticker ? <p className="dim small"><span className="spin" /> Loading research…</p>
       : <section><p><b>Not analysed yet.</b> <span className="dim">Analysing fetches the latest annual report and four concall transcripts from screener.in and extracts cited facts — primary sources only.</span></p>
           <AnalyseBtn label="Analyse" /><CodeBox /><Status /></section>}
     <section><h2>Who to call <Badge kind="demo" /> <small>synthetic network · links are illustrative</small></h2>
