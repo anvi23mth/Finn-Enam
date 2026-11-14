@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Usage: python backend/scripts/research.py INFY [--no-ingest] [--fast-stage2]\n  --fast-stage2: run Stage 2 on CHEAP_MODEL only (use when the strong chain is overloaded); recorded as a fallback in the output"""
+"""Usage: python backend/scripts/research.py INFY [--no-ingest] [--fast-stage2]
+  --fast-stage2: run Stage 2 on CHEAP_MODEL only (use when the strong chain is overloaded); recorded as a fallback in the output"""
 from __future__ import annotations
 import sys, textwrap
 from pathlib import Path
@@ -7,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.research import run_research  # noqa: E402
 from app.llm import LLMError  # noqa: E402
 
-W = lambda s, i="    ": textwrap.fill(s, 100, initial_indent=i, subsequent_indent=i)
+W = lambda s, i="    ": textwrap.fill(s, 104, initial_indent=i, subsequent_indent=i)
 
 
 def cites(c):
@@ -16,8 +17,6 @@ def cites(c):
 
 
 def claim(c, bullet="•"):
-    if not c:
-        return
     print(W(f"{bullet} {c['text']}  {cites(c)}", "  "))
 
 
@@ -28,38 +27,52 @@ def main(t: str, ingest: bool, fast: bool = False):
                          override_reason=f"manual --fast-stage2: Stage 2 forced onto {config.CHEAP_MODEL} because the strong chain was overloaded" if fast else None)
     except (LLMError, RuntimeError) as e:
         print(f"ERROR: {e}"); return 1
-    v = r["view"]
-    print(f"\n==== {r['ticker']}  (stage1 model={r['models']['cheap']}, stage2 model used={r['models']['strong_used']}{' — FALLBACK, requested ' + r['models']['strong_requested'] if r['models']['used_fallback'] else ''}) ====")
+    v, m = r["view"], r["models"]
+    print(f"\n==== {r['ticker']}  (stage1/1b model={m['cheap']}, stage2 model used={m['strong_used']}"
+          f"{' — FALLBACK, requested ' + m['strong_requested'] if m['used_fallback'] else ''}) ====")
+    print(f"reported data runs through: {r['ledger']['data_through']}")
     for key, title in [("business_snapshot", "BUSINESS"), ("financial_snapshot", "FINANCIALS"), ("trajectory", "TRAJECTORY"),
-                       ("balance_sheet", "BALANCE SHEET"), ("cash_quality", "CASH QUALITY")]:
+                       ("balance_sheet", "BALANCE SHEET"), ("cash_quality", "CASH QUALITY"), ("reconciliation", "RECONCILIATION")]:
         print(f"\n-- {title}")
         for c in v.get(key, []):
             claim(c)
-    print("\n-- PROMISED vs DELIVERED")
-    for e in v.get("promised_vs_delivered", []):
-        print(f"  [{e.get('verdict','?').upper()}] {e.get('topic','')}  (said in {e.get('quarter_promised','?')})")
-        print(W(f"promised: {e['promised']['text']}  {cites(e['promised'])}", "     "))
-        if e.get("delivered"):
-            print(W(f"delivered: {e['delivered']['text']}  {cites(e['delivered'])}", "     "))
+    print("\n-- PROMISED vs DELIVERED  (verdicts assigned by code)")
+    for p in v["promised_vs_delivered"]:
+        rng = p["direction"] if p["low"] is None and p["high"] is None else (f"{p['low']:g}" if p["low"] == p["high"] else f"{p['low']:g}–{p['high']:g}")
+        rep = f"  (reiterated {', '.join(p['reiterated_in'])})" if p["reiterated_in"] else ""
+        print(f"  [{(p['verdict'] or 'unscored').upper()}] {p['metric']} for {p['covers']}: guided {rng} {p.get('unit') or ''} in {p['quarter_said']}{rep}")
+        print(W(f"“{p['promised']['quote']}” [{p['promised']['doc'].split('__')[-1]} p{p['promised']['page']}]", "     "))
+        print(W(f"code: {p['detail']}", "     "))
+        if p.get("actual"):
+            print(W(f"actual: “{p['actual']['quote']}” [{p['actual']['doc'].split('__')[-1]} p{p['actual']['page']}]", "     "))
+        if p.get("explanation"):
+            print(W(f"note: {p['explanation']}", "     "))
+    un = r["ledger"]["unscored_guidance"]
+    print(f"\n-- QUALITATIVE / UNSCORED GUIDANCE ({len(un)}; no metric+period+number, not scored)")
+    for g in un[:8]:
+        print(W(f"• ({g['quarter_said']}) {g['text']} [{g['doc'].split('__')[-1]} p{g['page']}]", "  "))
     for key, title in [("narrative_vs_numbers", "NARRATIVE vs NUMBERS"), ("bull_case", "BULL"), ("bear_case", "BEAR")]:
         print(f"\n-- {title}")
         for c in v.get(key, []):
             claim(c, "+" if key == "bull_case" else "−" if key == "bear_case" else "•")
-    print("\n-- STAGE 1 EXTRACTION")
-    for d in r["stage1"]:
-        print(f"  {d['doc']:<34} {d.get('quarter',''):<10} kept {d['n_items']:>3}, dropped (quote not found) {d['n_dropped']}")
-    print(f"\n-- CLAIMS THAT FAILED THE QUOTE CHECK ({len(r['failed_claims'])} stage-2, "
-          f"{sum(d['n_dropped'] for d in r['stage1'])} stage-1)")
+    s1_drop = sum(d["n_dropped"] for d in r["stage1"])
+    print(f"\n-- CHECKS")
+    print(f"  stage-1 items dropped (quote/numbers not on page): {s1_drop}   kept: {sum(d['n_items'] for d in r['stage1'])}")
+    print(f"  stage-2 claims failing the quote check: {len(r['failed_claims'])}")
+    print(f"  stage-2 claims removed for scope/period mixing: {len(r['consistency_flags'])}")
+    print(f"  structured facts with value/scope corrections: {len(r['facts_flagged'])}")
+    print(f"  conflicts (same metric+period+scope, different values): {len(r['ledger']['conflicts'])};  scope variants (standalone vs consolidated etc.): {len(r['ledger']['scope_variants'])}")
+    for c in r["ledger"]["conflicts"] + r["ledger"]["scope_variants"]:
+        print(W(f"~ {c['metric']} {c['period']}: " + "; ".join(f"{x['value']:g} {x.get('unit') or ''} ({x['scope']}, {x['doc'].split('__')[-1]} p{x['page']})" for x in c["facts"]), "    "))
     for f in r["failed_claims"]:
-        print(W(f"✗ {f.get('path')}: {f.get('text') or f.get('reason')}  {f.get('failed_cites', '')}", "  "))
-    for d in r["stage1"]:
-        for x in d["dropped"][:3]:
-            print(W(f"✗ [stage1 {d['doc']}] {x.get('text','')} — {x.get('reason')}", "  "))
-    print("\n-- TOKEN USAGE")
+        print(W(f"✗ failed quote: {f.get('path')}: {f.get('text') or f.get('reason')}", "  "))
+    for f in r["consistency_flags"]:
+        print(W(f"⚑ {f['section']}: {f['reason']} — “{f['text']}”", "  "))
+    print("\n-- TOKEN USAGE (fresh calls only; cached calls cost 0)")
     tot = 0
     for st, u in r["usage"].items():
         tot += u["prompt"] + u["output"] + u["thinking"]
-        print(f"  {st:<22} {u['model']:<22} calls {u['calls']} (cached {u['cached_calls']})  in {u['prompt']:>8,}  out {u['output']:>7,}  thinking {u['thinking']:>7,}")
+        print(f"  {st:<22} {u['model']:<22} calls {u['calls']} (cached {u['cached_calls']})  in {u['prompt']:>8,}  out {u['output']:>7,}")
     print(f"  total fresh tokens: {tot:,}")
     return 0
 

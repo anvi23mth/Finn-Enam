@@ -5,6 +5,7 @@ from . import config, llm
 from .log import log
 from .docs import Doc, chunk_pages, render, select_ar_pages
 from .verify import verify_cite
+from .periods import quarter_from_call
 
 V_CONCALL = "concall-v1"
 V_AR = "ar-v1"
@@ -73,8 +74,11 @@ def run_concall(doc: Doc, usage: llm.Usage) -> dict:
         res = _as_dict(res)
         ok, b = _verify_items(res.get("items") or [], doc)
         items += ok; bad += b
-    q = Counter(quarters).most_common(1)[0][0] if quarters else "unknown"
-    return {"doc": doc.id, "kind": "concall", "label": doc.label, "quarter": q, "items": items, "dropped": bad}
+    model_q = Counter(quarters).most_common(1)[0][0] if quarters else None
+    q = quarter_from_call(doc.label) or model_q or "unknown"   # call date -> fiscal quarter is authoritative
+    if model_q and q != "unknown" and model_q.replace(" ", "").upper() != q.replace(" ", "").upper():
+        log(f"  note: {doc.id}: model said '{model_q}', call-date mapping says '{q}' (using the latter)")
+    return {"doc": doc.id, "kind": "concall", "label": doc.label, "quarter": q, "quarter_model": model_q, "items": items, "dropped": bad}
 
 
 def run_ar(doc: Doc, usage: llm.Usage) -> dict:
