@@ -1,0 +1,275 @@
+{
+ "ticker": "TMPV",
+ "filing": {
+  "id": "5e135736a7",
+  "datetime": "2026-11-13T16:30:23",
+  "subject": "Intimation Of Outcome Of Board Meeting Under Regulations 33 And 52 Of The SEBI (LODR) Regulations 2015",
+  "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c658ceb8-4864-4ec3-8d1b-a3e255ba1212.pdf",
+  "category": "results"
+ },
+ "status": "ok",
+ "pages": 25,
+ "pages_sent": [
+  8,
+  11,
+  20,
+  22,
+  23,
+  24
+ ],
+ "model": "gemini-3.5-flash-lite",
+ "basis": "consolidated",
+ "unit": "₹ in crore",
+ "quarter_labels": {
+  "current_quarter": "Quarter ended September 30, 2026",
+  "previous_quarter": "Quarter ended June 30, 2026",
+  "year_ago_quarter": "Quarter ended September 30, 2025"
+ },
+ "metrics": {
+  "revenue": {
+   "label": "Total revenue from operations (a)+(b)",
+   "current_quarter": {
+    "value": 96920.0,
+    "value_crore": 96920.0,
+    "page": 20,
+    "quote": "I Total revenue from operatlons (a)+{b) 96,920 95,799 72,349 192,719 160,026 335,582",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "previous_quarter": {
+    "value": 95799.0,
+    "value_crore": 95799.0,
+    "page": 20,
+    "quote": "I Total revenue from operatlons (a)+{b) 96,920 95,799 72,349 192,719 160,026 335,582",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "year_ago_quarter": {
+    "value": 72349.0,
+    "value_crore": 72349.0,
+    "page": 20,
+    "quote": "I Total revenue from operatlons (a)+{b) 96,920 95,799 72,349 192,719 160,026 335,582",
+    "verified": true,
+    "verify_status": "verified"
+   }
+  },
+  "pbt": {
+   "label": "Profit/(loss) before tax from continuing operations (VII-VIII)",
+   "current_quarter": {
+    "value": -6335.0,
+    "value_crore": -6335.0,
+    "page": 20,
+    "quote": "IX Profit/ (loss) befone tax from continuing operations {IX-X) {6,335) 1,574 (8,070) (4,761) (4,167) (1,623)",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "previous_quarter": {
+    "value": 1574.0,
+    "value_crore": 1574.0,
+    "page": 20,
+    "quote": "IX Profit/ (loss) befone tax from continuing operations {IX-X) {6,335) 1,574 (8,070) (4,761) (4,167) (1,623)",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "year_ago_quarter": {
+    "value": -8070.0,
+    "value_crore": -8070.0,
+    "page": 20,
+    "quote": "IX Profit/ (loss) befone tax from continuing operations {IX-X) {6,335) 1,574 (8,070) (4,761) (4,167) (1,623)",
+    "verified": true,
+    "verify_status": "verified"
+   }
+  },
+  "pat": {
+   "label": "Profit/(loss) for the period",
+   "current_quarter": {
+    "value": -5451.0,
+    "value_crore": -5451.0,
+    "page": 20,
+    "quote": "XVII Proflt/(loss) for the period {Xl+XV) (5,451) 859 76,248 (4,592) 80,251 82,645",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "previous_quarter": {
+    "value": 859.0,
+    "value_crore": 859.0,
+    "page": 20,
+    "quote": "XVII Proflt/(loss) for the period {Xl+XV) (5,451) 859 76,248 (4,592) 80,251 82,645",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "year_ago_quarter": {
+    "value": 76248.0,
+    "value_crore": 76248.0,
+    "page": 20,
+    "quote": "XVII Proflt/(loss) for the period {Xl+XV) (5,451) 859 76,248 (4,592) 80,251 82,645",
+    "verified": true,
+    "verify_status": "verified"
+   }
+  },
+  "ebitda": {
+   "label": "EBITDA (derived: PBT + finance costs + depreciation − other income; exceptional items not adjusted)",
+   "derived": true,
+   "current_quarter": {
+    "value": -1843.0,
+    "value_crore": -1843.0,
+    "verified": true,
+    "derived": true,
+    "from": {
+     "pbt": -6335.0,
+     "finance_costs": 801.0,
+     "depreciation": 4972.0,
+     "other_income": 1281.0
+    }
+   },
+   "previous_quarter": {
+    "value": 6160.0,
+    "value_crore": 6160.0,
+    "verified": true,
+    "derived": true,
+    "from": {
+     "pbt": 1574.0,
+     "finance_costs": 835.0,
+     "depreciation": 4880.0,
+     "other_income": 1129.0
+    }
+   },
+   "year_ago_quarter": {
+    "value": -3974.0,
+    "value_crore": -3974.0,
+    "verified": true,
+    "derived": true,
+    "from": {
+     "pbt": -8070.0,
+     "finance_costs": 686.0,
+     "depreciation": 4871.0,
+     "other_income": 1461.0
+    }
+   }
+  },
+  "finance_costs": {
+   "label": "Finance costs",
+   "current_quarter": {
+    "value": 801.0,
+    "value_crore": 801.0,
+    "page": 20,
+    "quote": "(e) Finance costs 801 835 686 1,636 1,378 2,827",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "previous_quarter": {
+    "value": 835.0,
+    "value_crore": 835.0,
+    "page": 20,
+    "quote": "(e) Finance costs 801 835 686 1,636 1,378 2,827",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "year_ago_quarter": {
+    "value": 686.0,
+    "value_crore": 686.0,
+    "page": 20,
+    "quote": "(e) Finance costs 801 835 686 1,636 1,378 2,827",
+    "verified": true,
+    "verify_status": "verified"
+   }
+  },
+  "depreciation": {
+   "label": "Depreciation and amortisation expense",
+   "current_quarter": {
+    "value": 4972.0,
+    "value_crore": 4972.0,
+    "page": 20,
+    "quote": "(h) Depreciation and amortisation expense 4,972 4,880 4,871 9,852 9,722 19,784",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "previous_quarter": {
+    "value": 4880.0,
+    "value_crore": 4880.0,
+    "page": 20,
+    "quote": "(h) Depreciation and amortisation expense 4,972 4,880 4,871 9,852 9,722 19,784",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "year_ago_quarter": {
+    "value": 4871.0,
+    "value_crore": 4871.0,
+    "page": 20,
+    "quote": "(h) Depreciation and amortisation expense 4,972 4,880 4,871 9,852 9,722 19,784",
+    "verified": true,
+    "verify_status": "verified"
+   }
+  },
+  "other_income": {
+   "label": "Other Income",
+   "current_quarter": {
+    "value": 1281.0,
+    "value_crore": 1281.0,
+    "page": 20,
+    "quote": "II Other Income 1,281 1,129 1,461 2,410 2,687 5,787",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "previous_quarter": {
+    "value": 1129.0,
+    "value_crore": 1129.0,
+    "page": 20,
+    "quote": "II Other Income 1,281 1,129 1,461 2,410 2,687 5,787",
+    "verified": true,
+    "verify_status": "verified"
+   },
+   "year_ago_quarter": {
+    "value": 1461.0,
+    "value_crore": 1461.0,
+    "page": 20,
+    "quote": "II Other Income 1,281 1,129 1,461 2,410 2,687 5,787",
+    "verified": true,
+    "verify_status": "verified"
+   }
+  }
+ },
+ "table_crore": {
+  "revenue": {
+   "current": 96920.0,
+   "previous": 95799.0,
+   "year_ago": 72349.0,
+   "qoq_pct": 1.2,
+   "yoy_pct": 34.0,
+   "verified": true,
+   "derived": false
+  },
+  "ebitda": {
+   "current": -1843.0,
+   "previous": 6160.0,
+   "year_ago": -3974.0,
+   "qoq_pct": -129.9,
+   "yoy_pct": null,
+   "verified": true,
+   "derived": true
+  },
+  "pbt": {
+   "current": -6335.0,
+   "previous": 1574.0,
+   "year_ago": -8070.0,
+   "qoq_pct": -502.5,
+   "yoy_pct": null,
+   "verified": true,
+   "derived": false
+  },
+  "pat": {
+   "current": -5451.0,
+   "previous": 859.0,
+   "year_ago": 76248.0,
+   "qoq_pct": -734.6,
+   "yoy_pct": -107.1,
+   "verified": true,
+   "derived": false
+  }
+ },
+ "flags": [
+  "pbt QoQ change of -502.5% is unusually large — check for discontinued operations or one-offs in the filing before relying on it",
+  "pat QoQ change of -734.6% is unusually large — check for discontinued operations or one-offs in the filing before relying on it",
+  "EBITDA is derived from PBT (after any exceptional items), not stated by the company — treat as indicative"
+ ]
+}

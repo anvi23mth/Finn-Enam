@@ -1,0 +1,13 @@
+{
+ "ticker": "DEEPAKNTR",
+ "filing": {
+  "id": "cd601a351e",
+  "datetime": "2026-10-29T18:52:40",
+  "subject": "Unaudited Financial Result For The Quarter And Half Year Ended 30Th September, 2026",
+  "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a59f1b7a-6692-4d45-9886-f842d7faf839.pdf",
+  "category": "results"
+ },
+ "status": "not_found",
+ "pages": 10,
+ "error": "PDF is a scanned image: only 1 of 10 pages have a text layer; OCR was not attempted"
+}
