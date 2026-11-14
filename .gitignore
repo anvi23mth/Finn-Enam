@@ -31,3 +31,5 @@ coverage/
 
 # fetched documents (large, re-creatable)
 data/docs/
+data/cache/
+data/research/
