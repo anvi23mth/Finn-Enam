@@ -38,6 +38,13 @@ PAGES:
 {pages}"""
 
 
+def _as_dict(res) -> dict:
+    """The model sometimes returns a bare list (or null) instead of {"items": [...]}; normalise."""
+    if isinstance(res, list):
+        return {"items": [x for x in res if isinstance(x, dict)]}
+    return res if isinstance(res, dict) else {"items": []}
+
+
 def _verify_items(items: list, doc: Doc) -> tuple[list, list]:
     ok, bad = [], []
     for it in items:
@@ -60,9 +67,11 @@ def run_concall(doc: Doc, usage: llm.Usage) -> dict:
         res = llm.call_json(model=config.CHEAP_MODEL, system=SYS, version=V_CONCALL, doc_hash=doc.sha, part=f"c{i}",
                             stage="stage1_concall", usage=usage,
                             prompt=CONCALL_PROMPT.format(label=doc.label, pages=render(doc.pages, nums)))
+        res = _as_dict(res)
         if res.get("fiscal_quarter"):
             quarters.append(str(res["fiscal_quarter"]).strip())
-        ok, b = _verify_items(res.get("items", []), doc)
+        res = _as_dict(res)
+        ok, b = _verify_items(res.get("items") or [], doc)
         items += ok; bad += b
     q = Counter(quarters).most_common(1)[0][0] if quarters else "unknown"
     return {"doc": doc.id, "kind": "concall", "label": doc.label, "quarter": q, "items": items, "dropped": bad}
@@ -76,6 +85,7 @@ def run_ar(doc: Doc, usage: llm.Usage) -> dict:
     for i, nums in enumerate(chunk_pages(sub, config.CHUNK_PAGES)):
         res = llm.call_json(model=config.CHEAP_MODEL, system=SYS, version=V_AR, doc_hash=doc.sha, part=f"a{i}",
                             stage="stage1_annual_report", usage=usage, prompt=AR_PROMPT.format(pages=render(sub, nums)))
-        ok, b = _verify_items(res.get("items", []), doc)
+        res = _as_dict(res)
+        ok, b = _verify_items(res.get("items") or [], doc)
         items += ok; bad += b
     return {"doc": doc.id, "kind": "annual_report", "label": doc.label, "pages_sent": len(sel), "items": items, "dropped": bad}
