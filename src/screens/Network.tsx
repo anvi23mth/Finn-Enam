@@ -4,6 +4,7 @@ import { portfolio } from '../data/portfolio'
 import { announcements } from '../data/announcements'
 import { callList, secondDegree, allThemes, expertise, keepWarm, quietAdvantages, affiliation, type NetView, type CallHit } from '../lib/network'
 import { LABEL } from '../data/graph'
+import { toAnnouncement, type Feed } from '../lib/feed'
 import Badge from '../components/Badge'
 
 const TABS: { v: NetView; l: string }[] = [{ v: 'call', l: 'Who to call' }, { v: 'reach', l: '2nd degree' }, { v: 'experts', l: 'Experts' }, { v: 'warm', l: 'Keep warm' }, { v: 'edges', l: 'Edges' }]
@@ -49,9 +50,10 @@ function ExpertView({ theme, setTheme }: { theme: string; setTheme: (t: string) 
     {theme && !res.length && <p className="dim">No one tagged for “{theme}”. Try a broader term.</p>}</section>
 }
 
-function WarmView({ openCompany, focus }: { openCompany: (t: string) => void; focus?: string }) {
-  const list = keepWarm(announcements)
-  return <section><h2>Keep warm <small>contacts you haven’t spoken to in 60+ days whose old employer just filed</small></h2>
+function WarmView({ openCompany, focus, feed }: { openCompany: (t: string) => void; focus?: string; feed: Feed | null }) {
+  // real filings (medium/high priority) when loaded, else the demo scenario feed
+  const list = keepWarm(feed ? feed.items.filter(a => a.priority !== 'low').map(a => toAnnouncement(a, feed.asOf)) : announcements)
+  return <section><h2>Keep warm <small>contacts you haven’t spoken to in 60+ days whose old employer just filed · {feed ? 'real filings' : 'demo filings'}, synthetic contacts</small></h2>
     {list.length ? list.map(w => <div key={w.p.id} className={`pn ${focus === w.a.t ? 'hl' : ''}`}><div className="top"><b>{w.p.name}</b><Dots n={w.p.strength} /></div>
       <div className="aff">{affiliation(w.p)} · {spoke(w.p.lastTalkDays)}</div>
       <div className="why">{w.reason}</div>
@@ -65,7 +67,7 @@ function EdgesView({ openCompany }: { openCompany: (t: string) => void }) {
       <div className="chips">{e.tickers.map(t => <button key={t} className="chip" onClick={() => openCompany(t)}>{t}</button>)}</div></div>)}</section>
 }
 
-export default function Network({ openCompany, nav, setNav }: { openCompany: (t: string) => void; nav: { view: NetView; arg?: string }; setNav: (n: { view: NetView; arg?: string }) => void }) {
+export default function Network({ openCompany, nav, setNav, feed }: { openCompany: (t: string) => void; nav: { view: NetView; arg?: string }; setNav: (n: { view: NetView; arg?: string }) => void; feed: Feed | null }) {
   const [call, setCall] = useState('TMPV'), [who, setWho] = useState('Sameer Kulkarni'), [theme, setTheme] = useState('specialty chemicals')
   // arriving from a card: use its argument once as the selection for that view
   const [seen, setSeen] = useState<typeof nav | null>(null)
@@ -82,7 +84,7 @@ export default function Network({ openCompany, nav, setNav }: { openCompany: (t:
     {nav.view === 'call' && <CallView ticker={call} setTicker={setCall} openCompany={openCompany} />}
     {nav.view === 'reach' && <ReachView name={who} setName={setWho} />}
     {nav.view === 'experts' && <ExpertView theme={theme} setTheme={setTheme} />}
-    {nav.view === 'warm' && <WarmView openCompany={openCompany} focus={nav.arg} />}
+    {nav.view === 'warm' && <WarmView openCompany={openCompany} focus={nav.arg} feed={feed} />}
     {nav.view === 'edges' && <EdgesView openCompany={openCompany} />}
   </>)
 }
