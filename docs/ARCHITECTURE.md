@@ -126,7 +126,7 @@ All calls go through one wrapper (`backend/app/llm.py`): Gemini REST, JSON outpu
 
 ## 4. Cloud
 
-**What is built:** nothing is deployed yet. The repo contains deployment configuration only — `render.yaml` (Render blueprint for the backend), `vercel.json` (frontend) and `DEPLOY.md` — and no Dockerfile or CI. Locally: a Vite dev server (static React app) and one FastAPI process with an in-process single-worker job queue and file-based state. `backend/.env.deploy.example` records the intended hosted settings (cheap model for Stage 2, one retry, 60 s timeout, daily cap, access code, CORS allow-list). Four research seeds (INFY, DEEPAKNTR, TITAN, TMPV) are committed so a fresh backend has content before anything is analysed.
+**What is built and deployed:** the frontend is a static build on Vercel (https://finn-enam-eta.vercel.app) and the FastAPI backend runs on Render's free tier (https://finn-backend-2lby.onrender.com), configured by `render.yaml`, `vercel.json` and `DEPLOY.md`; there is no Dockerfile or CI. The free tier sleeps after idle (first request can take about a minute), and the app then falls back to the committed seeds. State (jobs, daily-cap counter, research results) is file-based and **not durable** on the free tier. Locally: a Vite dev server (static React app) and one FastAPI process with an in-process single-worker job queue and file-based state. `backend/.env.deploy.example` records the intended hosted settings (cheap model for Stage 2, one retry, 60 s timeout, daily cap, access code, CORS allow-list). Four research seeds (INFY, DEEPAKNTR, TITAN, TMPV) are committed so a fresh backend has content before anything is analysed.
 
 **Production plan (not built), and why:**
 

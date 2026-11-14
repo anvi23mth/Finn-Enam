@@ -1,5 +1,7 @@
 # FINN — financial investment agent (prototype)
 
+**Live demo:** https://finn-enam-eta.vercel.app · [Architecture](docs/ARCHITECTURE.md) · [Deployment guide](DEPLOY.md)
+
 A mobile-first web app for an investor with a portfolio of 19 NSE names. One idea: **filter hard, and always say who in your network can help.**
 
 | Tab | What it does | Data |
@@ -45,7 +47,7 @@ In dev, Vite proxies `/research/*` to `localhost:8000`. For a separately hosted 
 | `ACCESS_CODE` | If set, analysing a **new** ticker needs the header `X-Access-Code`. Re-running an existing analysis is refused unless a code is configured and supplied. |
 | `MAX_NEW_ANALYSES_PER_DAY`, `MAX_QUEUED_JOBS`, `REFRESH_COOLDOWN_MINUTES` | Spend protection. |
 
-`backend/.env.deploy.example` lists the settings intended for a hosted deployment (see "Cloud" in the architecture doc — nothing is deployed from this repo).
+`backend/.env.deploy.example` lists the settings used for the hosted deployment: the frontend is on Vercel (https://finn-enam-eta.vercel.app) and the FastAPI backend on Render's free tier (https://finn-backend-2lby.onrender.com). The free tier sleeps after idle, so the first load can take about a minute; until the backend wakes, the app falls back to the committed research seeds. State is file-based and not durable on the free tier (it can reset on restart or redeploy). See [DEPLOY.md](DEPLOY.md) and the "Cloud" section of the architecture doc.
 
 ### Refreshing the data
 
