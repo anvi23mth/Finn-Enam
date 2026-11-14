@@ -28,3 +28,6 @@ service-account*.json
 .idea/
 .vscode/
 coverage/
+
+# fetched documents (large, re-creatable)
+data/docs/
