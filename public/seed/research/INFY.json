@@ -1,0 +1,844 @@
+{
+ "ticker": "INFY",
+ "models": {
+  "cheap": "gemini-3.5-flash-lite",
+  "strong_requested": "gemini-3.8-flash",
+  "strong_used": "gemini-3.5-flash-lite",
+  "strong_chain": [
+   "gemini-3.5-flash-lite"
+  ],
+  "used_fallback": true,
+  "stage2_override": "manual --fast-stage2: Stage 2 forced onto gemini-3.5-flash-lite because the strong chain was overloaded"
+ },
+ "view": {
+  "business_snapshot": [
+   {
+    "text": "For FY26, consolidated segmental revenues were: Financial Services ₹49,908 crore, Manufacturing ₹29,078 crore, Energy, Utilities, Resources and Services ₹23,818 crore, Retail ₹23,077 crore, Communication ₹21,765 crore, Hi-Tech ₹13,928 crore, Life Sciences ₹12,267 crore, and All other segments ₹4,809 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F1"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 81,
+      "quote": "2026 49,908 29,078 23,818 23,077 21,765 13,928 12,267 4,809 1,78,650",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "In Q2 FY27, AI revenue reached 10.5% of total revenue on a consolidated basis, growing at 29% sequentially.",
+    "kind": "point",
+    "fact_ids": [
+     "F194"
+    ],
+    "cites": [
+     {
+      "doc": "concall__oct-2026",
+      "page": 4,
+      "quote": "AI revenue was a standout at 10.5% of our revenue, growing at 29% sequentially.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Almost 60% plus of consolidated Infosys revenues come from the top 15 clients in Q3 FY26.",
+    "kind": "ratio",
+    "fact_ids": [
+     "F96"
+    ],
+    "cites": [
+     {
+      "doc": "concall__feb-2026",
+      "page": 29,
+      "quote": "almost 60% plus of our revenues come from the top 15 clients.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "financial_snapshot": [
+   {
+    "text": "On a consolidated basis for FY26, total revenue from operations was ₹1,78,650 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F23"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 357,
+      "quote": "Revenue from operations 49,908 29,078 23,818 23,077 21,765 13,928 12,267 4,809 178,650",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "On a consolidated basis for FY26, net profit was ₹29,440 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F3"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 17,
+      "quote": "Net profit# 29,440 26,713 26,233 24,095 22,110",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "For Q2 FY27, consolidated operating margin was stable at 21%.",
+    "kind": "point",
+    "fact_ids": [
+     "F196"
+    ],
+    "cites": [
+     {
+      "doc": "concall__oct-2026",
+      "page": 4,
+      "quote": "Operating margin was stable at 21%.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "trajectory": [
+   {
+    "text": "Consolidated revenues grew from ₹1,21,641 crore in FY22 to ₹1,78,650 crore in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F2"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 17,
+      "quote": "Revenues 1,78,650 1,62,990 1,53,670 1,46,767 1,21,641",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated net profit increased from ₹22,110 crore in FY22 to ₹29,440 crore in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F3"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 17,
+      "quote": "Net profit# 29,440 26,713 26,233 24,095 22,110",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated basic earnings per share rose from ₹52.52 in FY22 to ₹71.58 in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F4"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 17,
+      "quote": "Basic earnings per share (in ₹) 71.58 64.50 63.39 57.63 52.52",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "balance_sheet": [
+   {
+    "text": "As of March 31, 2026, working capital was ₹40,794 crore on a standalone basis and ₹51,167 crore on a consolidated basis.",
+    "kind": "point",
+    "fact_ids": [
+     "F5"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 37,
+      "quote": "As of March 31, 2026, we had `40,794 crore in working capital on a standalone basis, and `51,167 crore on a consolidated basis.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "As of March 31, 2026, the Company and the Group both reported no outstanding borrowings.",
+    "kind": "point",
+    "fact_ids": [
+     "F15",
+     "F18"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 242,
+      "quote": "The Company has no outstanding borrowings.",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 320,
+      "quote": "The Group has no outstanding borrowings.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated days sales outstanding was 67 days as of March 31, 2026, compared to 69 days as of March 31, 2025.",
+    "kind": "point",
+    "fact_ids": [
+     "F19"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 320,
+      "quote": "Days sales outstanding was 67 days and 69 days as of March 31, 2026 and March 31, 2025, respectively.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "cash_quality": [
+   {
+    "text": "For FY26, consolidated free cash flow was ₹33,097 crore, representing 112.3% of net profit.",
+    "kind": "ratio",
+    "fact_ids": [
+     "F6"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 17,
+      "quote": "₹ 33,097 cr FCF conversion at 112.3% of net profit",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "For FY26, standalone net cash generated by operating activities was ₹28,164 crore, while standalone capital expenditure on property, plant and equipment and intangibles, net of sale proceeds, was ₹2,170 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F9",
+     "F10"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 217,
+      "quote": "28,164 29,409",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 217,
+      "quote": "(2,170) (1,587)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "reconciliation": [
+   {
+    "text": "SCOPE MISMATCH: FY26 net profit is reported as ₹29,440 crore on a consolidated basis and ₹29,211 crore on a standalone basis.",
+    "kind": "point",
+    "fact_ids": [
+     "F3",
+     "F8"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 17,
+      "quote": "Net profit# 29,440 26,713 26,233 24,095 22,110",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 82,
+      "quote": "₹25,568 crore to ₹29,211 crore on a standalone basis",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "SCOPE MISMATCH: Working capital as of March 31, 2026, is reported as ₹40,794 crore on a standalone basis and ₹51,167 crore on a consolidated basis.",
+    "kind": "point",
+    "fact_ids": [
+     "F5",
+     "F20"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 37,
+      "quote": "As of March 31, 2026, we had `40,794 crore in working capital on a standalone basis, and `51,167 crore on a consolidated basis.",
+      "status": "numbers_verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 320,
+      "quote": "As at March 31, 2026, the Group had a working capital of `51,167 crore.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "SCOPE MISMATCH: Working capital as of March 31, 2025, is reported as ₹45,406 crore on an unspecified basis and ₹54,249 crore on a consolidated basis.",
+    "kind": "point",
+    "fact_ids": [
+     "F17",
+     "F21"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 242,
+      "quote": "As at March 31, 2025, the Company had a working capital of `45,406 crore",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 320,
+      "quote": "As at March 31, 2025, the Group had a working capital of `54,249 crore.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "narrative_vs_numbers": [
+   {
+    "text": "Management stated full year FY26 constant currency revenue growth was 3.1%, which matches the reported constant currency growth rate.",
+    "kind": "text",
+    "fact_ids": [
+     "F24",
+     "F56"
+    ],
+    "cites": [
+     {
+      "doc": "concall__apr-2026",
+      "page": 4,
+      "quote": "We had growth of 3.1% for the full year in constant currency terms.",
+      "status": "verified"
+     },
+     {
+      "doc": "concall__apr-2026",
+      "page": 26,
+      "quote": "We had a growth of 3.1% for the full year in constant currency terms.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "bull_case": [
+   {
+    "text": "Strong consolidated free cash flow generation in FY26 of ₹33,097 crore, achieving 112.3% conversion of net profit.",
+    "kind": "point",
+    "fact_ids": [
+     "F6"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 17,
+      "quote": "₹ 33,097 cr FCF conversion at 112.3% of net profit",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Robust large deal wins, including $14.9 billion for FY26 and $5.2 billion in Q2 FY27.",
+    "kind": "point",
+    "fact_ids": [
+     "F26",
+     "F195"
+    ],
+    "cites": [
+     {
+      "doc": "concall__apr-2026",
+      "page": 4,
+      "quote": "Large deals were very good, $14.9 bn for the full year",
+      "status": "verified"
+     },
+     {
+      "doc": "concall__oct-2026",
+      "page": 4,
+      "quote": "Large deals were another standout at $5.2 bn for the quarter.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Rapid expansion in AI services, growing to 10.5% of total revenue by Q2 FY27 with a 29% sequential growth rate.",
+    "kind": "point",
+    "fact_ids": [
+     "F194"
+    ],
+    "cites": [
+     {
+      "doc": "concall__oct-2026",
+      "page": 4,
+      "quote": "AI revenue was a standout at 10.5% of our revenue, growing at 29% sequentially.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "bear_case": [
+   {
+    "text": "Headwinds from European manufacturing client ramp-downs expected to impact growth by 75 bps to 1%.",
+    "kind": "point",
+    "fact_ids": [
+     "F67"
+    ],
+    "cites": [
+     {
+      "doc": "concall__apr-2026",
+      "page": 39,
+      "quote": "1% impact or close 75 bps to 1% impact will come from the European client",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Anticipated reduction in onsite mix expected to cause a 40 to 50 basis point impact visible in the FY27 exit trajectory.",
+    "kind": "point",
+    "fact_ids": [
+     "F68"
+    ],
+    "cites": [
+     {
+      "doc": "concall__apr-2026",
+      "page": 39,
+      "quote": "40 to 50 basis points is already visible in the exit trajectory",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "promised_vs_delivered": [
+   {
+    "id": "G1",
+    "metric": "ebitda_margin",
+    "covers": "FY26",
+    "unit": null,
+    "scope": "consolidated",
+    "quarter_said": "Q3 FY26",
+    "low": null,
+    "high": null,
+    "direction": "flat",
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F117",
+     "doc": "concall__feb-2026",
+     "page": 56,
+     "quote": "our view for the period in the future is we will maintain our margin guidance",
+     "text": "Salil Parekh stated that Infosys will maintain its margin guidance by funding AI scaling through internal efficiency savings."
+    },
+    "actual": null,
+    "verdict": null,
+    "detail": "directional guidance ('flat') has no quarter/year comparison basis -> not scored (period inferred from call date)",
+    "explanation": "In Q3 FY26, management stated an expectation to maintain margin guidance for future periods."
+   },
+   {
+    "id": "G2",
+    "metric": "revenue_growth",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q4 FY26",
+    "low": 1.5,
+    "high": 3.5,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F28",
+     "doc": "concall__apr-2026",
+     "page": 4,
+     "quote": "Our revenue growth guidance for the financial year 2027 is 1.5% to 3.5% growth year-on-year in constant currency terms.",
+     "text": "Revenue growth guidance for financial year 2027 is 1.5% to 3.5% year-on-year in constant currency terms."
+    },
+    "actual": null,
+    "verdict": "revised",
+    "detail": "Revised in Q1 FY27: 1.5–3.5% -> 1.5–3%; low end +0 pp, high end -0.5 pp; midpoint 2.5 -> 2.25 (-0.25 pp)",
+    "revised_to": {
+     "fid": "F134",
+     "doc": "concall__jul-2026",
+     "page": 6,
+     "quote": "we are changing our revenue growth guidance to 1.5% to 3% Y-on-Y growth in constant currency terms.",
+     "text": "Revenue growth guidance changed to 1.5% to 3% Y-on-Y growth in constant currency terms for the financial year."
+    },
+    "explanation": null
+   },
+   {
+    "id": "G3",
+    "metric": "operating_margin",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q4 FY26",
+    "low": 20.0,
+    "high": 22.0,
+    "direction": null,
+    "reiterated_in": [
+     "Q1 FY27",
+     "Q2 FY27"
+    ],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F29",
+     "doc": "concall__apr-2026",
+     "page": 4,
+     "quote": "Our operating margin guidance for financial year '27 is 20% to 22%.",
+     "text": "Operating margin guidance for financial year 2027 is 20% to 22%."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27",
+    "explanation": "Operating margin guidance for FY27 was provided as 20% to 22% in Q4 FY26."
+   },
+   {
+    "id": "G4",
+    "metric": "tax_rate",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q4 FY26",
+    "low": 29.0,
+    "high": 30.0,
+    "direction": null,
+    "reiterated_in": [
+     "Q1 FY27",
+     "Q2 FY27"
+    ],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F55",
+     "doc": "concall__apr-2026",
+     "page": 29,
+     "quote": "We expect effective tax rates for the FY27 to be in the range of 29% to 30%.",
+     "text": "Infosys expects effective tax rates for FY27 to be in the range of 29% to 30%."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27",
+    "explanation": "The effective tax rate for FY27 was guided to be in the range of 29% to 30% in Q4 FY26."
+   },
+   {
+    "id": "G5",
+    "metric": "revenue_growth",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q1 FY27",
+    "low": 1.5,
+    "high": 3.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F134",
+     "doc": "concall__jul-2026",
+     "page": 6,
+     "quote": "we are changing our revenue growth guidance to 1.5% to 3% Y-on-Y growth in constant currency terms.",
+     "text": "Revenue growth guidance changed to 1.5% to 3% Y-on-Y growth in constant currency terms for the financial year."
+    },
+    "actual": null,
+    "verdict": "revised",
+    "detail": "Revised in Q2 FY27: 1.5–3% -> 1–2%; low end -0.5 pp, high end -1 pp; midpoint 2.25 -> 1.5 (-0.75 pp) (period inferred from call date)",
+    "revised_to": {
+     "fid": "F198",
+     "doc": "concall__oct-2026",
+     "page": 4,
+     "quote": "our revenue growth guidance is 1% to 2% YoY.in constant currency terms.",
+     "text": "Revenue growth guidance for the year is 1% to 2% YoY in constant currency terms."
+    },
+    "explanation": null
+   },
+   {
+    "id": "G6",
+    "metric": "revenue_growth",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q2 FY27",
+    "low": 1.0,
+    "high": 2.0,
+    "direction": "up_yoy",
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F198",
+     "doc": "concall__oct-2026",
+     "page": 4,
+     "quote": "our revenue growth guidance is 1% to 2% YoY.in constant currency terms.",
+     "text": "Revenue growth guidance for the year is 1% to 2% YoY in constant currency terms."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27 (period inferred from call date)",
+    "explanation": "In Q2 FY27, revenue growth guidance was established at 1% to 2% YoY in constant currency terms."
+   }
+  ]
+ },
+ "failed_claims": [],
+ "consistency_flags": [
+  {
+   "section": "bear_case",
+   "reason": "unknown fact ids ['G2', 'G6']",
+   "text": "Downward revisions of FY27 revenue growth guidance from 1.5%-3.5% down to 1%-2% across quarters."
+  }
+ ],
+ "ledger": {
+  "data_through": "Q2 FY27",
+  "unscored_guidance": [
+   {
+    "fid": "F36",
+    "doc": "concall__apr-2026",
+    "page": 9,
+    "quote": "So, we have given the guidance of the growth based on what we are seeing today.",
+    "text": "Management expects growth for the year based on current market observations.",
+    "quarter_said": "Q4 FY26"
+   },
+   {
+    "fid": "F86",
+    "doc": "concall__feb-2026",
+    "page": 12,
+    "quote": "And next financial year, also have a plan to recruit 20,000 college graduates",
+    "text": "Infosys plans to recruit 20,000 college graduates next financial year.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F118",
+    "doc": "concall__feb-2026",
+    "page": 64,
+    "quote": "my sense is we will continue with the headcount increase in the coming quarters as well.",
+    "text": "Infosys expects to continue with net headcount increases in the coming quarters.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F138",
+    "doc": "concall__jul-2026",
+    "page": 14,
+    "quote": "we are very confident at this point in time of the guidance band that we have given.",
+    "text": "Infosys maintains its full year operating margin guidance band of 20% to 22% for the year.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F182",
+    "doc": "concall__jul-2026",
+    "page": 46,
+    "quote": "This year, we have a plan to recruit 20,000 college graduates.",
+    "text": "The company plans to recruit 20,000 college graduates for the full year in FY27.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F242",
+    "doc": "concall__oct-2026",
+    "page": 42,
+    "quote": "we estimate something like a 1% revenue growth outlook from that one deal that we have signed in Q2.",
+    "text": "Management estimates approximately 1% revenue growth outlook for next year from the mega deal signed in Q2.",
+    "quarter_said": "Q2 FY27"
+   }
+  ],
+  "conflicts": [],
+  "scope_variants": [
+   {
+    "metric": "pat",
+    "period": "FY26",
+    "facts": [
+     {
+      "fid": "F3",
+      "scope": "consolidated",
+      "value": 29440.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 17
+     },
+     {
+      "fid": "F7",
+      "scope": "consolidated",
+      "value": 29440.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 82
+     },
+     {
+      "fid": "F8",
+      "scope": "standalone",
+      "value": 29211.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 82
+     }
+    ]
+   },
+   {
+    "metric": "working_capital",
+    "period": "as of 31 Mar 2026",
+    "facts": [
+     {
+      "fid": "F5",
+      "scope": "standalone",
+      "value": 40794.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 37
+     },
+     {
+      "fid": "F16",
+      "scope": "unspecified",
+      "value": 40794.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 242
+     },
+     {
+      "fid": "F20",
+      "scope": "consolidated",
+      "value": 51167.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 320
+     }
+    ]
+   },
+   {
+    "metric": "working_capital",
+    "period": "as of 31 Mar 2025",
+    "facts": [
+     {
+      "fid": "F17",
+      "scope": "unspecified",
+      "value": 45406.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 242
+     },
+     {
+      "fid": "F21",
+      "scope": "consolidated",
+      "value": 54249.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 320
+     }
+    ]
+   }
+  ]
+ },
+ "stage1": [
+  {
+   "doc": "annual_report__annual-report-2026",
+   "kind": "annual_report",
+   "label": "Annual Report 2026",
+   "pages_sent": 35,
+   "n_items": 23,
+   "n_dropped": 18
+  },
+  {
+   "doc": "concall__apr-2026",
+   "kind": "concall",
+   "label": "Apr 2026",
+   "quarter": "Q4 FY26",
+   "quarter_model": "Q4 FY26",
+   "n_items": 62,
+   "n_dropped": 0
+  },
+  {
+   "doc": "concall__feb-2026",
+   "kind": "concall",
+   "label": "Feb 2026",
+   "quarter": "Q3 FY26",
+   "quarter_model": "Q3",
+   "n_items": 43,
+   "n_dropped": 2
+  },
+  {
+   "doc": "concall__jul-2026",
+   "kind": "concall",
+   "label": "Jul 2026",
+   "quarter": "Q1 FY27",
+   "quarter_model": "Q1 FY27",
+   "n_items": 64,
+   "n_dropped": 3
+  },
+  {
+   "doc": "concall__oct-2026",
+   "kind": "concall",
+   "label": "Oct 2026",
+   "quarter": "Q2 FY27",
+   "quarter_model": "Q2 FY27",
+   "n_items": 57,
+   "n_dropped": 0
+  }
+ ],
+ "usage": {
+  "stage1_annual_report": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 5,
+   "cached_calls": 5,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage1_concall": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 26,
+   "cached_calls": 26,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage1b_structure": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 5,
+   "cached_calls": 5,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage2_synthesis": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 1,
+   "cached_calls": 1,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  }
+ },
+ "company": "Infosys",
+ "generated_at": "2026-11-14T11:12:58+00:00"
+}

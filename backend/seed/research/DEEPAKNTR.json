@@ -1,0 +1,868 @@
+{
+ "ticker": "DEEPAKNTR",
+ "models": {
+  "cheap": "gemini-3.5-flash-lite",
+  "strong_requested": "gemini-3.8-flash",
+  "strong_used": "gemini-3.5-flash-lite",
+  "strong_chain": [
+   "gemini-3.5-flash-lite"
+  ],
+  "used_fallback": true,
+  "stage2_override": "manual --fast-stage2: Stage 2 forced onto gemini-3.5-flash-lite because the strong chain was overloaded"
+ },
+ "view": {
+  "business_snapshot": [
+   {
+    "text": "Deepak Group operates as a leading integrated chemical intermediates company in India, featuring a presence across Advanced Intermediates and Phenolics.",
+    "kind": "text",
+    "fact_ids": [
+     "F1"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 9,
+      "quote": "Deepak Group is one of India’s leading integrated chemical intermediates companies, with a strong presence across Advanced Intermediates and Phenolics.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "The company's product portfolio includes Sodium Nitrite, Phenol, Acetone, IPA, Xylidines, Oximes, Toluidines, Cumedines, Nitric Acid, MIBK, and MIBC.",
+    "kind": "text",
+    "fact_ids": [
+     "F2"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 9,
+      "quote": "Our product portfolio includes Sodium Nitrite, Phenol, Acetone, IPA, Xylidines, Oximes, Toluidines, Cumedines, Nitric Acid, MIBK, MIBC",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "For the full year FY26, Deepak Phenolics Limited reported consolidated revenues of INR 5,735 Crores with a Domestic-to-Export mix of 97:3.",
+    "kind": "point",
+    "fact_ids": [
+     "F6"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 159,
+      "quote": "In FY 2025-26, DPL reported revenues of ₹ 5,735 Crores, with a Domestic-to-Export mix of 97:3.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "financial_snapshot": [
+   {
+    "text": "For the full year FY26, consolidated revenue stood at INR 7,947 crore, with an EBITDA of INR 1,041 crore and PAT of INR 551 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F3",
+     "F4",
+     "F5"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 48,
+      "quote": "Revenue: ₹ 7,947 Crores",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 48,
+      "quote": "EBITDA: ₹ 1,041 Crores",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 48,
+      "quote": "Profit After Tax for FY 2025-26 was Rs 551 Crores.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "For Q2 FY27, consolidated revenue from operations reached INR 3,091 crore, with record EBITDA of INR 643 crore and PAT of INR 398 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F113",
+     "F115",
+     "F117"
+    ],
+    "cites": [
+     {
+      "doc": "concall__nov-2026",
+      "page": 3,
+      "quote": "Consolidated revenue from operations for Q2 FY27 stood at INR 3,091 crore, registering a sequential growth of 19% and year-on-year growth of 61%.",
+      "status": "verified"
+     },
+     {
+      "doc": "concall__nov-2026",
+      "page": 5,
+      "quote": "EBITDA reached a record INR 643 crore, growing at 187% year-on-year and 16% quarter-on-quarter with EBITDA margin sustained at 21%.",
+      "status": "verified"
+     },
+     {
+      "doc": "concall__nov-2026",
+      "page": 6,
+      "quote": "PAT increased to INR 398 crore, representing sequential growth of 16% and 15%, respectively.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "trajectory": [
+   {
+    "text": "Consolidated revenue from operations shifted from INR 8,281.93 crores in FY25 to INR 7,887.07 crores in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F28"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 456,
+      "quote": "Revenue from operations 7,887.07 8,281.93",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "balance_sheet": [
+   {
+    "text": "For FY26, the consolidated debt-equity ratio was reported at 0 x, maintaining a net-free debt position.",
+    "kind": "ratio",
+    "fact_ids": [
+     "F9"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 159,
+      "quote": "Debt Equity Ratio (X) (X) was 0 for FY 2025-26 and 0.01 for FY 2024-25, maintaining a debt-free position on net basis.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "On a consolidated basis, current borrowings as at March 31, 2026, were INR 392.99 crores compared to INR 144.82 crores as at March 31, 2025.",
+    "kind": "point",
+    "fact_ids": [
+     "F24"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 435,
+      "quote": "Total 392.99 144.82",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated lease liabilities balance at the end of the year as at March 31, 2026, was INR 109.90 Crores, compared to INR 96.48 Crores as at March 31, 2025.",
+    "kind": "point",
+    "fact_ids": [
+     "F29"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 458,
+      "quote": "Balance at the end of the year 109.90 96.48",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "cash_quality": [],
+  "reconciliation": [
+   {
+    "text": "SCOPE MISMATCH: Net cash inflow from operating activities for the year ended March 31, 2026, is reported as INR 393.45 Crores on a standalone basis and INR 538.95 Crores on a consolidated basis.",
+    "kind": "point",
+    "fact_ids": [
+     "F10",
+     "F16"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 343,
+      "quote": "Net Cash Inflow from Operating Activities (A) 393.45 254.08",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 407,
+      "quote": "Net Cash flow from operating activities for the year ended March 31, 2026 was ₹ 538.95 Crores.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "SCOPE MISMATCH: Capital commitments (net of advances) as at March 31, 2026, are reported as INR 28.80 Crores on a standalone basis and INR 686.17 Crores on a consolidated basis.",
+    "kind": "point",
+    "fact_ids": [
+     "F15",
+     "F26"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 380,
+      "quote": "Capital Commitments (Net of Advances: Refer Note 8(a)) 28.80 65.02",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 444,
+      "quote": "Total (II) 686.17 769.38",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "SCOPE MISMATCH: Purchase of property, plant, and equipment for the year ended March 31, 2026, is reported as INR 126.99 Crores on a standalone basis and INR 1,184.66 Crores on a consolidated basis.",
+    "kind": "point",
+    "fact_ids": [
+     "F140",
+     "F141"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 343,
+      "quote": "1. Purchase of Property, Plant and Equipment, including Capital Work-in-Progress, Capital (126.99) (209.95)",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 407,
+      "quote": "1. Purchase of Property, Plant and Equipment, including Capital Work-in-Progress, Capital (1,184.66) (1,122.07)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "narrative_vs_numbers": [
+   {
+    "text": "Auditors for Deepak Group determined that there were no key audit matters to communicate in their standalone and consolidated reports for FY26.",
+    "kind": "text",
+    "fact_ids": [
+     "F12",
+     "F19"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 331,
+      "quote": "We have determined that there are no key audit matters to communicate in our report.",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 398,
+      "quote": "We have determined that there are no key audit matters to communicate in our report.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "bull_case": [
+   {
+    "text": "Consolidated profitability showed strong expansion, with Q2 FY27 EBITDA reaching a record INR 643 crore and margins sustained at 21%.",
+    "kind": "point",
+    "fact_ids": [
+     "F115"
+    ],
+    "cites": [
+     {
+      "doc": "concall__nov-2026",
+      "page": 5,
+      "quote": "EBITDA reached a record INR 643 crore, growing at 187% year-on-year and 16% quarter-on-quarter with EBITDA margin sustained at 21%.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "The Phenolics segment delivered its highest ever quarterly revenue of INR 2,291 crore in Q2 FY27.",
+    "kind": "point",
+    "fact_ids": [
+     "F118"
+    ],
+    "cites": [
+     {
+      "doc": "concall__nov-2026",
+      "page": 6,
+      "quote": "Phenolics delivered highest ever quarterly revenue of INR 2,291 crore, an increase of 29% sequentially and 72% year-on-year.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "The company maintained a debt-free position on a net basis with a Debt-Equity ratio of 0 x for FY26.",
+    "kind": "ratio",
+    "fact_ids": [
+     "F9"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 159,
+      "quote": "Debt Equity Ratio (X) 0 0.01",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "bear_case": [
+   {
+    "text": "Full-year consolidated revenue contracted from INR 8,281.93 crores in FY25 to INR 7,887.07 crores in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F28"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 456,
+      "quote": "Revenue from operations 7,887.07 8,281.93",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Net profit available for equity shareholders on a consolidated basis declined from INR 697.24 Crores in FY25 to INR 550.53 Crores in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F30"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 458,
+      "quote": "Net Profit after Tax available for Equity Shareholders (₹ in Crores) 550.53 697.24",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Standalone material margins for Q3 FY26 touched 33.6%, noted as being among the lowest seen by the company.",
+    "kind": "ratio",
+    "fact_ids": [
+     "F74"
+    ],
+    "cites": [
+     {
+      "doc": "concall__feb-2026",
+      "page": 9,
+      "quote": "material margin, at 33.6%, are probably among the lowest we have seen",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "promised_vs_delivered": [
+   {
+    "id": "G1",
+    "metric": "capex",
+    "covers": "FY26",
+    "unit": "INR crore",
+    "scope": "consolidated",
+    "quarter_said": "Q3 FY26",
+    "low": 1200.0,
+    "high": 1300.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F82",
+     "doc": "concall__feb-2026",
+     "page": 19,
+     "quote": "bringing the total to approximately INR 1,200–1,300 crore.",
+     "text": "FY26 capex spending is expected to be around INR 1,200 to 1,300 crore in total."
+    },
+    "actual": {
+     "fid": "F141",
+     "doc": "annual_report__annual-report-2026",
+     "page": 407,
+     "quote": "1. Purchase of Property, Plant and Equipment, including Capital Work-in-Progress, Capital (1,184.66) (1,122.07)",
+     "text": "Consolidated FY26 purchase of property, plant and equipment (cash flow statement row)"
+    },
+    "verdict": "partly",
+    "detail": "actual 1184.66 below guided 1200–1300 by 1% [consolidated]",
+    "explanation": "Management guided FY26 capex around INR 1,200 to 1,300 crore during Q3 FY26, and actual consolidated capex was INR 1,184.66 crore."
+   },
+   {
+    "id": "G2",
+    "metric": "capex",
+    "covers": "FY27",
+    "unit": "INR crore",
+    "scope": "consolidated",
+    "quarter_said": "Q3 FY26",
+    "low": 2500.0,
+    "high": 2500.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F81",
+     "doc": "concall__feb-2026",
+     "page": 19,
+     "quote": "Around INR 2,500 crore.",
+     "text": "Anticipated capex outlay is around INR 2,500 crore for FY27."
+    },
+    "actual": null,
+    "verdict": "revised",
+    "detail": "Revised in Q1 FY27: 2500 cr -> 1000–1500 cr; low end -1500 cr, high end -1000 cr; midpoint 2500 -> 1250 (-1250 cr) (-50%)",
+    "revised_to": {
+     "fid": "F38",
+     "doc": "concall__aug-2026",
+     "page": 15,
+     "quote": "Further this year, we'll spend around another INR 1,000 crore to INR 1,500 crore this year further.",
+     "text": "The company expects to spend around INR 1,000 crore to INR 1,500 crore further this year for capex."
+    },
+    "explanation": null
+   },
+   {
+    "id": "G3",
+    "metric": "ebitda_margin",
+    "covers": "FY27",
+    "unit": null,
+    "scope": "standalone",
+    "quarter_said": "Q4 FY26",
+    "low": null,
+    "high": null,
+    "direction": "up_yoy",
+    "reiterated_in": [],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F100",
+     "doc": "concall__may-2026",
+     "page": 12,
+     "quote": "Therefore, in FY27, we expect a stronger margin profile, even for the standalone business, compared with FY26.",
+     "text": "Management expects a stronger margin profile for FY27 for the standalone business compared to FY26."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27",
+    "explanation": "Management expected a stronger margin profile for FY27 compared to FY26, though full-year results are not yet testable as reported data only runs through Q2 FY27."
+   },
+   {
+    "id": "G4",
+    "metric": "revenue_growth",
+    "covers": "FY27",
+    "unit": null,
+    "scope": "consolidated",
+    "quarter_said": "Q4 FY26",
+    "low": null,
+    "high": null,
+    "direction": "up_yoy",
+    "reiterated_in": [],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F101",
+     "doc": "concall__may-2026",
+     "page": 12,
+     "quote": "we do anticipate an improvement in the margins as well as the gross numbers as we progress into FY27.",
+     "text": "Management anticipates an improvement in margins and gross numbers as the company progresses into FY27."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27",
+    "explanation": "Management anticipated improvement in margins and gross numbers for FY27, which remains partially testable as reported data extends through Q2 FY27."
+   },
+   {
+    "id": "G5",
+    "metric": "capex",
+    "covers": "FY27",
+    "unit": "INR crore",
+    "scope": "consolidated",
+    "quarter_said": "Q1 FY27",
+    "low": 1000.0,
+    "high": 1500.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F38",
+     "doc": "concall__aug-2026",
+     "page": 15,
+     "quote": "Further this year, we'll spend around another INR 1,000 crore to INR 1,500 crore this year further.",
+     "text": "The company expects to spend around INR 1,000 crore to INR 1,500 crore further this year for capex."
+    },
+    "actual": null,
+    "verdict": "revised",
+    "detail": "Revised in Q2 FY27: 1000–1500 cr -> 800–900 cr; low end -200 cr, high end -600 cr; midpoint 1250 -> 850 (-400 cr) (-32%) (period inferred from call date)",
+    "revised_to": {
+     "fid": "F125",
+     "doc": "concall__nov-2026",
+     "page": 15,
+     "quote": "For this year, it is around INR 800 crore to INR 900 crore further.",
+     "text": "Sanjay Upadhyay stated capex of around INR 800 crore to INR 900 crore further in the second half of the year."
+    },
+    "explanation": null
+   },
+   {
+    "id": "G6",
+    "metric": "capex",
+    "covers": "FY27",
+    "unit": "INR crore",
+    "scope": "consolidated",
+    "quarter_said": "Q2 FY27",
+    "low": 800.0,
+    "high": 900.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F125",
+     "doc": "concall__nov-2026",
+     "page": 15,
+     "quote": "For this year, it is around INR 800 crore to INR 900 crore further.",
+     "text": "Sanjay Upadhyay stated capex of around INR 800 crore to INR 900 crore further in the second half of the year."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27 (period inferred from call date)",
+    "explanation": "Management guided FY27 capex to be around INR 800 crore to INR 900 crore during Q2 FY27, which is not yet fully testable as FY27 has not concluded."
+   },
+   {
+    "id": "G7",
+    "metric": "operating_margin",
+    "covers": "FY28",
+    "unit": "%",
+    "scope": "segment",
+    "quarter_said": "Q2 FY27",
+    "low": 14.0,
+    "high": 15.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F124",
+     "doc": "concall__nov-2026",
+     "page": 11,
+     "quote": "we are estimating that in the next year, with all assets that have been commissioned running at steady-state, we should be targeting something along the lines of about 14% to 15% EBIT.",
+     "text": "Management expects to target an EBIT margin of 14% to 15% for Advanced Intermediates next year with all assets running at steady-state."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY28 ends 2028-03-31; reported data runs through Q2 FY27 (period inferred from call date)",
+    "explanation": "Management targeted a 14% to 15% EBIT margin for FY28 assuming steady-state asset operations, which is not yet testable as reported data runs through Q2 FY27."
+   },
+   {
+    "id": "G8",
+    "metric": "capex",
+    "covers": "FY28",
+    "unit": "INR crore",
+    "scope": "consolidated",
+    "quarter_said": "Q2 FY27",
+    "low": 2200.0,
+    "high": 2400.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F126",
+     "doc": "concall__nov-2026",
+     "page": 16,
+     "quote": "INR 2,200 crore-INR 2,400 crore next year, INR 2,500 crore in the second year, that is FY 2028-2029, and balance in the third year, which will be in the range of INR 2,500 crore-INR 3,000 crore.",
+     "text": "Sanjay Upadhyay guided for next year capex of INR 2,200 crore to INR 2,400 crore, INR 2,500 crore in FY28-2029, and INR 2,500 crore to INR 3,000 crore in the third year."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY28 ends 2028-03-31; reported data runs through Q2 FY27 (period inferred from call date)",
+    "explanation": "Management outlined multi-year capex projections starting with INR 2,200–2,400 crore for FY28, which is not yet testable as reported data covers up to Q2 FY27."
+   }
+  ]
+ },
+ "failed_claims": [],
+ "consistency_flags": [
+  {
+   "section": "cash_quality",
+   "reason": "period-type mismatch (FY26, as of 31 Mar 2026): full-year, 9M/half-year, quarter and point-in-time figures are not comparable",
+   "text": "For the year ended March 31, 2026, standalone net cash inflow from operating activities was INR 393.45 Crores, with a purchase of property, plant, and equipment of INR 126.99 Crores."
+  },
+  {
+   "section": "cash_quality",
+   "reason": "period-type mismatch (FY26, as of 31 Mar 2026): full-year, 9M/half-year, quarter and point-in-time figures are not comparable",
+   "text": "For the year ended March 31, 2026, consolidated net cash inflow from operating activities was INR 538.95 Crores, while purchase of property, plant, and equipment was INR 1,184.66 Crores."
+  },
+  {
+   "section": "trajectory",
+   "reason": "period-type mismatch (9M FY26, H1 FY27): full-year, 9M/half-year, quarter and point-in-time figures are not comparable",
+   "text": "Consolidated revenue grew from INR 5,820 crore in 9M FY26 to INR 5,682 crore in H1 FY27, driven by consecutive quarterly improvements."
+  }
+ ],
+ "ledger": {
+  "data_through": "Q2 FY27",
+  "unscored_guidance": [
+   {
+    "fid": "F36",
+    "doc": "concall__aug-2026",
+    "page": 5,
+    "quote": "MIBK as well as MIBC will be commissioned along with acetophenone in August itself, and the rest of them will be commissioned within Q2.",
+    "text": "MIBK, MIBC, and acetophenone will be commissioned in August, and the rest within Q2.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F39",
+    "doc": "concall__aug-2026",
+    "page": 12,
+    "quote": "I would anticipate that we would target H2 for our polycarbonate commissioning.",
+    "text": "The company targets H2 FY29 for polycarbonate commissioning.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F63",
+    "doc": "concall__feb-2026",
+    "page": 5,
+    "quote": "the Group expects a favourable performance in Q4 FY26.",
+    "text": "The Group expects a favourable performance in Q4 FY26.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F72",
+    "doc": "concall__feb-2026",
+    "page": 10,
+    "quote": "I definitely expect Q4 FY26 to be better than Q3 FY26. I also want to be cautiously optimistic",
+    "text": "Management expects Q4 FY26 to be better than Q3 FY26 with a cautiously optimistic outlook.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F73",
+    "doc": "concall__feb-2026",
+    "page": 12,
+    "quote": "they may be between 95% to 100%, 105%. That's the kind of range we look at",
+    "text": "Management expects nitric acid, nitration, and hydrogenation assets to run at 95% to 105% utilization from this quarter onwards.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F79",
+    "doc": "concall__feb-2026",
+    "page": 17,
+    "quote": "we are cautiously optimistic, Q4 FY26 would be better than Q3 FY26.",
+    "text": "Expect Q4 FY26 to be better than Q3 FY26 for the advanced intermediates segment.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F80",
+    "doc": "concall__feb-2026",
+    "page": 17,
+    "quote": "Q4 FY26 will be better, but Q1 FY27 will be better still.",
+    "text": "Expect Q1 FY27 to continue in the positive direction and be better still compared to Q4 FY26.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F95",
+    "doc": "concall__may-2026",
+    "page": 4,
+    "quote": "scheduled for commissioning in Q2 FY27.",
+    "text": "Multipurpose agrochemical intermediates and MIBK, MIBC projects are scheduled for commissioning in Q2 FY27.",
+    "quarter_said": "Q4 FY26"
+   },
+   {
+    "fid": "F99",
+    "doc": "concall__may-2026",
+    "page": 9,
+    "quote": "We anticipate Q1 to be better than Q4, which was, of course, better than Q3.",
+    "text": "Management anticipates Q1 numbers to be better than Q4 on both standalone and consolidated bases.",
+    "quarter_said": "Q4 FY26"
+   },
+   {
+    "fid": "F102",
+    "doc": "concall__may-2026",
+    "page": 14,
+    "quote": "we are expecting it to be commissioned by June 2028.",
+    "text": "Management expects the polycarbonate project to be commissioned by June 2028.",
+    "quarter_said": "Q4 FY26"
+   },
+   {
+    "fid": "F123",
+    "doc": "concall__nov-2026",
+    "page": 11,
+    "quote": "if I was to look at next year, it would be roughly in the range of about INR 400 crore, INR 420 crore.",
+    "text": "Management targets an Advanced Intermediates EBIT in the range of INR 400 crore to INR 420 crore for next year.",
+    "quarter_said": "Q2 FY27"
+   }
+  ],
+  "conflicts": [],
+  "scope_variants": [
+   {
+    "metric": "cfo",
+    "period": "as of 31 Mar 2026",
+    "facts": [
+     {
+      "fid": "F10",
+      "scope": "standalone",
+      "value": 393.45,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 343
+     },
+     {
+      "fid": "F16",
+      "scope": "consolidated",
+      "value": 538.95,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 407
+     }
+    ]
+   },
+   {
+    "metric": "capital_commitments",
+    "period": "as of 31 Mar 2026",
+    "facts": [
+     {
+      "fid": "F15",
+      "scope": "standalone",
+      "value": 28.8,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 380
+     },
+     {
+      "fid": "F26",
+      "scope": "consolidated",
+      "value": 686.17,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 444
+     }
+    ]
+   },
+   {
+    "metric": "capex",
+    "period": "FY26",
+    "facts": [
+     {
+      "fid": "F140",
+      "scope": "standalone",
+      "value": 126.99,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 343
+     },
+     {
+      "fid": "F141",
+      "scope": "consolidated",
+      "value": 1184.66,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 407
+     }
+    ]
+   }
+  ]
+ },
+ "stage1": [
+  {
+   "doc": "annual_report__annual-report-2026",
+   "kind": "annual_report",
+   "label": "Annual Report 2026",
+   "pages_sent": 41,
+   "n_items": 30,
+   "n_dropped": 5
+  },
+  {
+   "doc": "concall__aug-2026",
+   "kind": "concall",
+   "label": "Aug 2026",
+   "quarter": "Q1 FY27",
+   "quarter_model": "Q1 FY27",
+   "n_items": 32,
+   "n_dropped": 0
+  },
+  {
+   "doc": "concall__feb-2026",
+   "kind": "concall",
+   "label": "Feb 2026",
+   "quarter": "Q3 FY26",
+   "quarter_model": "Q3 FY26",
+   "n_items": 26,
+   "n_dropped": 0
+  },
+  {
+   "doc": "concall__may-2026",
+   "kind": "concall",
+   "label": "May 2026",
+   "quarter": "Q4 FY26",
+   "quarter_model": "Q4 FY26",
+   "n_items": 24,
+   "n_dropped": 2
+  },
+  {
+   "doc": "concall__nov-2026",
+   "kind": "concall",
+   "label": "Nov 2026",
+   "quarter": "Q2 FY27",
+   "quarter_model": "Q2 FY27",
+   "n_items": 27,
+   "n_dropped": 0
+  }
+ ],
+ "usage": {
+  "stage1_annual_report": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 6,
+   "cached_calls": 6,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage1_concall": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 11,
+   "cached_calls": 11,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage1b_structure": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 5,
+   "cached_calls": 5,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage2_synthesis": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 1,
+   "cached_calls": 1,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  }
+ },
+ "company": "Deepak Nitrite",
+ "generated_at": "2026-11-14T11:13:25+00:00"
+}
