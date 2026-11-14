@@ -1,23 +1,87 @@
-# FINN — Financial Investment Agent (prototype)
+# FINN — financial investment agent (prototype)
 
-Mobile-first web app (React + Vite + TS). Three tabs, one idea: **filter hard, and always say who in your network can help.**
+A mobile-first web app for an investor with a portfolio of 19 NSE names. One idea: **filter hard, and always say who in your network can help.**
+
+| Tab | What it does | Data |
+|---|---|---|
+| **Today** | Live feed of corporate announcements, classified (category + priority + one-line summary), grouped High / Medium / Routine, with a 24h–30d window; extracted Revenue/EBITDA/PBT/PAT tables for results filings; price/volume alerts; network matching on every card. A separate **Demo scenarios** toggle shows invented filings that showcase the network. | Real (screener.in, Yahoo) + LLM classification |
+| **Research** | Cited, primary-source research on a company: business, financials, promised-vs-delivered, cash quality, bull/bear. INFY and DEEPAKNTR ship as seeds; any other NSE ticker can be analysed through the backend (job queue, daily cap, optional access code). | Real (annual report + last 4 concalls) + LLM |
+| **Network** | Who to call, second-degree reach, expertise map, keep-warm, "quiet advantages". Each filing/card shows a visible matching step: entities recognised → contacts matched, with the reason. | **Synthetic** |
+
+Every card and section carries a **Real** or **Demo** badge. Architecture, security and LLM notes: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+## Run it locally
+
+Needs Node 18+ and Python 3.9+.
+
+**Frontend** (works on its own — it falls back to the committed data and the two research seeds):
 
 ```bash
 npm install
-npm run prices   # refresh EOD prices (Yahoo chart API, synthetic fallback)
-npm run dev      # open on your phone via the LAN URL
+npm run dev          # http://localhost:5173 (also on your LAN for phone testing)
 ```
 
-## What works today
-- **Push (Today):** selectable window (24h/3d/7d); filings ranked by priority with routine ones collapsed; configurable price/volume alerts computed from real EOD data; result cards with Revenue/EBITDA/PBT/PAT QoQ & YoY; management-change card with the person's bio and overlaps with your network; "worth a call" reconnect nudges.
-- **Pull (Research):** structured primary-source view incl. promised-vs-delivered, cash quality, bull/bear (INFY, DEEPAKNTR sample).
-- **Network:** ask by company or theme; ranked by relevance × relationship strength. Also woven into Push and Pull cards.
+**Backend** (only needed to analyse new tickers, or to re-run the data scripts):
 
-## Honest status
-- Prices: live from Yahoo where reachable; otherwise synthetic.
-- Announcements, network profiles and research content are **mock/synthetic** (`src/data/`), shaped like the real feeds. Labelled "demo data" in the UI.
-- Not built yet: NSE/BSE announcement poller, LLM extraction pipeline for any ticker, backend, auth.
+```bash
+cd backend
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+cp .env.example .env          # then edit .env; never commit it
+.venv/bin/uvicorn app.main:app --port 8000
+```
 
-## Architecture (target)
-Pipelines: scheduled workers poll NSE/BSE announcements → classify (cheap model/rules) → store; EOD prices nightly; annual reports + concalls fetched from screener.in, chunked, extracted to JSON by a small model, cached by document hash; strong model only for narrative-vs-numbers and bull/bear. Names in filings are matched to network people by employer/school overlap.
-Privacy: network data is per-user, encrypted at rest, row-level access control, consented imports only, deletable; no third-party profile scraping.
+In dev, Vite proxies `/research/*` to `localhost:8000`. For a separately hosted API, set `VITE_API_BASE` when building the frontend.
+
+### `backend/.env.example`
+
+| Variable | Purpose |
+|---|---|
+| `GEMINI_API_KEY` | Required for classification, results extraction and analysing new tickers. Viewing existing research and the feed needs no key. |
+| `CHEAP_MODEL`, `STRONG_MODEL`, `STRONG_MODEL_FALLBACKS`, `STRONG_RETRIES` | Model routing (see ARCHITECTURE → LLMs). |
+| `LLM_MIN_INTERVAL`, `LLM_MAX_RETRIES`, `LLM_TIMEOUT`, `LLM_MAX_WAIT` | Pacing, retries and fail-fast limits for Gemini calls. |
+| `DOCS_DIR`, `CONCALL_COUNT`, `REQUEST_DELAY`, `USER_AGENT`, `REQUEST_TIMEOUT` | Document ingestion from screener.in. |
+| `ALLOWED_ORIGINS` | CORS allow-list for the API. |
+| `ACCESS_CODE` | If set, analysing a **new** ticker needs the header `X-Access-Code`. Re-running an existing analysis is refused unless a code is configured and supplied. |
+| `MAX_NEW_ANALYSES_PER_DAY`, `MAX_QUEUED_JOBS`, `REFRESH_COOLDOWN_MINUTES` | Spend protection. |
+
+`backend/.env.deploy.example` lists the settings intended for a hosted deployment (see "Cloud" in the architecture doc — nothing is deployed from this repo).
+
+### Refreshing the data
+
+```bash
+npm run prices                                                          # EOD prices -> public/prices.json (Yahoo; failures become "no data")
+cd backend
+.venv/bin/python -m scripts.fetch_announcements                         # screener.in -> data/announcements/<TICKER>.json + all.json
+.venv/bin/python -I scripts/classify_announcements.py                   # classify -> data/announcements/classified.json (+ public/ copy)
+.venv/bin/python -I scripts/classify_announcements.py --skip-classify --results TMPV ITC   # extract results tables -> data/results/<TICKER>.json
+.venv/bin/python scripts/ingest.py INFY                                 # fetch annual report + concalls for a ticker
+.venv/bin/python scripts/research.py INFY                               # full research pipeline for a ticker
+.venv/bin/python scripts/make_seed.py INFY DEEPAKNTR                    # publish finished research as seeds
+```
+
+After changing `public/` data, rebuild or reload the frontend. Nothing runs on a schedule yet; every refresh is a manual run.
+
+## Data sources
+
+| Data | Source | How |
+|---|---|---|
+| Prices & volume | Yahoo Finance chart API (`<TICKER>.NS`, 3 months daily) | `scripts/fetch-prices.mjs`. A ticker that fails is written as `no_data`; synthetic data exists only behind `--demo` and is labelled. |
+| Announcements | screener.in company page ("Announcements" box; PDF links point to BSE) | `backend/app/announcements.py`. NSE/BSE clients exist but are opt-in (`--exchanges`) and skipped on 403. |
+| Announcement categories | The challenge reference PDF's category definitions | Used as the classifier's rules. |
+| Results tables | The results filing PDF itself | Downloaded, text extracted, figures verified against the page. |
+| Fundamentals / research | Latest annual report + last 4 concall transcripts (screener.in links) | Primary documents only. |
+| Network & filing-person profiles | **Invented** (`src/data/network.ts`, `src/data/graph.ts`) | Synthetic. |
+
+The portfolio is `src/data/portfolio.ts` (19 tickers; `TATAMOTORS` was replaced by `TMPV` and `TMCV` after the demerger).
+
+## Known limitations
+
+- **screener.in shows only the latest 5 announcements per company** to anonymous users (its "Important" and "Search" tabs need a login). The live feed is therefore complete for a few days at most; the 7d/30d windows are incomplete, and the files only grow if you re-run the fetch regularly.
+- **NSE and BSE block scripted requests** (HTTP 403 "Access Denied", including the cookie warm-up page). The code for both is kept but is optional and skipped; nothing works around the block.
+- **The network is synthetic**: 36 invented people and a made-up supplier/rival graph, labelled as such in the UI. It is bundled into the frontend, so a real network must never be loaded this way (see ARCHITECTURE → security).
+- **Gemini capacity errors (503s/timeouts) on the larger models** led to the cheap model, `gemini-3.5-flash-lite`, being the working default: it runs classification, extraction and, in the deploy settings, Stage 2 of research. The two committed research seeds were generated with Stage 2 forced onto it (`--fast-stage2`). Synthesis quality on the lite model is lower than the strong chain intends.
+- **LLM output can be wrong.** Research claims and results figures are checked against the source page text, and unverifiable ones are dropped or flagged, but classification (category/priority/summary) is unchecked model output — spot-check it.
+- **Results extraction** covers TMPV and ITC only; DEEPAKNTR's filing is a scanned image and was not OCR'd. EBITDA is derived (not stated) and flagged; year-over-year changes distorted by discontinued operations (TMPV) are flagged, not corrected.
+- **Research coverage** is two seeded tickers plus whatever has been analysed live; analysing a new ticker takes minutes and is capped per day.
+- **Operations are prototype-grade**: one in-process worker, file-based state, no scheduler, a single shared access code, no user accounts.
