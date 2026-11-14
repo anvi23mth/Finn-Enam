@@ -1,0 +1,51 @@
+{
+  "ticker": "POLYCAB",
+  "fetched_through": "2026-11-14T13:31:22",
+  "announcements": [
+    {
+      "ticker": "POLYCAB",
+      "datetime": "2026-11-06T22:02:15",
+      "subject": "Announcement Under Regulation 30 (LODR) - Analyst(S) / Investor(S) Meet - Intimation",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=72c96165-b9ed-4b62-ac86-80cc440b32ff.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "POLYCAB",
+      "datetime": "2026-11-03T15:55:35",
+      "subject": "Announcement Under Regulation 30 (LODR)-Allotment Of ESOP / ESPS",
+      "details": "Disclosure of allotment of Equity shares pursuant to Employee Stock Options Scheme, 2018 of Polycab India Limited",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c644005-9bd2-42f5-b61b-556e8c885e2d.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "POLYCAB",
+      "datetime": "2026-10-30T12:17:22",
+      "subject": "Corporate Insolvency Resolution Process (CIRP)-Updates - Corporate Insolvency Resolution Process  (CIRP)",
+      "details": "On October 30, 2026, NCLAT allowed Polycab’s appeal and set aside NCLT Ahmedabad order.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3d1ba29-6132-47b7-9f3b-79a294e53189.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "POLYCAB",
+      "datetime": "2026-10-28T17:41:24",
+      "subject": "Announcement Under Regulation 30 (LODR) - Analyst(S) / Investor(S) Meet - Intimation",
+      "details": "Polycab to meet William Blair & Company on November 3, 2026, virtually in Mumbai.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=26cdd582-7e95-4019-88b5-fdff3d5e60e1.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "POLYCAB",
+      "datetime": "2026-10-28T10:21:03",
+      "subject": "Corporate Insolvency Resolution Process (CIRP)-Updates - Corporate Insolvency Resolution Process  (CIRP)",
+      "details": "NCLAT ordered MSCI not to delist Polycab until order pronouncement, dated October 27, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ead5c0dc-e464-4e53-8006-b861205174a9.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

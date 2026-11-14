@@ -1,0 +1,51 @@
+{
+  "ticker": "ITC",
+  "fetched_through": "2026-11-14T13:31:13",
+  "announcements": [
+    {
+      "ticker": "ITC",
+      "datetime": "2026-11-13T15:16:15",
+      "subject": "Announcement under Regulation 30 (LODR)-Allotment of ESOP / ESPS",
+      "details": "Allotment of Shares under the Company''s Employee Stock Option Schemes",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=549cc510-62f9-4022-b62b-58e3e72ad671.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ITC",
+      "datetime": "2026-11-04T12:21:04",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8e3b4c06-ccd5-4aac-a57b-0abf323713d5.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ITC",
+      "datetime": "2026-11-02T18:44:16",
+      "subject": "Announcement under Regulation 30 (LODR)-Scheme of Arrangement",
+      "details": "ITC board approved merger of wholly owned subsidiary Sproutlife Foods, effective 1 April 2026, subject to approvals.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=32ee21d2-58a3-45c8-83af-c109a9bd080d.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ITC",
+      "datetime": "2026-11-02T18:31:10",
+      "subject": "Unaudited Financial Results - Media Statement And Presentation",
+      "details": "ITC announced Q2 FY27 unaudited results, with 19% revenue growth and segment updates.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff62231c-b3bd-48d1-a643-8b379a46cb57.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ITC",
+      "datetime": "2026-11-02T18:24:48",
+      "subject": "Unaudited Financial Results Of The Company For The Quarter And Six Months Ended 30Th September, 2026",
+      "details": "ITC Q2 FY27 results approved; Sproutlife amalgamation and Century Pulp acquisition disclosed.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6ad82347-ac2d-4385-ae80-3cd07c428f69.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

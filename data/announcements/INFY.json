@@ -1,0 +1,51 @@
+{
+  "ticker": "INFY",
+  "fetched_through": "2026-11-14T13:31:07",
+  "announcements": [
+    {
+      "ticker": "INFY",
+      "datetime": "2026-11-12T11:21:41",
+      "subject": "Six Promising Researchers Win The Infosys Prize 2026 Awarded By The Infosys Science Foundation",
+      "details": "Infosys Science Foundation announces six winners of Infosys Prize 2026 on November 12, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2d26cac8-d5b5-4be4-ba93-d18f80ee8c0c.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "INFY",
+      "datetime": "2026-11-04T21:03:26",
+      "subject": "Investor Conference",
+      "details": "Infosys management to attend three investor events on Nov 16, 17 and 19, 2026 in Mumbai and Singapore.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=83d29514-eb26-466a-a60f-ddc7064a56bf.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "INFY",
+      "datetime": "2026-10-30T18:52:32",
+      "subject": "Infosys Announces Expansion Of Pocharam Development Center In Hyderabad",
+      "details": "Infosys expands Pocharam Hyderabad center with 1.1 million sq. ft. block and 10,000 seats.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de1d0c27-5ad6-474d-b3b4-44084de360c0.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "INFY",
+      "datetime": "2026-10-29T15:14:07",
+      "subject": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0335049c-de81-4e49-b02a-5887dfa42644.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "INFY",
+      "datetime": "2026-10-29T15:07:23",
+      "subject": "Winners Of Qorus-Infosys Finacle Banking Innovation Awards 2026 Announced",
+      "details": "Infosys Finacle announces 2026 Qorus banking innovation awards winners; 37 institutions recognized across ten categories.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=35b12a6d-e165-42d3-a0d1-cbe42fe2a99f.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

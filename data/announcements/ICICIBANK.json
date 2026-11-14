@@ -1,0 +1,51 @@
+{
+  "ticker": "ICICIBANK",
+  "fetched_through": "2026-11-14T13:31:04",
+  "announcements": [
+    {
+      "ticker": "ICICIBANK",
+      "datetime": "2026-11-12T18:04:39",
+      "subject": "Disclosure Under Regulation 30 Read With Para A Of Schedule III And Regulation 46(2) Of The SEBI (LODR) Regulations, 2015",
+      "details": "ICICI Bank to hold debt market investor meetings on November 17, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fc247b09-13fa-455a-90ab-e43e40f21412.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ICICIBANK",
+      "datetime": "2026-11-09T13:32:31",
+      "subject": "Disclosure Under Regulation 30 Read With Para A Of Schedule III And Regulation 46(2) Of The SEBI (LODR) Regulations, 2015",
+      "details": "ICICI Bank disclosed investor meets from November 16-19, 2026, including CLSA, Investec, JM Financial, and Morgan Stanley events.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5d528b54-cd3f-477f-9539-fff4ab659b43.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ICICIBANK",
+      "datetime": "2026-11-05T11:17:32",
+      "subject": "Announcement under Regulation 30 (LODR)-Allotment of ESOP / ESPS",
+      "details": "Allotment of 36,937 equity shares at FV Rs.2 each on November 5, 2026 under ICICI Bank Employees Stock Unit Scheme - 2022",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1bef81c5-3757-44f3-a2c9-8abc7629ebe6.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ICICIBANK",
+      "datetime": "2026-11-03T10:17:49",
+      "subject": "Announcement under Regulation 30 (LODR)-Allotment of ESOP / ESPS",
+      "details": "Allotment of 62,879 equity shares at FV Rs. 2 each under ICICI Bank Employees Stock option Scheme 2000",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11412c86-bb83-44e5-bd5d-4c5ec3b415bb.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ICICIBANK",
+      "datetime": "2026-11-01T09:35:06",
+      "subject": "Disclosure Under Regulation 30 Of The SEBI (Listing Obligations                             And Disclosure Requirements) Regulations, 2015",
+      "details": "Telangana GST appellate order confirms ₹6,95,418 penalty; ICICI Bank will appeal.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0b2bb991-d0b5-491a-ab93-08cd260db05e.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

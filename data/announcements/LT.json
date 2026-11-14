@@ -1,0 +1,51 @@
+{
+  "ticker": "LT",
+  "fetched_through": "2026-11-14T13:31:14",
+  "announcements": [
+    {
+      "ticker": "LT",
+      "datetime": "2026-11-09T10:35:44",
+      "subject": "Announcement under Regulation 30 (LODR) - Bagging/receiving of order(s) or contract(s)",
+      "details": "L&T wins Noida Metro order for 15.1 km viaduct, 10 stations, to complete in 36 months.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8269aea9-54c0-4a24-a615-6dda0ab8f054.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "LT",
+      "datetime": "2026-11-06T15:33:17",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "L&T to attend Goldman Sachs, CITIC CLSA and JM Financial investor meetings in Mumbai on Nov 12, 16 and 17, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9e23e65f-ffbd-4e61-be8c-a57227966831.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "LT",
+      "datetime": "2026-11-04T18:48:07",
+      "subject": "Intimation Under SEBI (LODR) Regulations, 2015 - Change In Corporate Office Address Of Registrar And Share Transfer Agent",
+      "details": "KFin Technologies shifts corporate office to Kokapet, Telangana from December 1, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1a1e858a-92de-4d39-9433-a8d3d62ccd22.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "LT",
+      "datetime": "2026-11-02T17:53:21",
+      "subject": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d8a69245-c1f1-4bc3-a7c9-9dbc5795aae8.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "LT",
+      "datetime": "2026-11-02T10:16:54",
+      "subject": "Announcement under Regulation 30 (LODR) - Bagging/receiving of order(s) or contract(s)",
+      "details": "L&T wins significant residential and commercial building orders in Mumbai, Bengaluru and Hyderabad.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=86cb66bf-7e97-4d77-a803-40ae7750d8f2.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

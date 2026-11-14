@@ -1,0 +1,51 @@
+{
+  "ticker": "TCS",
+  "fetched_through": "2026-11-14T13:31:08",
+  "announcements": [
+    {
+      "ticker": "TCS",
+      "datetime": "2026-11-09T16:59:25",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "TCS schedules analyst/institutional meetings on 16 Nov 2026 in Mumbai and 18-19 Nov 2026 in Singapore.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0a1bde0-4d57-46c0-ac73-940d5ff093d7.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TCS",
+      "datetime": "2026-11-04T11:00:53",
+      "subject": "Press Release - TCS Enterprise AI Study: 84% Say Productivity Is AI'S Top Benefit; Just 10% Let AI Act Without Human Oversight",
+      "details": "TCS AI study finds 84% cite productivity gains; only 10% allow autonomous AI decisions.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4b1ab7e2-a0c4-40d9-8758-64975aea90d9.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TCS",
+      "datetime": "2026-11-03T18:44:23",
+      "subject": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "details": "Newspaper Advertisement pertaining to Notice of Email Registration",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=878869fb-5e51-4867-b640-2120edd34b6c.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TCS",
+      "datetime": "2026-10-19T11:30:41",
+      "subject": "Press Release - TCS Bancs For Treasury Marks Its Entry Into Sri Lanka With Indian Bank",
+      "details": "TCS BaNCS for Treasury enters Sri Lanka with Indian Bank’s Colombo branch on October 19, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b12e07f0-028d-4c07-a018-036951644a15.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TCS",
+      "datetime": "2026-10-16T16:29:42",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "TCS scheduled a non-deal roadshow in the USA from October 22-27, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=18a00aec-26f8-4738-9e5b-d33abe1ff616.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "ticker": "ASIANPAINT",
+  "fetched_through": "2026-11-14T13:31:17",
+  "announcements": [
+    {
+      "ticker": "ASIANPAINT",
+      "datetime": "2026-11-09T18:04:50",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "Asian Paints to meet Morgan Stanley and BlackRock in Singapore on 18-19 November 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8a988798-8c55-42be-a6ce-6cb97abd6d5c.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ASIANPAINT",
+      "datetime": "2026-11-06T21:58:36",
+      "subject": "Announcement under Regulation 30 (LODR)-Change in Directorate",
+      "details": "Shareholders approved Leo Puri as independent director; he becomes chairman from 23 January 2027.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c6c189db-e010-4c6e-a997-b50d6d33767a.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ASIANPAINT",
+      "datetime": "2026-11-06T21:41:36",
+      "subject": "Shareholder Meeting / Postal Ballot-Outcome of Postal_Ballot",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dd885c0b-f490-4da2-9fcc-a0ef6cfb76a3.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ASIANPAINT",
+      "datetime": "2026-11-06T21:37:13",
+      "subject": "Shareholder Meeting / Postal Ballot-Scrutinizer\"s Report",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ddc90afe-51c7-4e86-984c-dbb5d641c44e.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "ASIANPAINT",
+      "datetime": "2026-11-03T18:15:27",
+      "subject": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "details": "Find enclosed the transcript of the investor conference call held on 29th October 2026 on the performance of the Company for the quarter and half …",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ee7e6efe-1f9b-4b5e-bff7-1da18902ffeb.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

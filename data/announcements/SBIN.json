@@ -1,0 +1,51 @@
+{
+  "ticker": "SBIN",
+  "fetched_through": "2026-11-14T13:31:05",
+  "announcements": [
+    {
+      "ticker": "SBIN",
+      "datetime": "2026-11-11T19:02:07",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=068644d8-6a79-4fb7-a225-15c42c0d08a1.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "SBIN",
+      "datetime": "2026-11-11T19:00:37",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b3e4091-386f-4b5d-87d5-1d839654249e.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "SBIN",
+      "datetime": "2026-11-07T18:22:31",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "details": "SBI released Q2FY27 analyst meet transcript covering results, growth guidance, margins, expenses, and YONO initiatives.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91e92b69-f201-4d3b-9060-9f75feee9a58.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "SBIN",
+      "datetime": "2026-11-06T15:51:21",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "details": "SBI disclosed institutional investor meetings in New York on 5 November 2026 hosted by CLSA Securities.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7117581f-eff4-47fe-8b67-bf7a62cc2fe5.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "SBIN",
+      "datetime": "2026-11-04T16:25:35",
+      "subject": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "details": "Newspaper publication of Financial Results for Q2FY27",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c3bd4fa-4b9d-47bb-983b-8bdc848e5945.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "ticker": "TMPV",
+  "fetched_through": "2026-11-14T13:31:10",
+  "announcements": [
+    {
+      "ticker": "TMPV",
+      "datetime": "2026-11-13T21:46:02",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "details": "Audio recording of Q2 and H1 FY2026-27 earnings conference call is now available on the company website.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=374a661d-a58c-4e0c-bffe-b3739c41bb3d.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TMPV",
+      "datetime": "2026-11-13T16:46:02",
+      "subject": "Announcement under Regulation 30 (LODR)-Investor Presentation",
+      "details": "Pursuant to Regulation 30 of the SEBI (LODR) Regulations, 2015, we are enclosing herewith the Investor presentation to be made to the Analyst/ Investors on …",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ad61cc44-2d46-43ca-b854-0a29ca81fda4.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TMPV",
+      "datetime": "2026-11-13T16:30:23",
+      "subject": "Intimation Of Outcome Of Board Meeting Under Regulations 33 And 52 Of The SEBI (LODR) Regulations 2015",
+      "details": "Board approved Q2 FY27 results on Nov 13, 2026; consolidated revenue rose 34% to ₹96,920 crore.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c658ceb8-4864-4ec3-8d1b-a3e255ba1212.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TMPV",
+      "datetime": "2026-11-13T16:21:54",
+      "subject": "Board Meeting Outcome for Board Meeting Outcome For Financial Results For The Second Quarter Ended September 30, 2026",
+      "details": "Board approved Q2 FY27 results on Nov 13; consolidated revenue ₹96.9K Cr, PBT ₹403 Cr.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5d9296fe-407a-4fad-b953-47e48a88e94c.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TMPV",
+      "datetime": "2026-11-13T16:20:52",
+      "subject": "Board Meeting Outcome for Board Meeting Outcome For Financial Results For The Second Quarter Ended September 30, 2026",
+      "details": "Board approved Q2 FY27 results on Nov. 13; consolidated revenue ₹96.9K Cr, JLR launched three EVs.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ad660e59-8a4b-4599-9d67-9130d8f339b8.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

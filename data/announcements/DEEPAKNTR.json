@@ -1,0 +1,51 @@
+{
+  "ticker": "DEEPAKNTR",
+  "fetched_through": "2026-11-14T13:31:20",
+  "announcements": [
+    {
+      "ticker": "DEEPAKNTR",
+      "datetime": "2026-11-04T11:11:51",
+      "subject": "Submission Of Earning Concall Transcript",
+      "details": "Deepak Nitrite filed Q2/H1 FY27 call transcript; revenue ₹3,091 crore, EBITDA ₹643 crore, record performance and commissioning updates.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5dfbdab4-d040-4a99-b694-bbe26f015f14.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "DEEPAKNTR",
+      "datetime": "2026-10-30T18:43:39",
+      "subject": "Submission Of Audio/Video Recording Of Earnings Conference Call",
+      "details": "Audio recording of Q2 and H1 FY2027 earnings conference call uploaded on October 30, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=21b018cf-36f2-48de-9bef-0fd35ec94607.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "DEEPAKNTR",
+      "datetime": "2026-10-29T22:05:50",
+      "subject": "Q2 & H1 FY 2026-2027 Results Presentation",
+      "details": "Q2 FY27 revenue ₹3,091 crore, EBITDA ₹643 crore; H1 revenue ₹5,682 crore, PC complex 27% EPC complete.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=17448e49-e6d5-4616-be82-86a78e83bb8c.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "DEEPAKNTR",
+      "datetime": "2026-10-29T18:52:40",
+      "subject": "Unaudited Financial Result For The Quarter And Half Year Ended 30Th September, 2026",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a59f1b7a-6692-4d45-9886-f842d7faf839.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "DEEPAKNTR",
+      "datetime": "2026-10-16T22:50:08",
+      "subject": "Schedule Of Q2 & H1 FY 2027 Earnings Conference Call",
+      "details": "Deepak Nitrite to host Q2 and H1 FY27 earnings call on 30 October 2026 at 3:30 PM IST.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4d2b0a11-d089-428a-ac4f-48653e5eab08.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "ticker": "PIDILITIND",
+  "fetched_through": "2026-11-14T13:31:18",
+  "announcements": [
+    {
+      "ticker": "PIDILITIND",
+      "datetime": "2026-11-11T17:17:34",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=19a29f8d-1072-4a88-8f75-010b3cfd0d84.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "PIDILITIND",
+      "datetime": "2026-11-05T17:26:17",
+      "subject": "Transcript Of Earnings Call",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ba30191-cee1-420b-a1c5-8e1864b29711.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "PIDILITIND",
+      "datetime": "2026-10-30T14:11:51",
+      "subject": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b7679fc5-9d64-49e1-a834-318f1131b07e.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "PIDILITIND",
+      "datetime": "2026-10-29T18:49:52",
+      "subject": "Audio Recording Q2FY27 Earnings Call",
+      "details": "Q2 FY27 earnings call audio recording uploaded on 29 October 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=750fabe2-8646-4db4-9942-46e33658336a.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "PIDILITIND",
+      "datetime": "2026-10-28T19:30:08",
+      "subject": "Earnings Presentation",
+      "details": "Pidilite issued Q2 FY27 earnings presentation on 28 Oct 2026; sales rose 21.1%, PAT grew 7.1%.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ec932e4d-dc17-4252-b411-7ccf951f4c54.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

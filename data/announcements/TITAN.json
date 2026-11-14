@@ -1,0 +1,51 @@
+{
+  "ticker": "TITAN",
+  "fetched_through": "2026-11-14T13:31:26",
+  "announcements": [
+    {
+      "ticker": "TITAN",
+      "datetime": "2026-11-12T18:41:08",
+      "subject": "Intimation of Repayment of Commercial Paper (CP)",
+      "details": "Titan fully redeemed ₹1,000 crore commercial paper issued on 14 August 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77999e05-06f6-4ed6-9998-f9a775dc5c4f.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TITAN",
+      "datetime": "2026-11-12T15:24:10",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=71268b4d-2f12-447d-bf1e-28310f485d17.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TITAN",
+      "datetime": "2026-11-11T14:37:34",
+      "subject": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=daa6c172-771a-4af5-b4b3-9813fdf7536a.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TITAN",
+      "datetime": "2026-11-09T15:03:37",
+      "subject": "Intimation of Repayment of Commercial Paper (CP)",
+      "details": "Titan fully redeemed ₹850 crore commercial papers; maturity proceeds paid on 9 November 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f1adda02-5720-474e-8cd2-5632e9218b7d.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TITAN",
+      "datetime": "2026-11-09T14:53:11",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ced01c36-48bf-4c4c-a74b-d17875a41c27.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

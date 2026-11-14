@@ -1,0 +1,51 @@
+{
+  "ticker": "SUNPHARMA",
+  "fetched_through": "2026-11-14T13:31:11",
+  "announcements": [
+    {
+      "ticker": "SUNPHARMA",
+      "datetime": "2026-11-05T15:57:15",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=50d58706-f181-4522-8799-b05f65780ce8.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "datetime": "2026-11-04T19:19:52",
+      "subject": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fe431adc-0e1a-48ee-9c2b-b6e39cba04e4.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "datetime": "2026-11-02T20:58:13",
+      "subject": "Rumour verification - Regulation 30(11)",
+      "details": "Sun Pharma clarifies Assam plant halt report concerns August 2026 developments, not a new event.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1bbe06aa-8721-4e47-b0b1-985a91279ce9.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "datetime": "2026-11-02T14:23:57",
+      "subject": "Clarification Sought From Sun Pharmaceutical Industries Ltd",
+      "details": "Exchange has sought clarification from Sun Pharmaceutical Industries Ltd on November 2, 2026, with reference to news appeared in https://www.thehindu.com/ dated October 30, 2026 quoting …",
+      "category": "",
+      "attachment": "/company/id/3245/",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "datetime": "2026-10-31T20:14:03",
+      "subject": "Completion And Results Of Postal Ballot Dated 01 October 2026",
+      "details": "Postal ballot completed on 31 Oct 2026; members approved ESOP 2026, borrowing limit and related resolutions.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e87d46d8-c447-4fc2-9b82-a95a8a922b0f.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

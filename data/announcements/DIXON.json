@@ -1,0 +1,51 @@
+{
+  "ticker": "DIXON",
+  "fetched_through": "2026-11-14T13:31:23",
+  "announcements": [
+    {
+      "ticker": "DIXON",
+      "datetime": "2026-11-05T17:19:14",
+      "subject": "Announcement under Regulation 30 (LODR)-Allotment of ESOP / ESPS",
+      "details": "Company has allotted 37,750 equity shares under DIXON ESOP 2020 on 05th November 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bdab8a75-541a-4c8e-bd67-a4c1e81d0a22.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "DIXON",
+      "datetime": "2026-11-05T16:36:05",
+      "subject": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "details": "Announcement under Regulation 30 of SEBI LODR- Transcript of the Q2 FY 27 Earnings Conference Call held on 30th October, 2026",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=995a3a71-4a1e-4c1f-a29a-6c6747e4ca10.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "DIXON",
+      "datetime": "2026-11-03T17:30:11",
+      "subject": "Announcement Under Regulation 30 Of SEBI LODR- Intimation Regarding Change In The Corporate Office Of The Registrar And Share Transfer Agent (RTA) Of The Company",
+      "details": "KFin Technologies shifts corporate office effective 1 December 2026; registered office unchanged.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d219f169-7be4-4d16-9697-1251e8767e69.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "DIXON",
+      "datetime": "2026-11-03T11:22:54",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "details": "Dixon Technologies held a one-on-one virtual meeting with DSP Mutual Fund on 2 November 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=12486329-18b7-4e94-a0e6-4b851e757235.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "DIXON",
+      "datetime": "2026-10-31T19:34:28",
+      "subject": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "details": "Announcement under Regulation 30 of SEBI LODR- Copy of Newspaper publication of Un-audited Financial Results (Standalone & Consolidated) of the Company for the quarter and …",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2336e442-6dfb-4af9-81c4-09a8770d2c94.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

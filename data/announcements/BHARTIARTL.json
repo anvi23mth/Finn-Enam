@@ -1,0 +1,51 @@
+{
+  "ticker": "BHARTIARTL",
+  "fetched_through": "2026-11-14T13:31:15",
+  "announcements": [
+    {
+      "ticker": "BHARTIARTL",
+      "datetime": "2026-11-12T17:37:34",
+      "subject": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "details": "Transcript of the Earnings Call dated November 6, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ff3e14f-7e97-4074-89c7-049408721c5e.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "BHARTIARTL",
+      "datetime": "2026-11-11T18:34:15",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "Disclosure under Regulation 30 of SEBI (LODR) Regulations, 2015 ('SEBI Listing Regulations') - Schedule of analysts/ institutional investors' meet",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ae574f7a-4573-459b-9090-59d84bf2d02a.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "BHARTIARTL",
+      "datetime": "2026-11-06T16:11:17",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "details": "Bharti Airtel uploaded audio/video recording of its November 6, 2026 Q2 earnings call.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0ebd50a-d1d2-4c02-8be7-cf5e771bb8ff.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "BHARTIARTL",
+      "datetime": "2026-11-06T14:50:54",
+      "subject": "Disclosure Under Regulation 30 Of SEBI (LODR), Regulations, 2015",
+      "details": "DoT levied penalties of Rs.1.60 lakh and Rs.1.02 lakh for subscriber verification lapses.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=82e352f2-9e9d-4073-af20-2f36da07dd99.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "BHARTIARTL",
+      "datetime": "2026-11-06T13:05:50",
+      "subject": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "details": "Publication of Newspaper Advertisements w.r.t Audited Financial Results for the second quarter (Q2) and six months ended September 30, 2026",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=74915aaa-1875-4cc4-af7c-1684eabee116.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

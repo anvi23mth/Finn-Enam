@@ -1,0 +1,51 @@
+{
+  "ticker": "HDFCBANK",
+  "fetched_through": "2026-11-14T13:31:02",
+  "announcements": [
+    {
+      "ticker": "HDFCBANK",
+      "datetime": "2026-11-13T16:30:11",
+      "subject": "Announcement under Regulation 30 (LODR)-Change in Directorate",
+      "details": "HDFC Bank reappointed V. Srinivasa Rangan as Executive Director for one year from November 23, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7b9eb8a8-fa88-453b-810f-b55034589aac.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "HDFCBANK",
+      "datetime": "2026-11-12T17:27:27",
+      "subject": "Disclosure Under Regulation 30 Of The SEBI (LODR) Regulations, 2015",
+      "details": "RBI approved reappointment of V. Srinivasa Rangan as Executive Director for one year from November 23, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6df1f05c-9926-47ce-9896-94c41bdb71ab.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "HDFCBANK",
+      "datetime": "2026-11-12T14:21:58",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "Intimation of Schedule of Analyst/Institutional Investor Meetings under Regulation 30 of the SEBI (LODR) Regulations, 2015",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d01ef203-cd61-4f19-b88b-7a373979e5b5.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "HDFCBANK",
+      "datetime": "2026-11-06T22:28:09",
+      "subject": "Shareholder Meeting / Postal Ballot-Outcome of Postal_Ballot",
+      "details": "Shareholders approved Anup Bagchi as Director and MD & CEO on November 6, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0926e958-96d9-4537-ae2b-188dfe3eb1d1.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "HDFCBANK",
+      "datetime": "2026-10-31T22:14:41",
+      "subject": "Announcement under Regulation 30 (LODR)-Change in Management",
+      "details": "Mr. Sanjay D’Souza superannuated on October 31, 2026, ceasing as Group Head, Business Banking.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b36ff756-1cf7-44a3-9b2c-4583e7e0e792.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

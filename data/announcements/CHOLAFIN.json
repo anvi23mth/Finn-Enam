@@ -1,0 +1,51 @@
+{
+  "ticker": "CHOLAFIN",
+  "fetched_through": "2026-11-14T13:31:24",
+  "announcements": [
+    {
+      "ticker": "CHOLAFIN",
+      "datetime": "2026-11-09T18:54:18",
+      "subject": "Shareholder Meeting / Postal Ballot-Notice of Postal Ballot",
+      "details": "",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3ceef3ba-18f9-4d77-a990-fe2801500231.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "CHOLAFIN",
+      "datetime": "2026-11-04T18:41:46",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "details": "Earnings call transcript filed; board approved up to ₹5,000 crore capital raise, subject to approvals.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fac6e26a-3d87-457c-9832-84a2228e0a01.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "CHOLAFIN",
+      "datetime": "2026-11-03T22:11:23",
+      "subject": "Intimation Of Change In Corporate Office Address Of The RTA",
+      "details": "KFin Technologies changes corporate office address effective 1 December 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77c6f181-eccd-4c46-a7b9-c37153b074d5.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "CHOLAFIN",
+      "datetime": "2026-11-03T21:48:42",
+      "subject": "Intimation Of Change In Corporate Office Address Of The RTA Of The Company",
+      "details": "Cholamandalam filed quarterly compliance certificates and noted KFin Technologies’ new corporate office from 1 December 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=272509dd-ec5c-497b-bfc0-2e5e45d9994e.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "CHOLAFIN",
+      "datetime": "2026-10-29T22:13:01",
+      "subject": "Announcement under Regulation 30 (LODR)-Allotment of ESOP / ESPS",
+      "details": "Intimation of allotment of equity shares on exercise of ESOPs",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ae42f10c-d2a1-46d3-a371-2c47ddf5f4a5.pdf",
+      "source": "screener.in"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "ticker": "TMCV",
+  "fetched_through": "2026-11-14T13:32:20",
+  "announcements": [
+    {
+      "ticker": "TMCV",
+      "datetime": "2026-11-12T18:16:19",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "The details of the physical group meeting scheduled with ....",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91cc313f-62ce-4a73-a7e1-85948862f9a2.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TMCV",
+      "datetime": "2026-11-12T17:13:08",
+      "subject": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "details": "Tata Motors schedules physical analyst and institutional investor meetings on November 17, 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6d520a4b-02ef-4a8f-9bc3-1a006f59e697.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TMCV",
+      "datetime": "2026-11-09T21:31:16",
+      "subject": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "details": "TML CV Holdings reached 96.25% of Iveco; payment on 13 November 2026 and squeeze-out to begin.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f4bad78d-63fa-461b-ba1f-0b93ce7f4ae8.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TMCV",
+      "datetime": "2026-11-07T00:37:20",
+      "subject": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "details": "Tata Motors subsidiary reached 96.29% in Iveco offer; squeeze-out begins, payment for tendered shares on 13 Nov 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b59a39ec-9f76-4ea1-8b13-d9b453422a10.pdf",
+      "source": "screener.in"
+    },
+    {
+      "ticker": "TMCV",
+      "datetime": "2026-11-01T12:51:33",
+      "subject": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "details": "Tata Motors commercial vehicle sales rose 27% YoY to 47,652 units in October 2026.",
+      "category": "",
+      "attachment": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0b3aebb9-5a60-4c18-8a73-ba2582618c35.pdf",
+      "source": "screener.in"
+    }
+  ]
+}
