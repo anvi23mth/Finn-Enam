@@ -1,7 +1,7 @@
 import type { Announcement } from './types'
 // Mock feed shaped like the NSE corporate-announcements API. Production: poll NSE/BSE every few minutes and classify.
 export const announcements: Announcement[] = [
-  { id:'a1', t:'TATAMOTORS', hoursAgo:2, cat:'management_change', title:'Appointment of Chief Financial Officer', person:'Sameer Kulkarni', summary:'Board approves Sameer Kulkarni as CFO effective 1 Dec; current CFO moves to advisory role.' },
+  { id:'a1', t:'TMPV', hoursAgo:2, cat:'management_change', title:'Appointment of Chief Financial Officer', person:'Sameer Kulkarni', summary:'Board approves Sameer Kulkarni as CFO effective 1 Dec; current CFO moves to advisory role.' },
   { id:'a2', t:'INFY', hoursAgo:5, cat:'results', title:'Unaudited Consolidated Results for the quarter ended 30 Sep 2026',
     results:[{k:'Revenue',cur:41890,qoq:2.9,yoy:7.1},{k:'EBITDA',cur:9320,qoq:3.4,yoy:8.9},{k:'PBT',cur:8610,qoq:1.8,yoy:9.5},{k:'PAT',cur:6470,qoq:1.2,yoy:8.2}] },
   { id:'a3', t:'DEEPAKNTR', hoursAgo:7, cat:'capex', title:'Board approves ₹2,400 cr expansion of phenolics complex', summary:'Brownfield capacity addition; commissioning guided for FY28. Funded by internal accruals plus debt.' },

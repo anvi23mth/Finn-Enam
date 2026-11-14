@@ -17,7 +17,7 @@ export const research: Record<string, Research> = {
     promises:[
       {q:'Q1 FY26',said:'Revenue growth 1–3% (CC) for the year',got:'Q1: 3.8% YoY CC',verdict:'beat'},
       {q:'Q2 FY26',said:'EBIT margin in 20–22% band',got:'20.8%',verdict:'met'},
-      {q:'Q3 FY26',said:'"Discretionary spend to recover in H2"',got:'Retail & comms flat QoQ',verdict:'missed'},
+      {q:'Q3 FY26',said:'Discretionary spend to recover in H2',got:'Retail & comms flat QoQ',verdict:'missed'},
       {q:'Q4 FY26',said:'Large-deal TCV > $3bn per quarter',got:'$4.1bn',verdict:'beat'}],
     bull:['Margin recovery with utilisation headroom','Large-deal pipeline gives multi-year visibility','Net cash balance sheet funds buybacks'],
     bear:['Discretionary-spend recovery repeatedly pushed out','Receivable days creeping up','AI deflation could shrink the renewal pricing base']},
