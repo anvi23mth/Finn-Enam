@@ -6,7 +6,7 @@ const API = (import.meta.env.VITE_API_BASE as string | undefined) ?? ''
 const KEY = (t: string) => `finn.research.${t}`
 const CODE_KEY = 'finn.accessCode'
 const JOB_KEY = 'finn.job'   // {id, ticker} — only ever used to RESUME POLLING a job; never to start or replay one
-const SEEDS = ['INFY', 'DEEPAKNTR']   // static fallback list when the backend is unreachable (files in /seed/research)
+const SEEDS = ['INFY', 'DEEPAKNTR', 'TITAN', 'TMPV']   // static fallback list when the backend is unreachable (files in /seed/research)
 
 /* ---- real research served by the FINN backend (GET /research/{ticker}); seeds also ship as static files ---- */
 interface Cite { doc: string; page: number; quote: string; status?: string }

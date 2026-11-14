@@ -5,6 +5,7 @@ from . import config, llm
 from .docs import Doc
 from .log import log
 from .verify import verify_cite, numbers
+from .ledger import fmt_range
 
 V = "synth-v2"
 
@@ -64,7 +65,7 @@ def compact(facts: list, ledger: dict, max_chars: int) -> str:
 def ledger_text(ledger: dict) -> str:
     out = [f"Reported data runs through {ledger['data_through']}."]
     for p in ledger["pairs"]:
-        rng = p["direction"] if p["low"] is None and p["high"] is None else (f"{p['low']:g}" if p["low"] == p["high"] else f"{p['low']:g}-{p['high']:g}")
+        rng = fmt_range(p)
         act = f" ACTUAL [{p['actual']['doc'].split('__')[-1]} p{p['actual']['page']}] \"{p['actual']['quote']}\"" if p.get("actual") else ""
         out.append(f"{p['id']}: {p['metric']} for {p['covers']} guided {rng} {p.get('unit') or ''} in {p['quarter_said']} "
                    f"[{p['promised']['doc'].split('__')[-1]} p{p['promised']['page']}] \"{p['promised']['quote']}\" "

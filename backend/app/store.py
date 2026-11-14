@@ -25,6 +25,12 @@ def load(ticker: str, full: bool = False) -> dict | None:
         return None
     data = json.loads(hit[0].read_text())
     data["source"] = hit[1]
+    if not data.get("company"):          # a live run made without ingest has no company name; borrow it from the committed seed
+        seed = config.SEED_DIR / f"{ticker}.json"
+        try:
+            data["company"] = json.loads(seed.read_text()).get("company") if seed.exists() else None
+        except json.JSONDecodeError:
+            pass
     data.setdefault("generated_at", datetime.fromtimestamp(hit[0].stat().st_mtime, timezone.utc).isoformat(timespec="seconds"))
     if not full:      # trim bulky provenance; ?full=true returns everything
         data.pop("ingest", None)

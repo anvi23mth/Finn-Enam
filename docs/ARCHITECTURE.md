@@ -114,7 +114,7 @@ All calls go through one wrapper (`backend/app/llm.py`): Gemini REST, JSON outpu
 
 **Routing and fallback.** The strong chain is `STRONG_MODEL` → each `STRONG_MODEL_FALLBACKS` model → the cheap model last, so a run always completes. A non-final model gets `STRONG_RETRIES` retries (with back-off, honouring the server's retry delay) before the next model is tried; the last model gets the full `LLM_MAX_RETRIES`. A server-requested wait above `LLM_MAX_WAIT`, or a daily-quota error, fails fast instead of sleeping. The model actually used and whether it was a fallback are recorded in every output. Classification and results extraction use the same chain starting from the cheap model (the larger fallbacks are only reached if it keeps failing). Calls run strictly one at a time, at least `LLM_MIN_INTERVAL` seconds apart.
 
-**What happened in practice.** The larger Gemini models were overloaded (503s, timeouts) during testing; the cheap model answered reliably. So the two committed research seeds were generated with Stage 2 forced onto the cheap model, and `backend/.env.deploy.example` sets it as the Stage-2 model for hosting. The local `.env.example` still lists the larger model first.
+**What happened in practice.** The larger Gemini models were overloaded (503s, timeouts) during testing; the cheap model answered reliably. So the four committed research seeds (INFY, DEEPAKNTR, TITAN, TMPV) were generated with Stage 2 forced onto the cheap model, and `backend/.env.deploy.example` sets it as the Stage-2 model for hosting. The local `.env.example` still lists the larger model first.
 
 **Caching.** Every call is cached on disk (`data/cache/llm`, git-ignored) under a key of model + prompt version + document hash + part + full prompt, so unchanged input never re-spends tokens; changing a prompt version invalidates it. Classification also skips items already in `classified.json`.
 
@@ -126,7 +126,7 @@ All calls go through one wrapper (`backend/app/llm.py`): Gemini REST, JSON outpu
 
 ## 4. Cloud
 
-**What is built:** nothing in this repo is deployed or provisioned — there is no Dockerfile, CI or infrastructure code. Locally: a Vite dev server (static React app) and one FastAPI process with an in-process single-worker job queue and file-based state. `backend/.env.deploy.example` records the intended hosted settings (cheap model for Stage 2, one retry, 60 s timeout, daily cap, access code, CORS allow-list). Two research seeds are committed so a fresh backend has content before anything is analysed.
+**What is built:** nothing is deployed yet. The repo contains deployment configuration only — `render.yaml` (Render blueprint for the backend), `vercel.json` (frontend) and `DEPLOY.md` — and no Dockerfile or CI. Locally: a Vite dev server (static React app) and one FastAPI process with an in-process single-worker job queue and file-based state. `backend/.env.deploy.example` records the intended hosted settings (cheap model for Stage 2, one retry, 60 s timeout, daily cap, access code, CORS allow-list). Four research seeds (INFY, DEEPAKNTR, TITAN, TMPV) are committed so a fresh backend has content before anything is analysed.
 
 **Production plan (not built), and why:**
 

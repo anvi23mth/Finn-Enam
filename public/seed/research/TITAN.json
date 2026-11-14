@@ -1,0 +1,729 @@
+{
+ "ticker": "TITAN",
+ "company": "Titan Company",
+ "generated_at": "2026-11-14T13:36:36+00:00",
+ "warnings": [],
+ "models": {
+  "cheap": "gemini-3.5-flash-lite",
+  "strong_requested": "gemini-3.8-flash",
+  "strong_used": "gemini-3.5-flash-lite",
+  "strong_chain": [
+   "gemini-3.5-flash-lite"
+  ],
+  "used_fallback": true,
+  "stage2_override": "manual --fast-stage2: Stage 2 forced onto gemini-3.5-flash-lite because the strong chain was overloaded"
+ },
+ "view": {
+  "business_snapshot": [
+   {
+    "text": "Titan Company Limited operates four reportable business segments: Watches, Jewellery, Eyecare, and Others.",
+    "kind": "text",
+    "fact_ids": [
+     "F17"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 332,
+      "quote": "identified four reportable segments Watches, Jewellery, Eyecare and Others",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "The Others segment includes Aerospace & Defence, Automation Solutions, Accessories, Fragrances, and Indian dress wear.",
+    "kind": "text",
+    "fact_ids": [
+     "F34"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 433,
+      "quote": "reportable segments Watches, Jewellery, Eyecare and Others, where ‘Others’ include Aerospace & Defence, Automation Solutions, Accessories, Fragrances and Indian dress wear.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "For FY26, standalone segment revenues (including other income) were Rs 5,233 crore for Watches, Rs 71,108 crore for Jewellery, and Rs 907 crore for Eyecare.",
+    "kind": "point",
+    "fact_ids": [
+     "F1",
+     "F19",
+     "F20",
+     "F21"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 172,
+      "quote": "Watches 5,233 4,576\nJewellery 71,108 49,227\nEyeCare 907 796\nOthers 508 406",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "financial_snapshot": [
+   {
+    "text": "For the standalone FY26 period, total revenue including other income was Rs 78,089 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F22"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 333,
+      "quote": "78,089 55,335 7,242 5,248",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "For the consolidated FY26 period, profit before taxes was ` 6,801 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F37"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 434,
+      "quote": "Profit before taxes 6,801 4,535",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "For the consolidated FY26 period, profit for the year was ` 5,073 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F38"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 436,
+      "quote": "Profit for the year (` crore) 5,073 3,337",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "trajectory": [
+   {
+    "text": "Standalone retained earnings grew from 11,427 crores in FY24 to 13,786 crores in FY25, and reached 17,440 crores in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F7"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 173,
+      "quote": "Retained Earnings - ` in crores 17,440 13,786 11,427",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "balance_sheet": [
+   {
+    "text": "For FY26, the standalone debt equity ratio was 0.30.",
+    "kind": "point",
+    "fact_ids": [
+     "F8"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 173,
+      "quote": "Debt Equity Ratio 0.30 0.47 0.40",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "As of 31 Mar 2026, standalone inventory turnover ratio was 2.13.",
+    "kind": "point",
+    "fact_ids": [
+     "F25"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 359,
+      "quote": "e) Inventory turnover ratio Cost of goods sold Average inventory 2.13 2.11 1%",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "As of 31 Mar 2026, standalone trade receivables turnover ratio was 82.66.",
+    "kind": "point",
+    "fact_ids": [
+     "F26"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 359,
+      "quote": "f) Trade Receivables Revenue from operations Average trade receivables 82.66 57.08 45%",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "cash_quality": [
+   {
+    "text": "For the standalone FY26 period, net cash generated from operating activities was ₹4,865 crore, while property, plant and equipment, intangible assets, and investment property purchases were ₹473 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F12",
+     "F15"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 287,
+      "quote": "Net cash generated/(used in) from operating activities A 4,865 (170)",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 287,
+      "quote": "Purchase of property, plant and equipment, intangible assets and (473) (382)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "For the consolidated FY26 period, net cash generated from operating activities was ₹5,590 crore.",
+    "kind": "point",
+    "fact_ids": [
+     "F32"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 378,
+      "quote": "Net cash generated from/(used in) operating activities A 5,590 (541)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "reconciliation": [
+   {
+    "text": "SCOPE MISMATCH: Standalone borrowings as of 31 Mar 2026 are reported as ₹420 crore (F10), ₹6,239 crore (F11), ₹3,313 crore (F23), and ₹25,547 crore (F24) under different line items or maturities. Consolidated borrowings are reported as ₹586 crore (F39, F40), ₹16,070 crore for Gold on loan (F31), and ₹93 crore non-current with ₹11,285 crore current (F30).",
+    "kind": "text",
+    "fact_ids": [
+     "F10",
+     "F11",
+     "F23",
+     "F24",
+     "F30",
+     "F31",
+     "F39",
+     "F40",
+     "F44"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 324,
+      "quote": "Outstanding borrowings of the Company as on 31st March 2026 (` crore)* 420",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 288,
+      "quote": "Closing balance 6,239 7,903",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 353,
+      "quote": "Gold on loan 3,313 11,001 - 14,314",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 353,
+      "quote": "Total non-derivative liabilities 11,748 11,659 2,142 25,547",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 375,
+      "quote": "Borrowings 14.1 93 595",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 375,
+      "quote": "Gold on loan 17.2 16,070 7,810",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 423,
+      "quote": "Outstanding borrowings of the Company as on 31st March 2026 (` crore)* 586",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 423,
+      "quote": "Total 586 785",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 470,
+      "quote": "- Gold on loan 5,161 5,090 4,938 7,043 14,314",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "narrative_vs_numbers": [
+   {
+    "text": "The auditors issued an unmodified report on the financial statements for the financial year ended 31st March 2026.",
+    "kind": "text",
+    "fact_ids": [
+     "F9"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 136,
+      "quote": "The Auditors’ Report on the financial statements of the Company for the financial year ended 31st March 2026 is unmodified",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "bull_case": [
+   {
+    "text": "Consolidated profit for the year grew strongly to ` 5,073 crore in FY26 compared to ` 3,337 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F38"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 436,
+      "quote": "Profit for the year (` crore) 5,073 3,337",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Standalone net cash generated from operating activities improved significantly to ₹4,865 crore in FY26 from an outflow of ₹170 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F12"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 287,
+      "quote": "Net cash generated/(used in) from operating activities A 4,865 (170)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "The company gained about 50 to 60 bps market share in FY26 versus FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F125"
+    ],
+    "cites": [
+     {
+      "doc": "concall__jun-2026",
+      "page": 15,
+      "quote": "gained about 50 to 60 bps is our sense on FY26 versus FY25.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "bear_case": [
+   {
+    "text": "The Others segment recorded an EBIT loss of (114) crore for the year ended 31st March 2026.",
+    "kind": "point",
+    "fact_ids": [
+     "F3"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 172,
+      "quote": "Others (114) (124)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Standalone total inventories increased to ₹34,980 crore as of 31 Mar 2026 compared to ₹24,517 crore in the previous year.",
+    "kind": "trend",
+    "fact_ids": [
+     "F16"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 315,
+      "quote": "34,980 24,517",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Contingent liabilities not provided for stood at Rs 177 crore as of 31 Mar 2026.",
+    "kind": "point",
+    "fact_ids": [
+     "F28"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 337,
+      "quote": "Contingent liabilities not provided for - ` 177 crore (Previous year: ` 251 crore) comprising of the following:",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "promised_vs_delivered": [
+   {
+    "id": "G1",
+    "metric": "revenue_growth",
+    "covers": "FY26",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q3 FY26",
+    "low": 8.0,
+    "high": 10.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F75",
+     "doc": "concall__feb-2026",
+     "page": 11,
+     "quote": "around an 8% to 10% growth.",
+     "text": "Titan Eye Plus volume growth is estimated to continue around an 8% to 10% growth."
+    },
+    "actual": null,
+    "verdict": null,
+    "detail": "period finished but no reported revenue_growth for FY26 in the documents (period inferred from call date)",
+    "explanation": "The period has finished, but no explicit revenue growth figure for the full year FY26 is reported in the provided documents."
+   },
+   {
+    "id": "G2",
+    "metric": "revenue_growth",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q4 FY26",
+    "low": 15.0,
+    "high": 20.0,
+    "direction": null,
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F94",
+     "doc": "concall__jun-2026",
+     "page": 8,
+     "quote": "between 15% to 20%. So, in a sense, that holds good",
+     "text": "Jewellery sales growth is expected to be between 15% to 20%."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27 (period inferred from call date)",
+    "explanation": "FY27 is not yet complete as reported data only extends through Q2 FY27."
+   },
+   {
+    "id": "G3",
+    "metric": "ebitda_margin",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q1 FY27",
+    "low": 11.0,
+    "high": 11.0,
+    "direction": null,
+    "reiterated_in": [
+     "Q2 FY27"
+    ],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F45",
+     "doc": "concall__aug-2026",
+     "page": 5,
+     "quote": "11% being the center of gravity for jewellery business margin, we would be around that plus/minus something can happen.",
+     "text": "Titan maintains its jewellery business margin guidance with 11% being the center of gravity."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27 (period inferred from call date)",
+    "explanation": "FY27 is not yet complete as reported data only extends through Q2 FY27."
+   },
+   {
+    "id": "G4",
+    "metric": "revenue_growth",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q1 FY27",
+    "low": null,
+    "high": null,
+    "direction": "up_yoy",
+    "reiterated_in": [],
+    "covers_inferred": true,
+    "promised": {
+     "fid": "F53",
+     "doc": "concall__aug-2026",
+     "page": 10,
+     "quote": "we are targeting, as always, a double-digit aggressive growth",
+     "text": "Management targets a double-digit aggressive growth in jewellery."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q2 FY27 (period inferred from call date)",
+    "explanation": "FY27 is not yet complete as reported data only extends through Q2 FY27."
+   }
+  ]
+ },
+ "failed_claims": [],
+ "consistency_flags": [],
+ "ledger": {
+  "data_through": "Q2 FY27",
+  "unscored_guidance": [
+   {
+    "fid": "F74",
+    "doc": "concall__feb-2026",
+    "page": 13,
+    "quote": "low double-digit margin EBIT profile.",
+    "text": "CaratLane is expected to gradually reach and stay at a low double-digit EBIT margin profile.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F119",
+    "doc": "concall__jun-2026",
+    "page": 9,
+    "quote": "expand to around 10 to 12 stores in two to three cities",
+    "text": "Management aims to scale beYon to 10 to 12 stores across two to three cities soon.",
+    "quarter_said": "Q4 FY26"
+   },
+   {
+    "fid": "F120",
+    "doc": "concall__jun-2026",
+    "page": 11,
+    "quote": "this is the medium to three to five-year horizon if you want to look at. This is the growth rate we are expecting.",
+    "text": "Management expects to sustain a 15% to 20% growth rate over a 3 to 5-year CAGR horizon.",
+    "quarter_said": "Q4 FY26"
+   }
+  ],
+  "conflicts": [
+   {
+    "metric": "borrowings",
+    "period": "as of 31 Mar 2026",
+    "facts": [
+     {
+      "fid": "F10",
+      "scope": "standalone",
+      "value": 420.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 324
+     },
+     {
+      "fid": "F11",
+      "scope": "standalone",
+      "value": 6239.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 288
+     },
+     {
+      "fid": "F23",
+      "scope": "standalone",
+      "value": 3313.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 353
+     },
+     {
+      "fid": "F24",
+      "scope": "standalone",
+      "value": 25547.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 353
+     },
+     {
+      "fid": "F31",
+      "scope": "consolidated",
+      "value": 16070.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 375
+     },
+     {
+      "fid": "F39",
+      "scope": "consolidated",
+      "value": 586.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 423
+     },
+     {
+      "fid": "F40",
+      "scope": "consolidated",
+      "value": 586.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 423
+     },
+     {
+      "fid": "F44",
+      "scope": "unspecified",
+      "value": 14314.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 470
+     }
+    ]
+   }
+  ],
+  "scope_variants": [
+   {
+    "metric": "cfo",
+    "period": "FY26",
+    "facts": [
+     {
+      "fid": "F12",
+      "scope": "standalone",
+      "value": 4865.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 287
+     },
+     {
+      "fid": "F32",
+      "scope": "consolidated",
+      "value": 5590.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 378
+     }
+    ]
+   }
+  ]
+ },
+ "stage1": [
+  {
+   "doc": "annual_report__annual-report-2026",
+   "kind": "annual_report",
+   "label": "Annual Report 2026",
+   "pages_sent": 43,
+   "n_items": 44,
+   "n_dropped": 0
+  },
+  {
+   "doc": "concall__aug-2026",
+   "kind": "concall",
+   "label": "Aug 2026",
+   "quarter": "Q1 FY27",
+   "quarter_model": "Q1 FY27",
+   "n_items": 16,
+   "n_dropped": 0
+  },
+  {
+   "doc": "concall__feb-2026",
+   "kind": "concall",
+   "label": "Feb 2026",
+   "quarter": "Q3 FY26",
+   "quarter_model": "Q3 FY26",
+   "n_items": 32,
+   "n_dropped": 1
+  },
+  {
+   "doc": "concall__jun-2026",
+   "kind": "concall",
+   "label": "Jun 2026",
+   "quarter": "Q4 FY26",
+   "quarter_model": "Q4 FY26",
+   "n_items": 37,
+   "n_dropped": 1
+  },
+  {
+   "doc": "concall__nov-2026",
+   "kind": "concall",
+   "label": "Nov 2026",
+   "quarter": "Q2 FY27",
+   "quarter_model": "Q2 FY27",
+   "n_items": 25,
+   "n_dropped": 0
+  }
+ ],
+ "usage": {
+  "stage1_annual_report": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 6,
+   "cached_calls": 0,
+   "prompt": 30514,
+   "output": 4687,
+   "thinking": 0
+  },
+  "stage1_concall": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 12,
+   "cached_calls": 0,
+   "prompt": 53019,
+   "output": 9891,
+   "thinking": 0
+  },
+  "stage1b_structure": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 5,
+   "cached_calls": 0,
+   "prompt": 12071,
+   "output": 5551,
+   "thinking": 0
+  },
+  "stage2_synthesis": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 1,
+   "cached_calls": 0,
+   "prompt": 7725,
+   "output": 3997,
+   "thinking": 0
+  }
+ }
+}

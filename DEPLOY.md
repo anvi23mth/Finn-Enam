@@ -3,7 +3,7 @@
 Frontend (static, Vercel) and backend (FastAPI, Render) deploy separately. **Order: Render → Vercel → back to Render.**
 Repo: `https://github.com/anvi23mth/Finn-Enam` · branch: `main`.
 
-The app works with the backend asleep or down: Today, Network and the two seeded Research results (INFY, DEEPAKNTR) are static files
+The app works with the backend asleep or down: Today, Network and the four seeded Research results (INFY, DEEPAKNTR, TITAN, TMPV) are static files
 in `public/`. The backend only adds *new analyses* and the live results list.
 
 ## 1. Backend on Render (free web service)
@@ -16,7 +16,7 @@ in `public/`. The backend only adds *new analyses* and the live results list.
    - `ACCESS_CODE` — a long random string you choose (`openssl rand -hex 12`). Save it in a password manager.
    - `ALLOWED_ORIGINS` — `http://localhost:5173` for now (you set the real value in step 3 below).
 4. Wait for the deploy to finish (Logs show `Application startup complete`). Copy the service URL, e.g. `https://finn-backend-xxxx.onrender.com`.
-5. Open `<that URL>/health` — expect `{"ok":true,"seeds":2,...}` — and `<that URL>/research` — expect INFY and DEEPAKNTR.
+5. Open `<that URL>/health` — expect `{"ok":true,"seeds":4,...}` — and `<that URL>/research` — expect INFY, DEEPAKNTR, TITAN and TMPV.
 
 **Manual route (no Blueprint):** New + → Web Service → connect the repo → Name `finn-backend` · Region Singapore · Branch `main` ·
 Root Directory *(blank)* · Runtime **Python 3** · Build Command `pip install -r backend/requirements.txt` ·
@@ -59,7 +59,7 @@ Do not set `PORT` (Render injects it). `DOCS_DIR` can stay default.
 ## 3. Connect them
 
 1. Render → `finn-backend` → **Environment** → edit `ALLOWED_ORIGINS` to the Vercel URL (no trailing slash) → Save (Render redeploys).
-2. Open the Vercel URL on your phone → Research tab shows INFY and DEEPAKNTR.
+2. Open the Vercel URL on your phone → Research tab shows INFY, DEEPAKNTR, TITAN and TMPV.
 3. To analyse a new ticker: Research → search a ticker → Analyse → enter the access code when asked. Expect 3–10 minutes.
 
 ## What to know
@@ -68,4 +68,4 @@ Do not set `PORT` (Render injects it). `DOCS_DIR` can stay default.
 - **Ephemeral disk:** new analyses, job files and the daily-cap counter live on the instance disk and are lost on restart, redeploy or spin-down. Seeds (committed) always survive. The cap is best-effort on the free tier; **`ACCESS_CODE` is the real protection** of your Gemini key.
 - **Memory:** the free instance has 512 MB. Reading the largest annual report (462 pages) peaks at about 244 MB after the batching fix in `backend/app/extract.py` (it was 3.8 GB before).
 - **Untested from Render:** whether screener.in / BSE serve their PDFs to a cloud IP. If a new analysis fails with "documents not found" on Render but works locally, that is the likely cause.
-- **Refreshing the seeds:** run `backend/.venv/bin/python backend/scripts/make_seed.py INFY DEEPAKNTR` locally, then commit `backend/seed/research` and `public/seed/research`.
+- **Refreshing the seeds:** run `backend/.venv/bin/python backend/scripts/make_seed.py INFY DEEPAKNTR TITAN TMPV` locally, then commit `backend/seed/research` and `public/seed/research`.

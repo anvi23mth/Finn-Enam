@@ -7,6 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.research import run_research  # noqa: E402
 from app.llm import LLMError  # noqa: E402
+from app.ledger import fmt_range  # noqa: E402
 
 W = lambda s, i="    ": textwrap.fill(s, 104, initial_indent=i, subsequent_indent=i)
 
@@ -38,7 +39,7 @@ def main(t: str, ingest: bool, fast: bool = False):
             claim(c)
     print("\n-- PROMISED vs DELIVERED  (verdicts assigned by code)")
     for p in v["promised_vs_delivered"]:
-        rng = p["direction"] if p["low"] is None and p["high"] is None else (f"{p['low']:g}" if p["low"] == p["high"] else f"{p['low']:g}–{p['high']:g}")
+        rng = fmt_range(p)
         rep = f"  (reiterated {', '.join(p['reiterated_in'])})" if p["reiterated_in"] else ""
         print(f"  [{(p['verdict'] or 'unscored').upper()}] {p['metric']} for {p['covers']}: guided {rng} {p.get('unit') or ''} in {p['quarter_said']}{rep}")
         print(W(f"“{p['promised']['quote']}” [{p['promised']['doc'].split('__')[-1]} p{p['promised']['page']}]", "     "))

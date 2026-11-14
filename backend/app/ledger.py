@@ -142,10 +142,19 @@ def _delta(old: dict, new: dict) -> str:
     return f"Revised in {q}: {_rng(old)} -> {_rng(new)}"
 
 
-def _rng(g):
-    if g.get("low") is None and g.get("high") is None:
+def fmt_range(g: dict) -> str:
+    """Human-readable guidance range; tolerates one-sided guidance ('up to 10', 'at least 5') and directional guidance."""
+    lo, hi = g.get("low"), g.get("high")
+    if lo is None and hi is None:
         return str(g.get("direction"))
-    return f"{g['low']:g}" if g.get("low") == g.get("high") else f"{g.get('low'):g}–{g.get('high'):g}"
+    if lo is None:
+        return f"up to {hi:g}"
+    if hi is None:
+        return f"at least {lo:g}"
+    return f"{lo:g}" if lo == hi else f"{lo:g}–{hi:g}"
+
+
+_rng = fmt_range
 
 
 def _score(p: dict, g: dict, actuals: list, metric: str, covers: str, uc):

@@ -1,0 +1,961 @@
+{
+ "ticker": "TMPV",
+ "company": "Tata Motors Passenger Vehicles",
+ "generated_at": "2026-11-14T13:40:31+00:00",
+ "warnings": [],
+ "models": {
+  "cheap": "gemini-3.5-flash-lite",
+  "strong_requested": "gemini-3.8-flash",
+  "strong_used": "gemini-3.5-flash-lite",
+  "strong_chain": [
+   "gemini-3.5-flash-lite"
+  ],
+  "used_fallback": true,
+  "stage2_override": "manual --fast-stage2: Stage 2 forced onto gemini-3.5-flash-lite because the strong chain was overloaded"
+ },
+ "view": {
+  "business_snapshot": [
+   {
+    "text": "In FY26, Jaguar Land Rover contributed 82.4% of total consolidated automotive revenue and Tata and other brand vehicles contributed 17.6%.",
+    "kind": "ratio",
+    "fact_ids": [
+     "F7"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 269,
+      "quote": "In FY26, Jaguar Land Rover contributed 82.4% of our total automotive revenue compared to 86.8% in FY25",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Tata Motors Passenger Vehicles achieved record annual sales of 6.42 lakh units in FY26, up 15% year-on-year.",
+    "kind": "trend",
+    "fact_ids": [
+     "F92"
+    ],
+    "cites": [
+     {
+      "doc": "concall__jun-2026",
+      "page": 6,
+      "quote": "We closed the year at a record 6.42 lakh units, delivering over 15% growth year-on-year",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "TMPV recorded 92,000 EV units sold in FY26, representing 43% year-on-year growth.",
+    "kind": "trend",
+    "fact_ids": [
+     "F93"
+    ],
+    "cites": [
+     {
+      "doc": "concall__jun-2026",
+      "page": 7,
+      "quote": "We recorded our best ever performance with 92,000 units sold, 43% year-on-year growth.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "financial_snapshot": [
+   {
+    "text": "Consolidated revenue from operations for FY26 was ₹335,582 crore, down 8.3% year-on-year from ₹366,094 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F2",
+     "F8"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "FY26 revenues stood at ₹335,582 crore (down\n8.3% Y-o-Y)",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 269,
+      "quote": "In FY26 consolidated revenue from operations were down by 8.3% at ₹335,582 crore from ₹366,094 crore in FY25.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated EBITDA margin for FY26 was 6.8% compared to 13.4% in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F3",
+     "F9"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "EBITDA and EBIT margins were\n6.8% and 1.1% respectively.",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 268,
+      "quote": "Underlying EBITDA - continuing operations 6.8% 13.4% (660)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated Loss after tax for FY26 stood at ₹(1,377) crore compared to a profit of ₹19,394 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F4"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "FY26 FY26 (1,377)\nFY25 19,394",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "trajectory": [
+   {
+    "text": "Consolidated revenue declined from ₹366,094 crore in FY25 to ₹335,582 crore in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F2",
+     "F8"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "FY26 revenues stood at ₹335,582 crore (down\n8.3% Y-o-Y)",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 269,
+      "quote": "In FY26 consolidated revenue from operations were down by 8.3% at ₹335,582 crore from ₹366,094 crore in FY25.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated EBITDA margin dropped from 13.4% in FY25 to 6.8% in FY26.",
+    "kind": "trend",
+    "fact_ids": [
+     "F3",
+     "F9"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "EBITDA and EBIT margins were\n6.8% and 1.1% respectively.",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 268,
+      "quote": "Underlying EBITDA - continuing operations 6.8% 13.4% (660)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "balance_sheet": [
+   {
+    "text": "Consolidated Net Debt as of 31 Mar 2026 stood at ₹30,710 crore according to annual report disclosures.",
+    "kind": "point",
+    "fact_ids": [
+     "F5"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "The Consolidated Net Debt stood at ₹30,710 crore",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated trade payables carrying amount and fair value was ₹92,780 crores as of 31 Mar 2026.",
+    "kind": "point",
+    "fact_ids": [
+     "F27"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 408,
+      "quote": "(d) Trade payables - - - 92,780 92,780 92,780",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Total inventories as of 31 Mar 2026 were ₹50,126 crores on a consolidated basis.",
+    "kind": "point",
+    "fact_ids": [
+     "F17"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 361,
+      "quote": "Total 50,126 47,269",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "cash_quality": [
+   {
+    "text": "Consolidated cash flows from operating activities were ₹13,041 crore in FY26 compared to ₹63,102 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F12",
+     "F14"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 276,
+      "quote": "Cash flows from operating activities 13,041 63,102",
+      "status": "numbers_verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 334,
+      "quote": "Net cash from operating activities 13,041 63,102",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated Free Cash Flow was an outflow of ₹26,823 crore in FY26 compared to an inflow of ₹22,236 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F6",
+     "F13"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 155,
+      "quote": "The free cash flow was outflow of ₹26,823 crore in FY26\ncompared to an inflow of ₹22,236 crore in FY25.",
+      "status": "numbers_verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 276,
+      "quote": "Free Cash Flow (26,823) 22,236",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "reconciliation": [
+   {
+    "text": "SCOPE MISMATCH: Consolidated net debt as of 31 Mar 2026 is reported as ₹30,710 crore in the annual report (p23) and ₹30,000 crore in the Q4 FY26 earnings call (p3).",
+    "kind": "point",
+    "fact_ids": [
+     "F5",
+     "F89"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "The Consolidated Net Debt stood at ₹30,710 crore",
+      "status": "verified"
+     },
+     {
+      "doc": "concall__jun-2026",
+      "page": 3,
+      "quote": "The net debt for the year ending March 2026 was Rs. 30,000 Cr",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "SCOPE MISMATCH: Borrowings and debt as of 31 Mar 2026 differ by reporting scope: total debt is ₹69,953 crore (p278), consolidated long-term borrowings including current maturities is ₹53,123 crore (p408), and standalone NCD borrowings are ₹700 crore (p485).",
+    "kind": "point",
+    "fact_ids": [
+     "F11",
+     "F24",
+     "F29"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 278,
+      "quote": "Total Debt 69,953 62,499",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 408,
+      "quote": "(a) Long-term borrowings (including current maturities of long-term borrowings) (refer notes below) - - - 53,123 53,123 53,249",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 485,
+      "quote": "7.65% NCD due 2028(E31A Series) Tranche II March 24, 2028 700",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "SCOPE MISMATCH: Consolidated capex for FY26 is reported as ₹13,583 crore for property, plant and equipment and ₹22,699 crore for intangible assets (p334).",
+    "kind": "point",
+    "fact_ids": [
+     "F15",
+     "F16"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 334,
+      "quote": "Payments for property, plant and equipments (13,583) (15,189)",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 334,
+      "quote": "Payments for other intangible assets (22,699) (22,853)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "SCOPE MISMATCH: Consolidated capital commitments as of 31 Mar 2026 are ₹12,783 crore for plant, machinery, equipment, and civil contracts, and ₹703 crore for intangible assets.",
+    "kind": "point",
+    "fact_ids": [
+     "F20",
+     "F21"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 403,
+      "quote": "contracts of a capital nature amounting to ₹12,783 crores, as at March 31, 2026 (₹12,630 crores as at March 31, 2025)",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 403,
+      "quote": "capital nature amounting to ₹703 crores as at March 31, 2026, (₹879 crores as at March 31, 2025)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "SCOPE MISMATCH: Consolidated long-term borrowings including current maturities are ₹53,123 crore while short-term borrowings are ₹16,830 crore as of 31 Mar 2026.",
+    "kind": "point",
+    "fact_ids": [
+     "F24",
+     "F26"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 408,
+      "quote": "(a) Long-term borrowings (including current maturities of long-term borrowings) (refer notes below) - - - 53,123 53,123 53,249",
+      "status": "verified"
+     },
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 408,
+      "quote": "(c) Short-term borrowings - - - 16,830 16,830 16,830",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "narrative_vs_numbers": [
+   {
+    "text": "Management highlights record annual sales volumes for passenger vehicles and EVs, which align with reported top-line figures despite overall consolidated revenue contraction in FY26.",
+    "kind": "text",
+    "fact_ids": [
+     "F2",
+     "F92",
+     "F93"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "FY26 revenues stood at ₹335,582 crore (down\n8.3% Y-o-Y)",
+      "status": "verified"
+     },
+     {
+      "doc": "concall__jun-2026",
+      "page": 6,
+      "quote": "We closed the year at a record 6.42 lakh units, delivering over 15% growth year-on-year",
+      "status": "verified"
+     },
+     {
+      "doc": "concall__jun-2026",
+      "page": 7,
+      "quote": "We recorded our best ever performance with 92,000 units sold, 43% year-on-year growth.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "bull_case": [
+   {
+    "text": "Tata Motors Passenger Vehicles achieved record annual sales of 6.42 lakh units in FY26, up 15% year-on-year.",
+    "kind": "trend",
+    "fact_ids": [
+     "F92"
+    ],
+    "cites": [
+     {
+      "doc": "concall__jun-2026",
+      "page": 6,
+      "quote": "We closed the year at a record 6.42 lakh units, delivering over 15% growth year-on-year",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "TMPV recorded 92,000 EV units sold in FY26, representing 43% year-on-year growth.",
+    "kind": "trend",
+    "fact_ids": [
+     "F93"
+    ],
+    "cites": [
+     {
+      "doc": "concall__jun-2026",
+      "page": 7,
+      "quote": "We recorded our best ever performance with 92,000 units sold, 43% year-on-year growth.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Range Rover EV expressions of interest reached 78,000.",
+    "kind": "point",
+    "fact_ids": [
+     "F109"
+    ],
+    "cites": [
+     {
+      "doc": "concall__jun-2026",
+      "page": 9,
+      "quote": "We have expressions of interest, and there are 78,000 of those at the last count.",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "bear_case": [
+   {
+    "text": "Consolidated revenue from operations for FY26 decreased by 8.3% to ₹335,582 crore compared to ₹366,094 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F2"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "FY26 revenues stood at ₹335,582 crore (down\n8.3% Y-o-Y)",
+      "status": "verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated Free Cash Flow was an outflow of ₹26,823 crore in FY26 compared to an inflow of ₹22,236 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F6"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 155,
+      "quote": "The free cash flow was outflow of ₹26,823 crore in FY26\ncompared to an inflow of ₹22,236 crore in FY25.",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   },
+   {
+    "text": "Consolidated Loss after tax for FY26 stood at ₹(1,377) crore compared to a profit of ₹19,394 crore in FY25.",
+    "kind": "trend",
+    "fact_ids": [
+     "F4"
+    ],
+    "cites": [
+     {
+      "doc": "annual_report__annual-report-2026",
+      "page": 23,
+      "quote": "FY26 FY26 (1,377)\nFY25 19,394",
+      "status": "numbers_verified"
+     }
+    ],
+    "verified": true
+   }
+  ],
+  "promised_vs_delivered": [
+   {
+    "id": "G1",
+    "metric": "ebit",
+    "covers": "FY26",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q3 FY26",
+    "low": 0.0,
+    "high": null,
+    "direction": "up_yoy",
+    "reiterated_in": [],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F79",
+     "doc": "concall__feb-2026",
+     "page": 5,
+     "quote": "we are reconfirming our guidance of greater than 0% EBIT",
+     "text": "JLR reconfirmed its full-year guidance of greater than 0% EBIT."
+    },
+    "actual": null,
+    "verdict": null,
+    "detail": "period finished but no reported ebit for FY26 in the documents",
+    "explanation": "Management reconfirmed its FY26 EBIT guidance to be greater than 0% during the Q3 FY26 call, but full-year reported EBIT figures for FY26 are not stated in the provided documents."
+   },
+   {
+    "id": "G2",
+    "metric": "revenue_growth",
+    "covers": "FY27",
+    "unit": "%",
+    "scope": "consolidated",
+    "quarter_said": "Q4 FY26",
+    "low": 10.0,
+    "high": 10.0,
+    "direction": null,
+    "reiterated_in": [
+     "Q1 FY27"
+    ],
+    "covers_inferred": false,
+    "promised": {
+     "fid": "F113",
+     "doc": "concall__jun-2026",
+     "page": 12,
+     "quote": "industry will grow somewhere around 10%, especially it will be high double-digit growth in H1, and then it will moderate in the H2 with the high base.",
+     "text": "Industry expected to grow around 10% in FY27, with high double-digit growth in H1 and moderation in H2."
+    },
+    "actual": null,
+    "verdict": "not_yet_testable",
+    "detail": "FY27 ends 2027-03-31; reported data runs through Q1 FY27",
+    "explanation": null
+   }
+  ]
+ },
+ "failed_claims": [],
+ "consistency_flags": [],
+ "ledger": {
+  "data_through": "Q1 FY27",
+  "unscored_guidance": [
+   {
+    "fid": "F38",
+    "doc": "concall__aug-2026",
+    "page": 4,
+    "quote": "our intent is to save $1.7 billion in this space.",
+    "text": "JLR intends to save $1.7 billion in ex-works cost, warranty, and fixed cost base.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F54",
+    "doc": "concall__aug-2026",
+    "page": 9,
+    "quote": "And we are expecting another 3% hardening in Q2.",
+    "text": "Dhiman Gupta states that they are expecting another 3% hardening in Q2 for commodity pressure.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F55",
+    "doc": "concall__aug-2026",
+    "page": 9,
+    "quote": "They're not inconsistent with our full-year guidance, and those results don't imply that we have a need to change that guidance.",
+    "text": "Richard Molyneux states that the Q1 results are not inconsistent with full-year guidance and do not imply a need to change it.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F59",
+    "doc": "concall__aug-2026",
+    "page": 10,
+    "quote": "we expect them to be, at least neutral.",
+    "text": "Richard Molyneux expects EV mix impact on JLR margins to be at least neutral.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F65",
+    "doc": "concall__aug-2026",
+    "page": 12,
+    "quote": "this year, we are targeting more closer to 2x growth of what did last year.",
+    "text": "Shailesh Chandra states they are targeting closer to 2x growth in exports for FY27 compared to last year.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F67",
+    "doc": "concall__aug-2026",
+    "page": 12,
+    "quote": "net-net, in Q2, despite the 3% commodity hit, we are expecting margins to be f lattish with respect to Q1.",
+    "text": "Dhiman Gupta states that in Q2, despite the 3% commodity hit, margins are expected to be flattish versus Q1.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F69",
+    "doc": "concall__aug-2026",
+    "page": 13,
+    "quote": "in 2027, we should be able to launch the product.",
+    "text": "Shailesh Chandra states that Avinya is expected to be launched in 2027 due to a shift in platform strategy.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F73",
+    "doc": "concall__aug-2026",
+    "page": 14,
+    "quote": "we are tentatively penciling about 12,000 cars this year on the EV space.",
+    "text": "PB Balaji states they are tentatively penciling about 12,000 cars this year on the JLR EV space for FY27.",
+    "quarter_said": "Q1 FY27"
+   },
+   {
+    "fid": "F80",
+    "doc": "concall__feb-2026",
+    "page": 5,
+    "quote": "and free cash flow in the range of negative GBP 2.2 billion to negative GBP 2.5 billion.",
+    "text": "JLR reconfirmed its full-year free cash flow guidance in the range of negative GBP 2.2 billion to negative GBP 2.5 billion.",
+    "quarter_said": "Q3 FY26"
+   },
+   {
+    "fid": "F85",
+    "doc": "concall__jun-2026",
+    "page": 5,
+    "quote": "Together, we're targeting GBP1.7 billion of savings over two years to bring our breakeven volume back down towards 300,000 units a year.",
+    "text": "JLR is targeting GBP1.7 billion of savings over two years to bring breakeven volume back down towards 300,000 units a year.",
+    "quarter_said": "Q4 FY26"
+   },
+   {
+    "fid": "F114",
+    "doc": "concall__jun-2026",
+    "page": 13,
+    "quote": "quantified it in a two-year period to deliver GBP1.7 billion. So we should start working on that and the numbers should start reflecting from the second half of this year itself.",
+    "text": "JLR targets delivering GBP1.7 billion through cost and productivity actions over a two-year period starting second half of the year.",
+    "quarter_said": "Q4 FY26"
+   },
+   {
+    "fid": "F117",
+    "doc": "concall__nov-2025",
+    "page": 5,
+    "quote": "expect EBIT to be in the range of 0% to 2% positive",
+    "text": "For the full year, JLR expects EBIT to be in the range of 0% to 2% positive.",
+    "quarter_said": "Q2 FY26"
+   },
+   {
+    "fid": "F118",
+    "doc": "concall__nov-2025",
+    "page": 5,
+    "quote": "free cash flow to be in a range of negative GBP 2.2 billion to negative GBP 2.5 billion",
+    "text": "For the full year, JLR expects free cash flow to be in a range of negative GBP 2.2 billion to negative GBP 2.5 billion.",
+    "quarter_said": "Q2 FY26"
+   },
+   {
+    "fid": "F121",
+    "doc": "concall__nov-2025",
+    "page": 11,
+    "quote": "My estimate is that it should be a double-digit growth.",
+    "text": "Management expects industry second half volume growth to be in double-digit.",
+    "quarter_said": "Q2 FY26"
+   },
+   {
+    "fid": "F122",
+    "doc": "concall__nov-2025",
+    "page": 11,
+    "quote": "overall, it should be in the zone of 5% or so.",
+    "text": "Management guides full year PV industry growth rate to be about 5% or so (around +/- 2%).",
+    "quarter_said": "Q2 FY26"
+   }
+  ],
+  "conflicts": [
+   {
+    "metric": "net_debt",
+    "period": "as of 31 Mar 2026",
+    "facts": [
+     {
+      "fid": "F5",
+      "scope": "consolidated",
+      "value": 30710.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 23
+     },
+     {
+      "fid": "F89",
+      "scope": "consolidated",
+      "value": 30000.0,
+      "unit": "INR crore",
+      "doc": "concall__jun-2026",
+      "page": 3
+     }
+    ]
+   },
+   {
+    "metric": "borrowings",
+    "period": "as of 31 Mar 2026",
+    "facts": [
+     {
+      "fid": "F11",
+      "scope": "unspecified",
+      "value": 69953.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 278
+     },
+     {
+      "fid": "F28",
+      "scope": "consolidated",
+      "value": 2286.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 408
+     },
+     {
+      "fid": "F29",
+      "scope": "standalone",
+      "value": 700.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 485
+     },
+     {
+      "fid": "F30",
+      "scope": "standalone",
+      "value": 400.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 485
+     },
+     {
+      "fid": "F31",
+      "scope": "standalone",
+      "value": 135.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 485
+     }
+    ]
+   },
+   {
+    "metric": "capex",
+    "period": "FY26",
+    "facts": [
+     {
+      "fid": "F15",
+      "scope": "consolidated",
+      "value": 13583.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 334
+     },
+     {
+      "fid": "F16",
+      "scope": "consolidated",
+      "value": 22699.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 334
+     }
+    ]
+   },
+   {
+    "metric": "capital_commitments",
+    "period": "as of 31 Mar 2026",
+    "facts": [
+     {
+      "fid": "F20",
+      "scope": "consolidated",
+      "value": 12783.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 403
+     },
+     {
+      "fid": "F21",
+      "scope": "consolidated",
+      "value": 703.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 403
+     }
+    ]
+   },
+   {
+    "metric": "borrowings_current",
+    "period": "as of 31 Mar 2026",
+    "facts": [
+     {
+      "fid": "F24",
+      "scope": "consolidated",
+      "value": 53123.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 408
+     },
+     {
+      "fid": "F26",
+      "scope": "consolidated",
+      "value": 16830.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 408
+     }
+    ]
+   }
+  ],
+  "scope_variants": [
+   {
+    "metric": "cfo",
+    "period": "FY26",
+    "facts": [
+     {
+      "fid": "F12",
+      "scope": "consolidated",
+      "value": 13041.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 276
+     },
+     {
+      "fid": "F14",
+      "scope": "consolidated",
+      "value": 13041.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 334
+     },
+     {
+      "fid": "F32",
+      "scope": "standalone",
+      "value": 2991.0,
+      "unit": "INR crore",
+      "doc": "annual_report__annual-report-2026",
+      "page": 457
+     }
+    ]
+   }
+  ]
+ },
+ "stage1": [
+  {
+   "doc": "annual_report__annual-report-2026",
+   "kind": "annual_report",
+   "label": "Annual Report 2026",
+   "pages_sent": 42,
+   "n_items": 36,
+   "n_dropped": 10
+  },
+  {
+   "doc": "concall__aug-2026",
+   "kind": "concall",
+   "label": "Aug 2026",
+   "quarter": "Q1 FY27",
+   "quarter_model": "Q1 FY27",
+   "n_items": 38,
+   "n_dropped": 0
+  },
+  {
+   "doc": "concall__feb-2026",
+   "kind": "concall",
+   "label": "Feb 2026",
+   "quarter": "Q3 FY26",
+   "quarter_model": "Q3 FY26",
+   "n_items": 10,
+   "n_dropped": 1
+  },
+  {
+   "doc": "concall__jun-2026",
+   "kind": "concall",
+   "label": "Jun 2026",
+   "quarter": "Q4 FY26",
+   "quarter_model": "Q4 FY26",
+   "n_items": 31,
+   "n_dropped": 0
+  },
+  {
+   "doc": "concall__nov-2025",
+   "kind": "concall",
+   "label": "Nov 2025",
+   "quarter": "Q2 FY26",
+   "quarter_model": "Q2 FY26",
+   "n_items": 17,
+   "n_dropped": 0
+  }
+ ],
+ "usage": {
+  "stage1_annual_report": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 6,
+   "cached_calls": 6,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage1_concall": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 8,
+   "cached_calls": 8,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage1b_structure": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 5,
+   "cached_calls": 5,
+   "prompt": 0,
+   "output": 0,
+   "thinking": 0
+  },
+  "stage2_synthesis": {
+   "model": "gemini-3.5-flash-lite",
+   "calls": 1,
+   "cached_calls": 0,
+   "prompt": 7742,
+   "output": 4974,
+   "thinking": 0
+  }
+ }
+}
