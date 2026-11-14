@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { research } from '../data/research'
 import { portfolio } from '../data/portfolio'
-import { whoToCall } from '../lib/network'
+import { callList, affiliation, type NetView } from '../lib/network'
 import Badge from '../components/Badge'
 const sym = { up: '▲', down: '▼', flat: '▬' }
 const API = (import.meta.env.VITE_API_BASE as string | undefined) ?? ''
@@ -60,7 +60,7 @@ function DemoResearch({ t }: { t: string }) {
 
 type Run = { t: string; status: 'loading' | 'error'; msg?: string }
 
-export default function Pull({ ticker, setTicker }: { ticker: string; setTicker: (t: string) => void }) {
+export default function Pull({ ticker, setTicker, openNet }: { ticker: string; setTicker: (t: string) => void; openNet: (v: NetView, arg?: string) => void }) {
   const [q, setQ] = useState('')
   const [saved, setSaved] = useState<string[]>(savedTickers)
   const [run, setRun] = useState<Run | null>(null)
@@ -68,7 +68,7 @@ export default function Pull({ ticker, setTicker }: { ticker: string; setTicker:
   const sugg = qu ? portfolio.filter(c => c.t.includes(qu) || c.name.toUpperCase().includes(qu)).slice(0, 5) : []
   const validSymbol = /^[A-Z0-9&-]{1,20}$/.test(qu)
   const real = loadReal(ticker), demo = research[ticker], co = portfolio.find(c => c.t === ticker)
-  const calls = whoToCall(ticker).slice(0, 2)
+  const calls = callList(ticker)
   const pick = (t: string) => { setTicker(t); setQ(''); setRun(null) }
 
   async function analyse(t: string) {
@@ -117,6 +117,10 @@ export default function Pull({ ticker, setTicker }: { ticker: string; setTicker:
           <DemoResearch t={ticker} /></>}
         {!demo && <section><p><b>Not analysed yet.</b> <span className="dim">Analysing fetches the latest annual report and four concall transcripts from screener.in and extracts cited facts — primary sources only.</span></p>
           <AnalyseBtn label="Not analysed yet — Analyse" />{err && <div className="errbox">{err}</div>}</section>}</>}
-    {calls.length > 0 && <section><h2>Who to call <Badge kind="demo" /></h2>{calls.map(h => <div key={h.p.id} className="net"><div className="hit">◉ <b>{h.p.name}</b> — {h.why}. {h.p.knows}</div></div>)}</section>}
+    <section><h2>Who to call <Badge kind="demo" /> <small>synthetic network</small></h2>
+      {calls.length ? calls.slice(0, 3).map(h => <div key={h.p.id} className="net"><div className="hit">◉ <b>{h.p.name}</b><span className={`rel ${h.rel.startsWith('worked') ? 'worked' : h.rel.startsWith('competitor') ? '' : 'supplier'}`}>{h.rel}</span>
+        <br /><span className="dim">{affiliation(h.p)} · last spoke {h.p.lastTalkDays}d ago</span><br />{h.why}. <i>{h.know}.</i></div></div>)
+        : <p className="dim small">No one in your network touches {co?.name ?? ticker} directly, or through a supplier, customer or competitor.</p>}
+      <button className="more" style={{ marginTop: 8 }} onClick={() => openNet('call', ticker)}>{calls.length > 3 ? `All ${calls.length} contacts` : 'Open in Network'} →</button></section>
   </>)
 }

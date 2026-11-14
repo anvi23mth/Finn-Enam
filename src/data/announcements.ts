@@ -16,6 +16,8 @@ export const announcements: Announcement[] = [
   { id:'a12', t:'CHOLAFIN', hoursAgo:36, cat:'management_change', title:'Resignation of Chief Financial Officer', summary:'Sameer Kulkarni resigned effective 30 Nov to pursue another opportunity.' , person:'Sameer Kulkarni' },
   { id:'a13', t:'BHARTIARTL', hoursAgo:50, cat:'fund_raise', title:'Raises ₹5,000 cr via non-convertible debentures' },
   { id:'a14', t:'SBIN', hoursAgo:70, cat:'agm_egm', title:'Notice of Extraordinary General Meeting' },
+  { id:'a16', t:'LT', hoursAgo:18, cat:'management_change', title:'Appointment of Independent Director', person:'Rajiv Bansal', summary:'Board appoints Rajiv Bansal as Independent Director and audit-committee member, subject to shareholder approval.' },
+  { id:'a17', t:'ASIANPAINT', hoursAgo:40, cat:'management_change', title:'Appointment of Managing Director & CEO', person:'Aditi Sharma', summary:'Aditi Sharma to succeed the current MD & CEO from 1 Jan; joins from Pidilite.' },
   { id:'a15', t:'TITAN', hoursAgo:100, cat:'investor_meetings', title:'Schedule of meetings with institutional investors' },
 ]
 export const priority: Record<string, { rank: 0|1|2; label: string }> = {
