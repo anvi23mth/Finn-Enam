@@ -27,11 +27,24 @@ export interface MetricRow { current: number | null; previous: number | null; ye
 export interface ResultsFile { ticker: string; status: 'ok' | 'partial' | 'not_found' | 'failed'; error?: string; filing: { id: string; subject: string; datetime: string }; basis?: string; unit?: string
   quarter_labels?: Record<string, string>; table_crore?: Record<'revenue' | 'ebitda' | 'pbt' | 'pat', MetricRow>; flags?: string[]; not_found_or_unverified?: string[]; metrics?: Record<string, Record<string, { verified?: boolean } | null>> }
 
+const resultsCache = new Map<string, Promise<ResultsFile | null>>()
+/** One fetch per ticker per session, shared between cards. */
+function loadResults(ticker: string) {
+  let p = resultsCache.get(ticker)
+  if (!p) {
+    p = fetch(`/results/${ticker}.json`).then(x => x.ok && (x.headers.get('content-type') ?? '').includes('json') ? x.json() as Promise<ResultsFile> : null).catch(() => null)
+    resultsCache.set(ticker, p)
+  }
+  return p
+}
+/** undefined while loading, null when there is no results file. */
 export function useResults(ticker: string, enabled: boolean) {
-  const [r, setR] = useState<ResultsFile | null>(null)
+  const [r, setR] = useState<ResultsFile | null | undefined>(undefined)
   useEffect(() => {
     if (!enabled) return
-    fetch(`/results/${ticker}.json`).then(x => x.ok && (x.headers.get('content-type') ?? '').includes('json') ? x.json() : null).then(setR).catch(() => setR(null))
+    let live = true
+    loadResults(ticker).then(x => { if (live) setR(x) })
+    return () => { live = false }
   }, [ticker, enabled])
   return r
 }

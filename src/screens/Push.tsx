@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { announcements, priority } from '../data/announcements'
 import { usePrices, evalAlerts, latestDate, fmtDate } from '../lib/market'
 import { keepWarm, type NetView } from '../lib/network'
-import { toAnnouncement, ago, useResults, type Feed, type RealAnn } from '../lib/feed'
+import { toAnnouncement, ago, useResults, type Feed, type RealAnn, type ResultsFile } from '../lib/feed'
 import MatchPanel from '../components/MatchPanel'
 import Badge from '../components/Badge'
 import type { Announcement } from '../data/types'
@@ -13,9 +13,8 @@ type OpenNet = (v: NetView, arg?: string) => void
 const cr = (n: number | null) => n == null ? '—' : n.toLocaleString('en-IN', { maximumFractionDigits: 1 })
 
 /* ------------------------------------------------------------------ real results table (extracted + verified from the filing PDF) */
-function RealResults({ id, ticker }: { id: string; ticker: string }) {
-  const r = useResults(ticker, true)
-  if (!r || r.filing.id !== id) return null
+function RealResults({ r }: { r: ResultsFile | null | undefined }) {
+  if (!r) return null
   if (r.status === 'not_found' || r.status === 'failed' || !r.table_crore) return <p className="dim small">Results numbers not extracted: {r.error ?? 'not found in the filing'}.</p>
   const rows: [string, keyof NonNullable<typeof r.table_crore>][] = [['Revenue', 'revenue'], ['EBITDA', 'ebitda'], ['PBT', 'pbt'], ['PAT', 'pat']]
   return <div>
@@ -25,17 +24,36 @@ function RealResults({ id, ticker }: { id: string; ticker: string }) {
     {r.flags?.map((f, i) => <p key={i} className="warnbox" style={{ marginTop: 4 }}>⚠ {f}</p>)}</div>
 }
 
-function RealCard({ a, asOf, open, openNet, expanded }: { a: RealAnn; asOf: Date; open: (t: string) => void; openNet: OpenNet; expanded: boolean }) {
+type Group = RealAnn & { dupes: RealAnn[] }
+/** Merge filings for the same company, category and day into one card (all PDF links kept). */
+function groupFilings(items: RealAnn[]): Group[] {
+  const m = new Map<string, Group>()
+  const out: Group[] = []
+  for (const a of items) {
+    const k = `${a.ticker}|${a.category}|${a.datetime.slice(0, 10)}`
+    const g = m.get(k)
+    if (g) g.dupes.push(a)
+    else { const n = { ...a, dupes: [a] }; m.set(k, n); out.push(n) }
+  }
+  return out
+}
+
+function RealCard({ a, asOf, open, openNet, expanded }: { a: Group; asOf: Date; open: (t: string) => void; openNet: OpenNet; expanded: boolean }) {
   const ann = toAnnouncement(a, asOf)
   const p = priority[a.category]
+  const isRes = a.category === 'results' && a.priority === 'high'
+  const r = useResults(a.ticker, isRes)
+  const covered = isRes && !!r && a.dupes.some(d => d.id === r.filing.id) && r.status !== 'not_found' && r.status !== 'failed' && !!r.table_crore
+  const pending = isRes && r === undefined
+  const lead = covered ? a.dupes.find(d => d.id === r!.filing.id)! : a
   return (
     <article className={`card r${a.priority === 'high' ? 0 : 1}`}>
       <div className="meta"><span className="tag">{p?.label ?? a.category}</span><Badge kind="real" /><button className="lnk" onClick={() => open(a.ticker)}>{a.ticker}</button>
         <span className="ago" title={new Date(a.datetime).toLocaleString()}>{ago(ann.hoursAgo)}</span></div>
-      <h3>{a.subject}</h3>
-      {a.summary && <p>{a.summary}</p>}
-      {a.category === 'results' && a.priority === 'high' && <RealResults id={a.id} ticker={a.ticker} />}
-      {a.attachment && <a className="pdf" href={a.attachment} target="_blank" rel="noopener noreferrer">PDF ↗</a>}
+      <h3>{lead.subject}</h3>
+      {isRes && <RealResults r={r && a.dupes.some(d => d.id === r.filing.id) ? r : null} />}
+      {covered ? <p className="dim">Results filing. Verified figures are in the table above.</p> : !pending && a.summary && <p>{a.summary}</p>}
+      {a.dupes.map((d, i) => d.attachment && <a key={d.id} className="pdf" href={d.attachment} target="_blank" rel="noopener noreferrer">{a.dupes.length > 1 ? `PDF ${i + 1} ↗` : 'PDF ↗'}</a>)}
       {expanded && <MatchPanel a={ann} openNet={openNet} />}
     </article>
   )
@@ -79,10 +97,10 @@ function LiveFeed({ feed, error, win, openCompany, openNet }: { feed: Feed | nul
     <p className="dim small">{feed.items.length} real filings from screener.in, classified by {Object.keys(feed.models).join(', ')} · as of {feed.asOf.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}. Screener exposes only the latest 5 per company, so older windows are incomplete.</p>
     {warm.length > 0 && <section><h2>Worth a call <Badge kind="demo" /> <small>real filings · synthetic contacts</small></h2>{warm.map(n => <div key={n.p.id} className="net"><div className="hit">◉ <b>{n.p.name}</b> — silent {n.p.lastTalkDays}d. {n.reason}</div></div>)}<button className="more" onClick={() => openNet('warm')}>All keep-warm contacts →</button></section>}
     <section><h2>High priority <Badge kind="real" /> <small>{high.length}</small></h2>
-      {high.length ? high.map(a => <RealCard key={a.id} a={a} asOf={feed.asOf} open={openCompany} openNet={openNet} expanded />) : <p className="dim">Nothing high-priority in this window.</p>}</section>
+      {high.length ? groupFilings(high).map(a => <RealCard key={a.id} a={a} asOf={feed.asOf} open={openCompany} openNet={openNet} expanded />) : <p className="dim">Nothing high-priority in this window.</p>}</section>
     <section><h2>Medium <Badge kind="real" /> <small>{med.length}</small></h2>
       {med.length > 0 && <button className="more" onClick={() => setShowMed(!showMed)}>{showMed ? 'Hide' : 'Show'} {med.length} medium-priority filings</button>}
-      {showMed && med.map(a => <RealCard key={a.id} a={a} asOf={feed.asOf} open={openCompany} openNet={openNet} expanded />)}</section>
+      {showMed && groupFilings(med).map(a => <RealCard key={a.id} a={a} asOf={feed.asOf} open={openCompany} openNet={openNet} expanded />)}</section>
     {low.length > 0 && <section><h2>Routine <Badge kind="real" /> <small>{low.length}</small></h2>
       <button className="more" onClick={() => setShowRoutine(!showRoutine)}>{showRoutine ? 'Hide' : 'Show'} {low.length} routine filings</button>
       {showRoutine && low.map(a => <div key={a.id} className="routine"><b>{a.ticker}</b> {a.subject} <span className="dim">· {ago((feed.asOf.getTime() - new Date(a.datetime).getTime()) / 36e5)}</span>{a.attachment && <> <a className="pdf" href={a.attachment} target="_blank" rel="noopener noreferrer">PDF ↗</a></>}</div>)}</section>}
