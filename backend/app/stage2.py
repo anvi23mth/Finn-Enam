@@ -4,7 +4,7 @@ from __future__ import annotations
 from . import config, llm
 from .docs import Doc
 from .log import log
-from .verify import verify_cite
+from .verify import verify_cite, numbers
 
 V = "synth-v2"
 
@@ -94,26 +94,41 @@ def run(ticker: str, facts: list, ledger: dict, usage: llm.Usage, doc_hash: str,
 
 
 def _ptype(p: str) -> str:
-    return "asof" if p.startswith("as of") else p.split(" ")[0] if p[:1] in "QH" else "FY"
+    return "asof" if p.startswith("as of") else p.split(" ")[0] if p[:1] in "QH9" else "FY"
+
+
+def _stated(c: dict, fb: dict) -> list:
+    """Facts cited by the claim whose value actually appears in the claim text (supporting facts are ignored)."""
+    nums = numbers(c.get("text", ""))
+    out = []
+    for i in c.get("fact_ids") or []:
+        f = fb.get(i)
+        if f and f.get("value") is not None and any(abs(f["value"] - n) <= 0.0005 * max(abs(f["value"]), 1) for n in nums):
+            out.append(f)
+    return out
 
 
 def check_consistency(view: dict, facts_by_id: dict, flags: list) -> dict:
-    """Remove claims that mix scopes (always) or periods (point/ratio claims). They are listed in `flags`, not stated."""
+    """Flag a claim only when it actually compares figures of different scope/period type, or when a trend uses one value for two periods."""
     for sec in ("financial_snapshot", "balance_sheet", "cash_quality", "trajectory", "narrative_vs_numbers", "bull_case", "bear_case", "business_snapshot", "reconciliation"):
         keep = []
         for c in view.get(sec) or []:
-            fs = [facts_by_id.get(i) for i in c.get("fact_ids") or []]
-            unknown = [i for i, f in zip(c.get("fact_ids") or [], fs) if f is None]
-            fs = [f for f in fs if f and f.get("value") is not None]
+            ids = c.get("fact_ids") or []
+            unknown = [i for i in ids if i not in facts_by_id]
+            fs = _stated(c, facts_by_id)
             scopes = {f["scope"] for f in fs if f.get("scope") not in (None, "unspecified")}
             periods = {f["period"] for f in fs if f.get("period")}
             is_flag = str(c.get("text", "")).startswith("SCOPE MISMATCH")
-            if unknown:
+            same_val = [(a["period"], b["period"]) for i, a in enumerate(fs) for b in fs[i + 1:]
+                        if a.get("period") and b.get("period") and a["period"] != b["period"] and abs(a["value"] - b["value"]) <= 1e-4 * max(abs(a["value"]), 1)]
+            if unknown and not fs:
                 flags.append({"section": sec, "reason": f"unknown fact ids {unknown}", "text": c.get("text")})
             elif len(scopes) > 1 and not is_flag:
-                flags.append({"section": sec, "reason": f"scope mismatch ({', '.join(sorted(scopes))}) mixed in one claim", "text": c.get("text")})
+                flags.append({"section": sec, "reason": f"scope mismatch ({', '.join(sorted(scopes))}): figures of different scope compared in one claim", "text": c.get("text")})
             elif len({_ptype(x) for x in periods}) > 1 and not is_flag:
-                flags.append({"section": sec, "reason": f"period-type mismatch ({', '.join(sorted(periods))}): full-year, half-year, quarter and point-in-time figures are not comparable", "text": c.get("text")})
+                flags.append({"section": sec, "reason": f"period-type mismatch ({', '.join(sorted(periods))}): full-year, 9M/half-year, quarter and point-in-time figures are not comparable", "text": c.get("text")})
+            elif same_val and not is_flag:
+                flags.append({"section": sec, "reason": f"trend uses the same value for different periods {same_val[0]}", "text": c.get("text")})
             elif len(periods) > 1 and c.get("kind") in ("point", "ratio") and not is_flag:
                 flags.append({"section": sec, "reason": f"period mismatch ({', '.join(sorted(periods))}) in a {c.get('kind')} claim", "text": c.get("text")})
             else:

@@ -112,7 +112,7 @@ def build(facts: list) -> dict:
             if not last:
                 nxt = steps[i + 1]["g"]
                 p["verdict"] = "revised"
-                p["detail"] = f"changed in {nxt.get('quarter')} to {_rng(nxt)}"
+                p["detail"] = _delta(g, nxt)
                 p["revised_to"] = _cite(nxt)
             elif not finished:
                 p["verdict"] = "not_yet_testable"
@@ -127,6 +127,19 @@ def build(facts: list) -> dict:
         p["id"] = f"G{i}"
     return {"data_through": dt, "pairs": pairs, "unscored_guidance": unscored, "actuals": [_cite(a) | {k: a[k] for k in ("metric", "value", "unit", "scope", "period")} for a in actuals],
             **conflicts(facts)}
+
+
+def _delta(old: dict, new: dict) -> str:
+    q, uc = new.get("quarter"), _unit_class(new.get("unit") or old.get("unit"))
+    sym = {"pct": "%", "inr_cr": " cr", "usd_m": " $m", "usd_b": " $bn"}.get(uc, "")
+    pp = " pp" if uc == "pct" else sym
+    if None not in (old.get("low"), old.get("high"), new.get("low"), new.get("high")):
+        mo, mn = (old["low"] + old["high"]) / 2, (new["low"] + new["high"]) / 2
+        d = mn - mo
+        rel = f" ({d / mo:+.0%})" if uc != "pct" and mo else ""
+        return (f"Revised in {q}: {_rng(old)}{sym} -> {_rng(new)}{sym}; low end {new['low'] - old['low']:+g}{pp}, "
+                f"high end {new['high'] - old['high']:+g}{pp}; midpoint {mo:g} -> {mn:g} ({d:+g}{pp}){rel}")
+    return f"Revised in {q}: {_rng(old)} -> {_rng(new)}"
 
 
 def _rng(g):
@@ -169,6 +182,25 @@ def _score(p: dict, g: dict, actuals: list, metric: str, covers: str, uc):
     p["actual"], p["verdict"], p["detail"] = _cite(a), v, f"{d} [{a['scope']}]"
 
 
+import re as _re
+
+_SEG_WORDS = _re.compile(r"\b(segment|segmental|division|vertical|subsidiar|business unit|geograph|domestic|export)\b", _re.I)
+_PREFIX = _re.compile(r"^(?:(?:Q[1-4] |H[12] |9M )?FY ?\d{2,4} |Q[1-4] FY\d{2} )?(?:the )?([A-Z][A-Za-z&-]+(?: [A-Z][A-Za-z&-]+){0,3}) (?:(?:Q[1-4] |H[12] )?FY ?\d{2,4} |Q[1-4] FY\d{2} )?(?:revenue|EBITDA|PAT|margin)", _re.I)
+_HEAD = {"consolidated", "total", "group", "overall", "company", "standalone", "net", "full", "quarterly", "annual", "operating", "revenue", "management", "reported"}
+
+
+def _segmenty(f: dict) -> bool:
+    t = f.get("text") or ""
+    if _SEG_WORDS.search(t):
+        return True
+    m = _PREFIX.match(t.strip())
+    return bool(m and m.group(1).split()[0].lower() not in _HEAD and not _re.search(r"consolidated|total|group|overall|company", t, _re.I))
+
+
+def _same(a: float, b: float, tol=0.02) -> bool:
+    return abs(a - b) <= tol * max(abs(a), abs(b), 1e-9)
+
+
 def conflicts(facts: list) -> dict:
     """conflicts: same metric + period + scope with different values (genuine inconsistencies).
     scope_variants: same metric + period, different scopes (e.g. standalone vs consolidated) - listed, never merged."""
@@ -178,14 +210,30 @@ def conflicts(facts: list) -> dict:
             grp[(f["metric"], f["period"])].append(f)
     conf, var = [], []
     for (m, per), fs in grp.items():
-        by_scope = defaultdict(set)
+        if m in ("revenue", "ebitda", "pat", "ebit", "pbt"):   # a part is not a conflict with its whole
+            top = max(f["value"] for f in fs)
+            for f in fs:
+                if f["value"] < 0.9 * top and f["scope"] != "unspecified" and f.get("doc_kind") == "concall" and _segmenty(f):
+                    f["scope"] = "segment"
+                    f.setdefault("flags", []).append("reclassified as segment figure (part of a larger same-metric figure)")
+            fs = [f for f in fs if f["scope"] != "segment"]
+        by_scope = defaultdict(list)
         for f in fs:
-            by_scope[f["scope"]].add(round(f["value"], 4))
+            by_scope[f["scope"]].append(f["value"])
+        def distinct(vs):                                        # values within 2% are the same figure (rounding)
+            out = []
+            for v in vs:
+                if not any(_same(v, o) for o in out):
+                    out.append(v)
+            return out
+        by_scope = {k: set(distinct(v)) for k, v in by_scope.items()}
         # an 'unspecified' figure equal to a stated-scope figure is just the same number
-        known = set().union(*[v for k, v in by_scope.items() if k != "unspecified"]) if len(by_scope) > 1 else set()
-        by_scope = {k: (v - known if k == "unspecified" else v) for k, v in by_scope.items()}
+        known = [x for k, v in by_scope.items() if k != "unspecified" for x in v]
+        by_scope = {k: ({x for x in v if not any(_same(x, y) for y in known)} if k == "unspecified" else v) for k, v in by_scope.items()}
         by_scope = {k: v for k, v in by_scope.items() if v}
         row = lambda: [{"fid": f["fid"], "scope": f["scope"], "value": f["value"], "unit": f.get("unit"), "doc": f["doc"], "page": f["page"]} for f in fs]
+        if len(fs) < 2:
+            continue
         if any(len(v) > 1 for v in by_scope.values()):
             conf.append({"metric": m, "period": per, "facts": row()})
         elif len(by_scope) > 1:

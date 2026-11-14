@@ -5,6 +5,7 @@ import re
 from . import config, llm
 from .log import log
 from .periods import norm_period
+from .ar_lines import cashflow_facts
 from .ledger_units import unit_class
 from .verify import numbers, values_in_quote
 
@@ -75,6 +76,11 @@ def run(docs_by_id: dict, s1: list, usage: llm.Usage) -> list:
                 r = by.get(f["fid"])
                 if r:
                     _apply(f, r, doc)
+    for d in s1:
+        extra = cashflow_facts(docs_by_id[d["doc"]], len(facts))
+        facts += extra
+        if extra:
+            log(f"stage 1b: +{len(extra)} deterministic table-row facts from {d['doc']} (" + ", ".join(f"{e['metric']} {e['scope']} {e['period']}={e['value']:g} p{e['page']}" for e in extra) + ")")
     log(f"stage 1b: {sum(1 for f in facts if f['metric'] and f['metric'] != 'other')} structured of {len(facts)} facts")
     return facts
 
@@ -134,4 +140,53 @@ def _apply(f: dict, r: dict, doc) -> None:
             v = None
         f["value"] = v
         f["period"] = norm_period(r.get("period"))
+    _fix_period(f, flags)
+    _refine_metric(f, flags)
     f["flags"] = flags
+
+
+def _fy_of(f: dict):
+    for src in (f.get("period"), f.get("quarter")):
+        m = re.search(r"FY(\d{2})", src or "")
+        if m:
+            return m.group(1)
+    return None
+
+
+def _fix_period(f: dict, flags: list) -> None:
+    """Cumulative figures (nine months, half-year) are not full-year or quarterly figures: tag them as such."""
+    if f["kind"] != "actual":
+        return
+    t = f"{f.get('quote', '')} {f.get('text', '')}".lower()
+    yy = _fy_of(f)
+    if not yy:
+        return
+    new = None
+    if re.search(r"nine[- ]months?|\b9 ?m\b|9 months", t):
+        new = f"9M FY{yy}"
+    elif re.search(r"six[- ]months?|first half|half[- ]year|\bh1\b|\b6 ?m\b", t):
+        new = f"H1 FY{yy}"
+    if new and f.get("period") != new and (not f.get("period") or f["period"].startswith(("FY", "Q"))):
+        flags.append(f"period '{f.get('period')}' -> '{new}' (cumulative figure per quote)")
+        f["period"] = new
+
+
+def _refine_metric(f: dict, flags: list) -> None:
+    """Split look-alike metrics so they are never compared: lease vs borrowings, commitments vs capex, etc."""
+    if f["kind"] != "actual" or not f.get("metric"):
+        return
+    t = f"{f.get('quote', '')} {f.get('text', '')}".lower()
+    m, new = f["metric"], None
+    if m in ("borrowings", "net_debt") and "lease" in t:
+        new = "lease_liabilities"
+    elif m == "borrowings" and re.search(r"non[- ]current", t):
+        new = "borrowings_noncurrent"
+    elif m == "borrowings" and re.search(r"\bcurrent (borrowings|maturities)|short[- ]term borrowings", t):
+        new = "borrowings_current"
+    elif m == "capex" and "commitment" in t:
+        new = "capital_commitments"
+    elif m == "revenue" and re.search(r"total income|total revenue", t) and "operations" not in t:
+        new = "total_income"
+    if new:
+        flags.append(f"metric {m} -> {new}")
+        f["metric"] = new

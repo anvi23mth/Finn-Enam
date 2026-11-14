@@ -29,7 +29,7 @@ def run_research(ticker: str, do_ingest: bool = True, stage2_models: list | None
     fb = {f["fid"]: f for f in facts}
     view = stage2.check_consistency(view, fb, flags)
     expl = {e["pair_id"]: e for e in (view.pop("guidance_explanations", None) or []) if isinstance(e, dict) and "pair_id" in e}
-    view["promised_vs_delivered"] = [{**p, "explanation": (expl.get(p["id"]) or {}).get("text")} for p in led["pairs"]]
+    view["promised_vs_delivered"] = [{**p, "explanation": None if p["verdict"] == "revised" else (expl.get(p["id"]) or {}).get("text")} for p in led["pairs"]]
     out = {"ticker": t,
            "models": {"cheap": config.CHEAP_MODEL, "strong_requested": config.STRONG_MODEL, "strong_used": strong_used,
                       "strong_chain": stage2_models or config.strong_chain(), "used_fallback": strong_used != config.STRONG_MODEL,

@@ -35,6 +35,9 @@ def norm_period(s) -> str | None:
     m = re.search(r"\bq([1-4])\s*(?:fy|f\.y\.)?\s*'?(\d{2,4})\b", t)
     if m:
         return f"Q{m.group(1)} FY{_yy(m.group(2))}"
+    m = re.search(r"\b9m\s*(?:fy|f\.y\.)?\s*'?(\d{2,4})\b", t)
+    if m:
+        return f"9M FY{_yy(m.group(1))}"
     m = re.search(r"\bh([12])\s*(?:fy|f\.y\.)?\s*'?(\d{2,4})\b", t)
     if m:
         return f"H{m.group(1)} FY{_yy(m.group(2))}"
@@ -63,6 +66,9 @@ def period_end(p: str) -> date | None:
     if m:
         q, yy = int(m.group(1)), 2000 + int(m.group(2))
         return {1: date(yy - 1, 6, 30), 2: date(yy - 1, 9, 30), 3: date(yy - 1, 12, 31), 4: date(yy, 3, 31)}[q]
+    m = re.fullmatch(r"9M FY(\d{2})", p)
+    if m:
+        return date(2000 + int(m.group(1)) - 1, 12, 31)
     m = re.fullmatch(r"H([12]) FY(\d{2})", p)
     if m:
         yy = 2000 + int(m.group(2))
