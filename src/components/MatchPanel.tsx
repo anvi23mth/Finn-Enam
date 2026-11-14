@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { matchAnnouncement } from '../lib/match'
 import { keepWarm, type NetView } from '../lib/network'
 import type { Announcement } from '../data/types'
+const GRAPH = new Set(['supplier', 'customer', 'competitor'])
 const ICON: Record<string, string> = { employer: '💼', overlap: '🤝', school: '🎓', name: '🔎', supplier: '⛓', customer: '🛒', competitor: '⚔' }
 const Dots = ({ n }: { n: number }) => <span className="dots" title={`your relationship ${n}/5`}>{'●'.repeat(n)}{'○'.repeat(5 - n)}</span>
 
@@ -20,7 +21,7 @@ export default function MatchPanel({ a, openNet }: { a: Announcement; openNet: (
       <div className="step"><b>2 · Matched to your network</b>
         {shown.map(m => <div key={m.p.id} className="mrow"><div className="top"><b>{m.p.name}</b><Dots n={m.p.strength} /></div>
           <div className="aff">{m.p.role} · {m.p.company}</div>
-          <ul>{m.reasons.slice(0, 4).map((x, i) => <li key={i}><span>{ICON[x.kind]}</span> {x.text}</li>)}</ul></div>)}
+          <ul>{m.reasons.slice(0, 4).map((x, i) => <li key={i}><span>{ICON[x.kind]}</span> {x.text}{GRAPH.has(x.kind) && <small className="dim"> · illustrative (synthetic)</small>}</li>)}</ul></div>)}
         {r.matches.length > 3 && <button className="ghost" onClick={() => setAll(!all)}>{all ? 'Show fewer' : `Show all ${r.matches.length}`}</button>}
         {!r.matches.length && <p className="dim small">No contact links found.</p>}</div>
       <div className="acts">

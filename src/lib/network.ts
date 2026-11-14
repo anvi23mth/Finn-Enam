@@ -1,6 +1,6 @@
 import { network, filingPeople } from '../data/network'
 import { portfolio } from '../data/portfolio'
-import { supplies, rivals } from '../data/graph'
+import { supplies, rivals, sisters } from '../data/graph'
 import { priority } from '../data/announcements'
 import type { Announcement, Company, Person } from '../data/types'
 
@@ -45,7 +45,8 @@ export function relatedCompanies(ticker: string) {
   const sec = sectorOf(ticker)
   const sup = supplies.filter(e => e.to === ticker).map(e => ({ t: e.from, rel: 'supplier side' as Rel, note: e.note }))
   const cus = supplies.filter(e => e.from === ticker).map(e => ({ t: e.to, rel: 'customer side' as Rel, note: e.note }))
-  const peers = portfolio.filter(c => c.sector === sec && c.t !== ticker).map(c => c.t)
+  const isSister = (t: string) => sisters.some(([a, b]) => (a === ticker && b === t) || (b === ticker && a === t))
+  const peers = portfolio.filter(c => c.sector === sec && c.t !== ticker && !isSister(c.t)).map(c => c.t)
   const riv = rivals.flatMap(([a, b]) => a === ticker ? [b] : b === ticker ? [a] : [])
   const comp = [...new Set([...peers, ...riv])].map(t => ({ t, rel: 'competitor' as Rel, note: `${sectorOf(t)} peer` }))
   return [...sup, ...cus, ...comp]
@@ -181,7 +182,7 @@ export function quietAdvantages(): Edge[] {
     const cos = [...new Set(stints(p).flatMap(s => tickersOfEmployer(s.company)))]
     for (const e of supplies) if (cos.includes(e.from) && cos.includes(e.to))
       out.push({ kind: 'both-sides', tickers: [e.from, e.to], who: [p.id], title: `${p.name} has seen both ${nameOf(e.from)} and ${nameOf(e.to)}`,
-        body: `${nameOf(e.from)} supplies ${nameOf(e.to)} (${e.note}); ${p.name} worked at both — a rare view of the contract from each side. ${firstSentence(p.knows)}.` })
+        body: `Illustrative relationship (synthetic): ${nameOf(e.from)} supplies ${nameOf(e.to)} (${e.note}); ${p.name} worked at both — a rare view of the contract from each side. ${firstSentence(p.knows)}.` })
   }
   return out
 }

@@ -42,10 +42,10 @@ export function matchAnnouncement(a: Announcement): MatchResult {
   const add = (p: Person, r: Reason) => { const m = by.get(p.id) ?? { p, reasons: [], score: 0 }; if (!m.reasons.some(x => x.text === r.text)) { m.reasons.push(r); m.score += r.weight } by.set(p.id, m) }
   for (const t of companies) for (const h of callList(t)) {
     const kind = h.rel === 'worked there' ? 'employer' : h.rel === 'supplier side' ? 'supplier' : h.rel === 'customer side' ? 'customer' : 'competitor'
-    add(h.p, { kind, weight: kind === 'employer' ? 3 : 1.5, text: kind === 'employer' ? `worked at ${employerLabel(h.via)} ${h.yrs === 'today' ? '(works there now)' : h.yrs}` : h.why })
+    add(h.p, { kind, weight: kind === 'employer' ? 3 : kind === 'competitor' ? 0.75 : 1, text: kind === 'employer' ? `worked at ${employerLabel(h.via)} ${h.yrs === 'today' ? '(works there now)' : h.yrs}` : h.why })
   }
   for (const fp of profiles) for (const p of network) for (const r of linkReasons(p, fp)) add(p, r)
   for (const name of people) { const p = network.find(x => x.name === name); if (p) add(p, { kind: 'name', weight: 4, text: 'named in this filing' }) }
-  for (const m of by.values()) m.score += m.p.strength * 0.3
+  for (const m of by.values()) { m.score += m.p.strength * 0.3; m.reasons.sort((a, b) => b.weight - a.weight) } // strongest evidence first
   return { entities, companies, people, matches: [...by.values()].sort((x, y) => y.score - x.score) }
 }

@@ -3,6 +3,7 @@ import { network, filingPeople } from '../data/network'
 import { portfolio } from '../data/portfolio'
 import { announcements } from '../data/announcements'
 import { callList, secondDegree, allThemes, expertise, keepWarm, quietAdvantages, affiliation, type NetView, type CallHit } from '../lib/network'
+import { LABEL } from '../data/graph'
 import Badge from '../components/Badge'
 
 const TABS: { v: NetView; l: string }[] = [{ v: 'call', l: 'Who to call' }, { v: 'reach', l: '2nd degree' }, { v: 'experts', l: 'Experts' }, { v: 'warm', l: 'Keep warm' }, { v: 'edges', l: 'Edges' }]
@@ -20,7 +21,7 @@ function CallView({ ticker, setTicker, openCompany }: { ticker: string; setTicke
   const hits = callList(ticker)
   return <section><h2>Who should I call about…</h2>
     <select className="pick" style={{ margin: '0 0 8px' }} value={ticker} onChange={e => setTicker(e.target.value)}>{portfolio.map(c => <option key={c.t} value={c.t}>{c.name} ({c.t})</option>)}</select>
-    <p className="dim small">Ranked: worked there, then supplier or customer side, then competitor — weighted by your relationship and how recent their tenure is.</p>
+    <p className="dim small">Ranked: worked there, then supplier or customer side, then competitor — weighted by your relationship and how recent their tenure is. Supplier, customer and rival links are {LABEL}.</p>
     {hits.length ? hits.map(h => <CallRow key={h.p.id} h={h} />) : <p className="dim">No direct, supplier, customer or competitor connection. Try a second-degree ask.</p>}
     <button className="more" style={{ marginTop: 10 }} onClick={() => openCompany(ticker)}>Open research →</button></section>
 }

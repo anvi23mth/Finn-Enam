@@ -117,7 +117,7 @@ export default function Pull({ ticker, setTicker, openNet }: { ticker: string; s
           <DemoResearch t={ticker} /></>}
         {!demo && <section><p><b>Not analysed yet.</b> <span className="dim">Analysing fetches the latest annual report and four concall transcripts from screener.in and extracts cited facts — primary sources only.</span></p>
           <AnalyseBtn label="Not analysed yet — Analyse" />{err && <div className="errbox">{err}</div>}</section>}</>}
-    <section><h2>Who to call <Badge kind="demo" /> <small>synthetic network</small></h2>
+    <section><h2>Who to call <Badge kind="demo" /> <small>synthetic network · links are illustrative</small></h2>
       {calls.length ? calls.slice(0, 3).map(h => <div key={h.p.id} className="net"><div className="hit">◉ <b>{h.p.name}</b><span className={`rel ${h.rel.startsWith('worked') ? 'worked' : h.rel.startsWith('competitor') ? '' : 'supplier'}`}>{h.rel}</span>
         <br /><span className="dim">{affiliation(h.p)} · last spoke {h.p.lastTalkDays}d ago</span><br />{h.why}. <i>{h.know}.</i></div></div>)
         : <p className="dim small">No one in your network touches {co?.name ?? ticker} directly, or through a supplier, customer or competitor.</p>}
