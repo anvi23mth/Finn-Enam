@@ -1,7 +1,25 @@
 # FINN — financial investment agent (prototype)
 
-**Live demo:** https://finn-enam-eta.vercel.app · [Architecture](docs/ARCHITECTURE.md) · [Deployment guide](DEPLOY.md)
+## For reviewers
 
+| What | Link |
+|---|---|
+| **Prototype** (mobile-first, best on a phone) | https://finn-enam-eta.vercel.app/ |
+| **Backend API docs** (FastAPI on Render) | https://finn-backend-2lby.onrender.com/docs |
+| **Architecture** | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
+| **Deployment guide** | [DEPLOY.md](DEPLOY.md) |
+
+### AI build history
+This project was built with Claude Code. Full sessions — including how I broke down the problem, prompted, course-corrected, and decided what to accept vs. rewrite:
+
+1. [Session 1](https://claude.ai/code/cshk_01WHZmk1VZaoLCTryRayHxWKMUDC9ZanUmLErZWRZyCcqp)
+2. [Session 2](https://claude.ai/code/cshk_01WHZmk1trJd3rv1HaUk4y4XEDxpb84HQFKTsC1vFDr73V)
+
+### Notes before you try it
+- **Cold start:** the backend runs on Render's free tier and sleeps when idle. The first request can take ~50–60 seconds; after that it's fast. Opening the API docs link first wakes it up.
+- **Real vs. demo data:** sections tagged **Real** use live primary data (screener.in filings, Yahoo prices) with LLM classification. Sections tagged **Demo** (e.g. network contacts, "Demo scenarios") use synthetic data to show the network features without real personal data.
+- **Research:** INFY, DEEPAKNTR, TITAN and TMPV are pre-analysed and load instantly. Every claim is cited to its source (annual report or concall, with page number). These were generated with the fallback model (`gemini-3.5-flash-lite`); running a fresh analysis requires an access code to protect the API budget.
+- 
 A mobile-first web app for an investor with a portfolio of 19 NSE names. One idea: **filter hard, and always say who in your network can help.**
 
 | Tab | What it does | Data |
